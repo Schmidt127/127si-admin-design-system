@@ -1,0 +1,14 @@
+:root {
+  --127si-navy: #102a43;
+  --127si-blue: #1f4e79;
+  --127si-orange: #e8752a;
+  --127si-ink: #243b53;
+  --127si-muted: #627d98;
+  --127si-wash: #f6f8fb;
+  --127si-line: #d9e2ec;
+  --127si-radius-sm: 8px;
+  --127si-radius-md: 12px;
+  --127si-radius-lg: 16px;
+  --127si-shadow-sm: 0 4px 14px rgb(16 42 67 / 6%);
+  --127si-shadow-md: 0 12px 28px rgb(16 42 67 / 10%);
+}
