@@ -21,3 +21,14 @@ export type AdminPlatform = keyof typeof adminTheme.labels;
 export function platformLabel(platform: AdminPlatform) {
   return adminTheme.labels[platform];
 }
+
+export {
+  AdminShell,
+  AdminHeader,
+  AdminSidebar,
+  AdminPageHeader,
+  AdminCard,
+  AdminButton,
+  AdminStatusBadge,
+  AdminTable,
+} from "./components.js";
