@@ -29,6 +29,23 @@ import { platformLabel } from "@127si/admin-design-system";
 platformLabel("content");
 ```
 
+Import the browser-compatible React components and the tokens stylesheet:
+
+```tsx
+import "@127si/admin-design-system/tokens.css";
+import {
+  AdminShell, AdminPageHeader, AdminCard, AdminButton,
+  AdminStatusBadge, AdminTable,
+} from "@127si/admin-design-system";
+
+<AdminShell platform="content" navigation={[{ label: "Overview", href: "/admin" }]}>
+  <AdminPageHeader title="Content" actions={<AdminButton>New record</AdminButton>} />
+  <AdminCard title="Recent records"><AdminStatusBadge status="published" /></AdminCard>
+</AdminShell>
+```
+
+The components use plain React and HTML props only. They do not import Next.js, a router, an icon library, or a CSS framework. `AdminShell` accepts platform navigation and page content so each application can connect its own routes and data.
+
 The package is intentionally dependency-light so it can be adopted by separate Next.js repositories without forcing a monorepo migration.
 
 ## Change process

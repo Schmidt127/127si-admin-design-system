@@ -3,3 +3,4 @@ export const adminTheme = {
   labels: { content: "127SI CONTENT ADMIN", curriculum: "127SI CURRICULUM ADMIN", challenge: "127SI CHALLENGE ADMIN", referee: "127SI REFEREE ADMIN" },
 };
 export function platformLabel(platform) { return adminTheme.labels[platform]; }
+export { AdminShell, AdminHeader, AdminSidebar, AdminPageHeader, AdminCard, AdminButton, AdminStatusBadge, AdminTable } from "./components.js";
