@@ -12,7 +12,8 @@
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
     "test": "node test/render.test.mjs",
-    "check": "npm run typecheck && npm test"
+    "check:ui-en-dash": "node scripts/check-no-ui-en-dash.mjs",
+    "check": "npm run typecheck && npm run check:ui-en-dash && npm test"
   },
   "peerDependencies": { "react": ">=18", "react-dom": ">=18" },
   "devDependencies": {
