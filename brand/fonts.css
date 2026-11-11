@@ -1,0 +1,15 @@
+/*
+ * Self-hosted brand fonts (latin subsets from @fontsource 5.3.0; licences in ./fonts/OFL-*.txt).
+ * Import once per app: @import "@127si/design-system/fonts.css";
+ * Never load these families from Google at build or run time.
+ */
+@font-face { font-family: "Saira"; font-style: normal; font-weight: 700; font-display: swap; src: url("./fonts/saira-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Saira"; font-style: normal; font-weight: 800; font-display: swap; src: url("./fonts/saira-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Maven Pro"; font-style: normal; font-weight: 400; font-display: swap; src: url("./fonts/maven-pro-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Maven Pro"; font-style: normal; font-weight: 500; font-display: swap; src: url("./fonts/maven-pro-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Maven Pro"; font-style: normal; font-weight: 600; font-display: swap; src: url("./fonts/maven-pro-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Maven Pro"; font-style: normal; font-weight: 700; font-display: swap; src: url("./fonts/maven-pro-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 400; font-display: swap; src: url("./fonts/source-sans-3-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans 3"; font-style: italic; font-weight: 400; font-display: swap; src: url("./fonts/source-sans-3-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 600; font-display: swap; src: url("./fonts/source-sans-3-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 700; font-display: swap; src: url("./fonts/source-sans-3-latin-700-normal.woff2") format("woff2"); }

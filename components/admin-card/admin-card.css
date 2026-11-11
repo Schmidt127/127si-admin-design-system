@@ -1,0 +1,6 @@
+.si-admin-card { background: var(--si-color-surface); border: 1px solid var(--si-color-border); border-radius: var(--si-radius-lg); box-shadow: var(--si-shadow-sm); overflow: hidden; }
+.si-admin-card-header { display: flex; justify-content: space-between; gap: var(--si-space-4); padding: 20px 22px; border-bottom: 1px solid var(--si-color-border); }
+.si-admin-card-header h2 { margin: 0; color: var(--si-color-heading); font-size: var(--si-text-lg); }
+.si-admin-card-header p { color: var(--si-color-text-muted); margin: var(--si-space-2) 0 0; }
+.si-admin-card-actions { display: flex; align-items: center; gap: 10px; }
+.si-admin-card-body { padding: 22px; }

@@ -13,4 +13,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - run: npm run check
+      # Build, then fail if the committed dist/ differs from a fresh build (ADR 0001, decision 9).
+      - run: npm run check:dist
+      - run: npm run typecheck
+      - run: npm run check:ui-en-dash
+      - run: npm test

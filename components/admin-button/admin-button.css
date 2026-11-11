@@ -1,0 +1,12 @@
+.si-admin-button { border: 1px solid transparent; border-radius: var(--si-radius-md); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: var(--si-space-2); font: inherit; font-size: var(--si-text-sm); font-weight: var(--si-weight-bold); padding: 9px 15px; text-decoration: none; }
+.si-admin-button:focus-visible { outline: var(--si-focus-width) solid var(--si-color-focus); outline-offset: var(--si-focus-offset); }
+.si-admin-button:disabled, .si-admin-button[aria-disabled="true"] { cursor: not-allowed; opacity: 0.55; }
+.si-admin-button.is-primary { background: var(--si-color-primary); color: var(--si-color-on-primary); }
+.si-admin-button.is-primary:hover { background: var(--si-color-primary-hover); }
+.si-admin-button.is-secondary { background: var(--si-color-primary-soft); color: var(--si-color-link); border-color: var(--si-color-link); }
+.si-admin-button.is-secondary:hover { background: var(--si-color-surface); }
+.si-admin-button.is-ghost { background: transparent; color: var(--si-color-link); border-color: var(--si-color-border-strong); }
+.si-admin-button.is-ghost:hover { background: var(--si-color-primary-soft); }
+.si-admin-button.is-accent { background: var(--si-color-accent); color: var(--si-color-on-accent); }
+.si-admin-button.is-accent:hover { background: var(--si-color-accent-hover); }
+.si-admin-button.is-danger { background: var(--si-color-danger); color: var(--si-white); }

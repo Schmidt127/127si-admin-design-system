@@ -1,0 +1,20 @@
+/*
+ * Deprecated aliases. The pre-v1 package exposed --127si-* variables; they now point at the v1
+ * tokens (Brand System v4 values) so existing consumers keep working. Do not use them in new code.
+ * Removed in v2.0.0, once no platform references them.
+ */
+:root {
+  --127si-navy: var(--si-color-shell-deep);
+  --127si-blue: var(--si-color-primary);
+  --127si-orange: var(--si-color-accent);
+  --127si-ink: var(--si-color-text);
+  --127si-muted: var(--si-slate);
+  --127si-wash: var(--si-color-surface-alt);
+  --127si-line: var(--si-color-border);
+  --127si-radius-sm: var(--si-radius-md);
+  --127si-radius-md: var(--si-radius-lg);
+  --127si-radius-lg: var(--si-radius-xl);
+  --127si-shadow-sm: var(--si-shadow-sm);
+  --127si-shadow-md: var(--si-shadow-md);
+  --127si-sidebar-width: var(--si-sidebar-width);
+}
