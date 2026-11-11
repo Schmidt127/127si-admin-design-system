@@ -2,6 +2,10 @@ import { type ElementType, type ReactNode } from "react";
 export type HeroSlide = {
     id: string;
     src: string;
+    /** Responsive candidates for `src`, e.g. from the app image optimiser (next/image `getImageProps`). */
+    srcSet?: string;
+    /** `sizes` for `srcSet`. Default "100vw". */
+    sizes?: string;
     /** Smaller or taller crop for phones (below 768px). */
     srcMobile?: string;
     alt: string;

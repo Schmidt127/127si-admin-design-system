@@ -16,6 +16,8 @@ another slideshow in a platform.
 ## What may vary
 
 - `slides`: the photos, each with alt text, an optional phone crop (`srcMobile`) and `objectPosition`.
+  Pass `srcSet` from the app image optimiser (in Next.js, `getImageProps`) so phones do not download the
+  full-size file.
   Photos are content and live in the platform.
 - `eyebrow`, `headline`, `subhead`, `primaryCta`, `secondaryCta`. In the headline, `<em>` or `<strong>`
   turns words orange.

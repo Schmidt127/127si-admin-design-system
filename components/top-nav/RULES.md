@@ -29,6 +29,6 @@ Full-page forms (registration, daily submission) have no site header. Admin uses
 - Links are blue in the display font; the current and hovered link get the orange underline; the current link
   carries `aria-current="page"`.
 - The action is a blue button with white text. One action only.
-- Below 64rem the links collapse into the menu button. The menu covers the page, closes with Escape and on
-  navigation, and the page behind does not scroll while it is open.
+- Below 64rem the links collapse into the menu button. The menu covers the page, closes with Escape (focus
+  returns to the menu button) and on navigation, and the page behind does not scroll while it is open.
 - Team Shot Tracker gets its own colours from the `tst` theme; it does not restyle this component.

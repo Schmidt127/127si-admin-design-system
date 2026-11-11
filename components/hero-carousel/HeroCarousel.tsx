@@ -6,6 +6,10 @@ import { cx } from "../_shared/cx.js";
 export type HeroSlide = {
   id: string;
   src: string;
+  /** Responsive candidates for `src`, e.g. from the app image optimiser (next/image `getImageProps`). */
+  srcSet?: string;
+  /** `sizes` for `srcSet`. Default "100vw". */
+  sizes?: string;
   /** Smaller or taller crop for phones (below 768px). */
   srcMobile?: string;
   alt: string;
@@ -112,6 +116,8 @@ export function HeroCarousel({
                 <img
                   className="si-hero__img"
                   src={slide.src}
+                  srcSet={slide.srcSet}
+                  sizes={slide.srcSet ? (slide.sizes ?? "100vw") : undefined}
                   alt={i === index ? slide.alt : ""}
                   loading={i === 0 ? "eager" : "lazy"}
                   fetchPriority={i === 0 ? "high" : "auto"}
