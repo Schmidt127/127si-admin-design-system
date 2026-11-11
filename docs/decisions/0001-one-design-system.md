@@ -16,7 +16,10 @@ colours that are not the brand, and was mostly consumed for its token file. The 
 1. **One package, in this repository.** `@127si/admin-design-system` becomes `@127si/design-system` at
    v1.0.0. It has two surfaces: public (default) and admin (`data-si-surface="admin"`, visually quieter).
    The GitHub repository keeps its name so existing SHA pins keep resolving.
-2. **Brand System v4 is the standard.** Blue `#0034B7` is primary (buttons, active nav), orange `#FF8B00`
+2. **The brand kit is the highest authority; Brand System v4 extends it.** (Owner direction 2026-11-11.) The
+   official 127 SI brand kit fixes the five base colours, Maven Pro and the logo, stamp and pattern artwork;
+   `brand/kit/` and `brand/assets/` in this repository are their home. Brand System v4 and this design system
+   add to the kit and never change a kit value; `brand/tokens.css` labels each group with its source. Blue `#0034B7` is primary (buttons, active nav), orange `#FF8B00`
    is the accent. The package's old colours (`#1f4e79`, `#e8752a`, `#102a43`) are retired. Curriculum's
    admin, which still shows them, changes visibly when it upgrades.
 3. **Team Shot Tracker is the only theme exception.** It applies `data-si-theme="tst"` (the "Scoreboard"

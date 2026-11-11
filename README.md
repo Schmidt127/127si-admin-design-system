@@ -1,8 +1,8 @@
 # 127SI design system
 
 `@127si/design-system`: the one source of brand tokens, themes, fonts, logos and shared React components for
-every 127 Sports Intensity platform. Standard: Brand System v4 (blue `#0034B7` primary, orange `#FF8B00`
-accent). Team Shot Tracker alone uses the `tst` ("Scoreboard") theme.
+every 127 Sports Intensity platform. Authority: the official 127 SI brand kit, extended by Brand System v4
+(blue `#0034B7` primary, orange `#FF8B00` accent). Team Shot Tracker alone uses the `tst` ("Scoreboard") theme.
 
 Before v1.0.0 this package was `@127si/admin-design-system` (admin only, non-brand colours). The repository
 keeps its old name so existing commit pins still resolve.
@@ -14,7 +14,9 @@ keeps its old name so existing commit pins still resolve.
 ## Layout
 
 ```
-brand/                 tokens.css, themes/tst.css, legacy.css, fonts.css, fonts/, logos/, theme.ts, RULES.md
+brand/                 tokens.css, themes/tst.css, legacy.css, fonts.css, fonts/, theme.ts, RULES.md
+  kit/                   the official brand kit: what it fixes and what is an extension (highest authority)
+  assets/                logos, stamps and patterns from the kit, with manifest.json
 components/
   admin-shell/         one folder per component:
     AdminShell.tsx       the component

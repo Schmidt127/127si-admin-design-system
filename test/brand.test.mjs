@@ -1,6 +1,6 @@
 // Brand tokens: Brand System v4 values, the TST theme, and readable contrast for the pairs components use.
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 
 const read = (file) => readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
@@ -39,6 +39,26 @@ function contrast(a, b) {
   const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
   return (hi + 0.05) / (lo + 0.05);
 }
+
+test("the five brand kit colours are exactly the kit values", () => {
+  const kit = { "--si-blue": "#0034b7", "--si-orange": "#ff8b00", "--si-black": "#262626", "--si-gray": "#c4c4c4", "--si-gray-light": "#f2f2f2" };
+  for (const [name, hex] of Object.entries(kit)) assert.equal(base[name], hex, name);
+  const manifest = JSON.parse(read("brand/assets/manifest.json"));
+  assert.deepEqual(Object.values(manifest.colors).map((c) => c.toLowerCase()).sort(), Object.values(kit).sort());
+});
+
+test("every asset in the manifest exists, and every asset file is in the manifest", () => {
+  const manifest = JSON.parse(read("brand/assets/manifest.json"));
+  const listed = [...manifest.logos, ...manifest.stamps, ...manifest.patterns].map((a) => a.file).sort();
+  const onDisk = ["logos", "stamps", "patterns"].flatMap((dir) => readdirSync(new URL(`../brand/assets/${dir}/`, import.meta.url)).map((f) => `${dir}/${f}`)).sort();
+  assert.deepEqual(listed, onDisk);
+});
+
+test("display type is Saira, standing in for Magistral, and no Magistral file ships", () => {
+  assert.match(base["--si-font-display"], /Saira/);
+  assert.match(base["--si-font-body"], /Maven Pro/);
+  assert.equal(readdirSync(new URL("../brand/fonts/", import.meta.url)).filter((f) => /magistral/i.test(f)).length, 0);
+});
 
 test("palette is Brand System v4", () => {
   const expected = {

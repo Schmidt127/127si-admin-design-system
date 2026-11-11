@@ -3,7 +3,7 @@
  * Build dist/ (committed; see docs/decisions/0001-one-design-system.md, decision 9).
  *   - tsc compiles index.ts, brand/ and components/ to ES modules plus .d.ts
  *   - CSS is concatenated into four entry files
- *   - fonts and logos are copied
+ *   - fonts and brand assets (logos, stamps, patterns) are copied
  *   - the catalogue page is rendered to dist/catalogue/index.html
  * Output must be byte-identical on every machine: LF newlines, sorted inputs, no timestamps.
  */
@@ -49,7 +49,11 @@ write("components.css", banner + componentCss);
 write("styles.css", banner + tokens + "\n" + componentCss);
 write("fonts.css", banner + read("brand/fonts.css"));
 cpSync(path.join(root, "brand/fonts"), path.join(dist, "fonts"), { recursive: true });
-cpSync(path.join(root, "brand/logos"), path.join(dist, "logos"), { recursive: true });
+cpSync(path.join(root, "brand/assets"), path.join(dist, "assets"), { recursive: true });
+// Deprecated v1.0 paths for the two logos; the sources live once, in brand/assets/logos.
+mkdirSync(path.join(dist, "logos"), { recursive: true });
+cpSync(path.join(root, "brand/assets/logos/logo-full-color.png"), path.join(dist, "logos/127si-logo.png"));
+cpSync(path.join(root, "brand/assets/logos/logo-white.png"), path.join(dist, "logos/127si-logo-white.png"));
 
 const { renderCatalogue } = await import(pathToFileURL(path.join(dist, "catalogue/Catalogue.js")).href);
 write("catalogue/index.html", renderCatalogue({ version, components: componentDirs }));
