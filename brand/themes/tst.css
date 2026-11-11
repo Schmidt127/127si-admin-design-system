@@ -46,7 +46,15 @@
   --si-color-on-shell: var(--si-tst-chalk);
   --si-color-on-shell-muted: var(--si-tst-gray-400);
   --si-color-shell-line: rgb(245 245 242 / 14%);
+  --si-color-on-shell-line-strong: rgb(245 245 242 / 55%);
   --si-color-shell-active: rgb(245 245 242 / 12%);
+  --si-color-header: var(--si-tst-black);
+  --si-color-on-header: var(--si-tst-chalk);
+  --si-color-header-line: rgb(245 245 242 / 14%);
+  --si-color-cta: var(--si-tst-amber);
+  --si-color-cta-hover: var(--si-tst-amber-hover);
+  --si-color-on-cta: var(--si-tst-black);
+  --si-color-highlight: var(--si-tst-amber);
   --si-color-table-head: var(--si-tst-black);
   --si-color-on-table-head: var(--si-tst-chalk);
   --si-color-row-hover: var(--si-tst-chalk);
