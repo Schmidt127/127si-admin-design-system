@@ -55,6 +55,12 @@ test("fonts.css points at font files that ship", () => {
   for (const file of files) assert.ok(require.resolve(`@127si/design-system/fonts/${file}`));
 });
 
+test("brand assets and the deprecated v1.0 logo paths resolve", () => {
+  for (const file of ["assets/logos/logo-white.png", "assets/stamps/stamp-1.png", "assets/patterns/pattern-3.png", "assets/manifest.json", "logos/127si-logo.png", "logos/127si-logo-white.png"]) {
+    assert.ok(require.resolve(`@127si/design-system/${file}`), file);
+  }
+});
+
 test("built components render on the server", () => {
   const html = renderToStaticMarkup(
     React.createElement(ds.AdminShell, { platform: "challenge", navigation: [{ href: "/admin", label: "Overview" }], activeHref: "/admin" }, "child"),

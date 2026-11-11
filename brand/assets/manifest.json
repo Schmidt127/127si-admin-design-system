@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "brand": "127 Sports Intensity",
+  "source": "Official 127 SI brand kit (2023). Files copied from 127si-challenge-platform public/brand on 2026-11-11 and renamed; the artwork is unchanged.",
+  "import": "@127si/design-system/assets/<folder>/<file>",
+  "rules": "Never redraw, recolour, stretch, crop, rotate, outline, shadow or CSS-invert a logo or stamp. Use the white logo on blue, black or photo backgrounds.",
+  "colors": {
+    "blue": "#0034B7",
+    "orange": "#FF8B00",
+    "charcoal": "#262626",
+    "midGray": "#C4C4C4",
+    "offWhite": "#F2F2F2"
+  },
+  "logos": [
+    { "file": "logos/logo-full-color.png", "was": "logo.png", "use": "Blue and orange full lockup. Headers and covers on white or light backgrounds." },
+    { "file": "logos/logo-white.png", "was": "127si-logo-white.png", "use": "White lockup. Footers and anything on blue, black or a dark photo." },
+    { "file": "logos/logo-circle.png", "was": "logo-circle.png", "use": "Circular mark. Compact navigation, avatars, app icons." },
+    { "file": "logos/logo-v1-black.png", "was": "Logo_V1_Black (1).png", "use": "Black lockup, version 1. One-colour printing and forms." },
+    { "file": "logos/logo-v2-black.png", "was": "Logo_V2_Black (1).png", "use": "Black lockup, version 2. One-colour printing and forms." },
+    { "file": "logos/logo-text-black.png", "was": "Logo_Text_Black (1).png", "use": "Black wordmark only." },
+    { "file": "logos/logo-icon-black.png", "was": "Logo_Icon_Black (1).png", "use": "Black symbol only." }
+  ],
+  "stamps": [
+    { "file": "stamps/stamp-1.png", "was": "Stamp_1 (1).png" },
+    { "file": "stamps/stamp-2.png", "was": "Stamp_2 (1).png" },
+    { "file": "stamps/stamp-3.png", "was": "Stamp_3 (1).png" },
+    { "file": "stamps/stamp-4.png", "was": "Stamp_4 (1).png" },
+    { "file": "stamps/stamp-5.png", "was": "Stamp_5 (1).png" },
+    { "file": "stamps/stamp-6.png", "was": "Stamp_6 (1).png" },
+    { "file": "stamps/stamp-7.png", "was": "Stamp_7 (1).png" }
+  ],
+  "stampUse": "Awards, certificates, apparel, athletic graphics, watermarks. Not in navigation or behind data.",
+  "patterns": [
+    { "file": "patterns/pattern-2.png", "was": "Pattern_2 (1).png" },
+    { "file": "patterns/pattern-3.png", "was": "Pattern_3 (1).png", "use": "Footer background at about 8% opacity (public shell standard)." },
+    { "file": "patterns/pattern-4.png", "was": "Pattern_4 (1).png" },
+    { "file": "patterns/pattern-5.png", "was": "Pattern_5 (1).png" },
+    { "file": "patterns/court-line-pattern.svg", "was": "patterns/court-line-pattern.svg", "use": "Court-line texture. Not part of the 2023 kit; added in Challenge." }
+  ],
+  "patternUse": "Texture only, in empty or header areas. Never behind text that must be read or behind data.",
+  "notInThisPackage": "Challenge's XP, streak and milestone badges and its product icons stay in 127si-challenge-platform public/brand. Favicons stay with each app."
+}

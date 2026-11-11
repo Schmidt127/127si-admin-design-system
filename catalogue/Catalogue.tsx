@@ -19,14 +19,26 @@ const ROLES = [
   "success", "success-soft", "warning", "warning-soft", "danger", "danger-soft", "focus",
 ];
 const TYPE = [
-  ["display", "Saira 800", "var(--si-font-display)", 800, "Hero and section headings, navigation"],
-  ["body", "Maven Pro 400", "var(--si-font-body)", 400, "Public body text, forms and parent pages"],
+  ["display", "Saira 800", "var(--si-font-display)", 800, "Hero and section headings, navigation. Free replacement for the brand kit display font, Magistral"],
+  ["body", "Maven Pro 400", "var(--si-font-body)", 400, "Brand kit supporting font. Public body text, forms and parent pages"],
   ["data", "Source Sans 3 400", "var(--si-font-data)", 400, "Admin screens and dense tables"],
   ["mono", "System monospace", "var(--si-font-mono)", 400, "Codes and IDs"],
 ] as const;
 const SIZES = ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"];
 const SPACES = ["1", "2", "3", "4", "5", "6", "7", "8"];
 const RADII = ["xs", "sm", "md", "lg", "xl", "pill"];
+const KIT = ["blue", "orange", "black", "gray", "gray-light"];
+const LOGOS = [
+  ["logos/logo-full-color.png", "Full colour lockup", false],
+  ["logos/logo-white.png", "White lockup (on blue, black or photos)", true],
+  ["logos/logo-circle.png", "Circular mark", false],
+  ["logos/logo-v1-black.png", "Black lockup, version 1", false],
+  ["logos/logo-v2-black.png", "Black lockup, version 2", false],
+  ["logos/logo-text-black.png", "Black wordmark", false],
+  ["logos/logo-icon-black.png", "Black symbol", false],
+] as const;
+const STAMPS = ["1", "2", "3", "4", "5", "6", "7"];
+const PATTERNS = ["2", "3", "4", "5"];
 
 const rows = [
   { name: "Ava Jensen", school: "Fairfield", status: "paid" },
@@ -134,13 +146,19 @@ main.cat-main { max-width: var(--si-container-max); margin: 0 auto; padding: var
 .cat-frame { border: 1px solid var(--si-gray); border-radius: var(--si-radius-md); overflow: hidden; }
 .cat-frame .si-admin-shell { min-height: 0; }
 .cat-list { padding-left: 1.25rem; }
+.cat-assets { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: var(--si-space-4); margin-top: var(--si-space-5); }
+.cat-asset { margin: 0; border: 1px solid var(--si-gray); border-radius: var(--si-radius-md); padding: var(--si-space-3); background: var(--si-white); text-align: center; }
+.cat-asset.is-dark { background: var(--si-blue); }
+.cat-asset.is-dark figcaption { color: var(--si-white); }
+.cat-asset img { max-width: 100%; height: 4.5rem; object-fit: contain; }
+.cat-asset figcaption { font-size: var(--si-text-xs); color: var(--si-black); margin-top: var(--si-space-2); }
 `;
 
 export function renderCatalogue({ version, components }: { version: string; components: string[] }): string {
   const body = renderToStaticMarkup(
     <>
       <header className="cat-top">
-        <img src="../logos/127si-logo-white.png" alt="127 Sports Intensity" />
+        <img src="../assets/logos/logo-white.png" alt="127 Sports Intensity" />
         <h1>127SI design system</h1>
         <p>
           Version {version}. Every colour, font and shared component used by the 127 Sports Intensity platforms, shown in the default theme
@@ -148,8 +166,32 @@ export function renderCatalogue({ version, components }: { version: string; comp
         </p>
       </header>
       <main className="cat-main">
-        <h2>Brand colours</h2>
-        <p className="cat-note">Brand System v4. Blue is primary (buttons, active navigation). Orange is the accent. These never change with the theme.</p>
+        <h2>Brand kit</h2>
+        <p className="cat-note">The official 127 SI brand kit is the highest authority. These five colours, the logos, stamps and patterns come straight from it.</p>
+        <Swatches prefix="--si-" names={KIT} />
+        <div className="cat-assets">
+          {LOGOS.map(([file, label, dark]) => (
+            <figure key={file} className={dark ? "cat-asset is-dark" : "cat-asset"}>
+              <img src={`../assets/${file}`} alt={label} loading="lazy" />
+              <figcaption>{label}</figcaption>
+            </figure>
+          ))}
+          {STAMPS.map((n) => (
+            <figure key={n} className="cat-asset">
+              <img src={`../assets/stamps/stamp-${n}.png`} alt={`Stamp ${n}`} loading="lazy" />
+              <figcaption>Stamp {n}</figcaption>
+            </figure>
+          ))}
+          {PATTERNS.map((n) => (
+            <figure key={n} className="cat-asset">
+              <img src={`../assets/patterns/pattern-${n}.png`} alt={`Pattern ${n}`} loading="lazy" />
+              <figcaption>Pattern {n}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <h2>All colours</h2>
+        <p className="cat-note">The kit colours plus the Brand System v4 extensions and the text-safe variants this system adds. Blue is primary (buttons, active navigation). Orange is the accent. These never change with the theme.</p>
         <Swatches prefix="--si-" names={PALETTE} />
 
         <h2>Colour roles by theme</h2>
