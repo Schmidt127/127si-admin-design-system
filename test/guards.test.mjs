@@ -47,15 +47,14 @@ test("brand tokens only reference tokens that exist", () => {
   for (const m of text.matchAll(/var\((--[a-z0-9-]+)/g)) assert.ok(defined.has(m[1]) || EXTERNAL.has(m[1]), `${m[1]} is not defined`);
 });
 
-// Admin helper text sits on the tinted admin background (--si-color-surface-alt). The muted role is
-// only readable on white, and an app may render .si-admin-* markup without data-si-surface="admin".
-test("admin text on the tinted background does not use the muted role", () => {
-  const onTint = [".si-admin-footer", ".si-admin-page-header p", ".si-admin-eyebrow", ".si-admin-status "];
-  const css = folders.flatMap((folder) => readdirSync(new URL(`components/${folder}/`, root)).filter((f) => f.endsWith(".css")).map((f) => read(`components/${folder}/${f}`))).join("\n");
-  for (const selector of onTint) {
-    const rule = css.split(/\r?\n/).find((line) => line.startsWith(selector));
-    assert.ok(rule, `${selector} rule not found`);
-    assert.ok(!rule.includes("var(--si-color-text-muted)"), `${selector} uses --si-color-text-muted`);
+// The muted role (#64748B) is only readable on white. Admin text can land on a tinted background:
+// the shell background, or a grey table header an app adds, and an app may render .si-admin-* markup
+// without data-si-surface="admin". So admin components never use the muted role; they use subtle.
+test("admin components never use the muted text role", () => {
+  for (const folder of folders.filter((name) => name.startsWith("admin-"))) {
+    for (const file of readdirSync(new URL(`components/${folder}/`, root)).filter((f) => f.endsWith(".css"))) {
+      assert.ok(!read(`components/${folder}/${file}`).includes("var(--si-color-text-muted)"), `${folder}/${file} uses --si-color-text-muted`);
+    }
   }
 });
 
