@@ -1,0 +1,13 @@
+.si-admin-field { display: grid; gap: var(--si-space-1); min-width: 0; }
+.si-admin-field-label { color: var(--si-color-text); font-size: var(--si-text-sm); font-weight: var(--si-weight-bold); }
+.si-admin-field-required { color: var(--si-color-danger-text); }
+.si-admin-field-hint { margin: 0; color: var(--si-color-text-subtle); font-size: var(--si-text-xs); }
+.si-admin-field-error { margin: 0; color: var(--si-color-danger-text); font-size: var(--si-text-xs); font-weight: var(--si-weight-semibold); }
+.si-admin-input { width: 100%; min-height: var(--si-control-height); border: 1px solid var(--si-color-border-strong); border-radius: var(--si-radius-md); background: var(--si-color-surface); color: var(--si-color-text); font: inherit; font-size: var(--si-text-sm); padding: var(--si-space-2) var(--si-space-3); }
+.si-admin-input:focus-visible { outline: var(--si-focus-width) solid var(--si-color-focus); outline-offset: var(--si-focus-offset); }
+.si-admin-input:disabled { background: var(--si-color-surface-alt); cursor: not-allowed; }
+.si-admin-field.has-error .si-admin-input, .si-admin-input[aria-invalid="true"] { border-color: var(--si-color-danger); }
+.si-admin-form-section { border: 0; margin: 0 0 var(--si-space-5); padding: 0; min-width: 0; }
+.si-admin-form-section-title { padding: 0; color: var(--si-color-heading); font-size: var(--si-text-md); font-weight: var(--si-weight-bold); }
+.si-admin-form-section-description { margin: var(--si-space-1) 0 0; color: var(--si-color-text-subtle); font-size: var(--si-text-sm); }
+.si-admin-form-section-fields { display: grid; gap: var(--si-space-4); margin-top: var(--si-space-3); }

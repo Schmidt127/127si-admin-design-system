@@ -16,7 +16,14 @@ admin navigation in a platform. Public and parent pages never use it.
 
 - `platform`: one of `challenge`, `referee`, `curriculum`, `communication`, `content`, `shared-data`, `tst`,
   `bracket`. It sets the label ("127SI CHALLENGE ADMIN").
-- `navigation`: the platform's own links (`href`, `label`, optional `icon`) and `activeHref`.
+- `navigation`: the platform's own links (`href`, `label`, optional `icon`, `external` for plain links such
+  as downloads) and `activeHref`.
+- `logoSrc`: pass the white logo from `@127si/design-system/assets/logos/logo-white.png`. Every platform
+  should pass it; the "127" text mark is only the fallback.
+- `LinkComponent`: the app's router link (`next/link`), used for the logo and internal nav links.
+- `sidebarFooter`: who is signed in, sign out, a link to the public site.
+- `headerEyebrow`, `headerTitle`, `headerActions` (environment chip, account menu).
+- `contentId`: the target of the page's "skip to content" link.
 - `children` (page content) and `footer`.
 
 ## What may not vary

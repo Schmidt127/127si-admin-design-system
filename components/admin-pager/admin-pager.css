@@ -1,0 +1,6 @@
+.si-admin-pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--si-space-3); margin-top: var(--si-space-4); font-size: var(--si-text-sm); }
+.si-admin-pager-status { color: var(--si-color-text-subtle); }
+.si-admin-pager-link { border: 1px solid var(--si-color-border-strong); border-radius: var(--si-radius-md); padding: var(--si-space-2) var(--si-space-3); color: var(--si-color-link); font-weight: var(--si-weight-bold); text-decoration: none; background: var(--si-color-surface); }
+.si-admin-pager-link:hover { background: var(--si-color-primary-soft); }
+.si-admin-pager-link:focus-visible { outline: var(--si-focus-width) solid var(--si-color-focus); outline-offset: var(--si-focus-offset); }
+.si-admin-pager-link.is-disabled { color: var(--si-color-text-subtle); border-color: var(--si-color-border); background: var(--si-color-surface-alt); }

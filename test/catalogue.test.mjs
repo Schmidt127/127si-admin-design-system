@@ -11,7 +11,7 @@ const html = readFileSync(new URL("../dist/catalogue/index.html", import.meta.ur
 
 test("catalogue shows both themes and every component folder", () => {
   assert.match(html, /data-si-theme="tst"/);
-  for (const name of ["admin-shell", "admin-page-header", "admin-card", "admin-button", "admin-status-badge", "admin-table"]) {
+  for (const name of ["admin-shell", "admin-page-header", "admin-card", "admin-button", "admin-status-badge", "admin-table", "admin-notice", "admin-toolbar", "admin-field", "admin-pager"]) {
     assert.ok(html.includes(`components/${name}`), name);
   }
 });

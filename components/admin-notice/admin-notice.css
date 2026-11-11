@@ -1,0 +1,6 @@
+.si-admin-notice { display: grid; gap: var(--si-space-1); border: 1px solid var(--si-color-border); border-left-width: 4px; border-radius: var(--si-radius-md); padding: var(--si-space-3) var(--si-space-4); background: var(--si-color-surface); color: var(--si-color-text); font-size: var(--si-text-sm); }
+.si-admin-notice-title { font-weight: var(--si-weight-bold); }
+.si-admin-notice.is-info { border-left-color: var(--si-color-primary); background: var(--si-color-primary-soft); }
+.si-admin-notice.is-success { border-left-color: var(--si-color-success); background: var(--si-color-success-soft); }
+.si-admin-notice.is-warning { border-left-color: var(--si-color-warning); background: var(--si-color-warning-soft); }
+.si-admin-notice.is-danger { border-left-color: var(--si-color-danger); background: var(--si-color-danger-soft); }
