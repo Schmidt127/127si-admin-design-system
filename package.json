@@ -1,25 +1,40 @@
 {
-  "name": "@127si/admin-design-system",
-  "version": "0.1.0",
+  "name": "@127si/design-system",
+  "version": "1.0.0",
   "private": true,
+  "description": "The 127 Sports Intensity design system: brand tokens, themes, fonts and shared React components.",
   "type": "module",
-  "files": ["src"],
-  "types": "./src/index.d.ts",
+  "files": ["dist", "brand/RULES.md", "components/*/RULES.md", "docs"],
+  "types": "./dist/index.d.ts",
+  "sideEffects": ["*.css"],
   "exports": {
-    ".": { "types": "./src/index.d.ts", "default": "./src/index.js" },
-    "./tokens.css": "./src/tokens.css"
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./styles.css": "./dist/styles.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./components.css": "./dist/components.css",
+    "./fonts.css": "./dist/fonts.css",
+    "./fonts/*": "./dist/fonts/*",
+    "./logos/*": "./dist/logos/*",
+    "./package.json": "./package.json"
   },
   "scripts": {
+    "build": "node scripts/build.mjs",
     "typecheck": "tsc -p tsconfig.json",
-    "test": "node test/render.test.mjs",
+    "test": "node --import tsx --test \"components/**/*.test.tsx\" \"test/*.test.mjs\"",
     "check:ui-en-dash": "node scripts/check-no-ui-en-dash.mjs",
-    "check": "npm run typecheck && npm run check:ui-en-dash && npm test"
+    "check:dist": "node scripts/build.mjs && git diff --exit-code -- dist && node scripts/check-dist-untracked.mjs",
+    "check": "npm run build && npm run typecheck && npm run check:ui-en-dash && npm test"
   },
   "peerDependencies": { "react": ">=18", "react-dom": ">=18" },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "axe-core": "^4.10.0",
+    "jsdom": "^25.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "tsx": "^4.19.0",
     "typescript": "^5.6.0"
   }
 }

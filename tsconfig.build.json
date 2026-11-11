@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "react-jsx",
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "declaration": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "newLine": "lf",
+    "removeComments": false,
+    "skipLibCheck": true,
+    "types": []
+  },
+  "include": ["index.ts", "brand/**/*.ts", "components/**/*.ts", "components/**/*.tsx", "catalogue/**/*.tsx"],
+  "exclude": ["**/*.test.tsx", "**/*.test.ts", "dist", "node_modules"]
+}

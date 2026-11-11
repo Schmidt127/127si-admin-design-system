@@ -1,0 +1,4 @@
+.si-admin-status { display: inline-flex; border-radius: var(--si-radius-pill); padding: var(--si-space-1) 9px; background: var(--si-color-surface-alt); color: var(--si-color-text-subtle); font-size: var(--si-text-xs); font-weight: var(--si-weight-bold); }
+.si-admin-status.is-published, .si-admin-status.is-active, .si-admin-status.is-paid, .si-admin-status.is-complete, .si-admin-status.is-approved { background: var(--si-color-success-soft); color: var(--si-color-success); }
+.si-admin-status.is-draft, .si-admin-status.is-pending, .si-admin-status.is-review { background: var(--si-color-warning-soft); color: var(--si-color-warning-text); }
+.si-admin-status.is-failed, .si-admin-status.is-blocked, .si-admin-status.is-error, .si-admin-status.is-cancelled { background: var(--si-color-danger-soft); color: var(--si-color-danger-text); }

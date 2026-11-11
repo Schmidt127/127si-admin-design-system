@@ -1,0 +1,7 @@
+.si-admin-table-wrap { overflow-x: auto; }
+.si-admin-table { width: 100%; border-collapse: collapse; font-size: var(--si-text-sm); }
+.si-admin-table caption { text-align: left; color: var(--si-color-text-muted); font-size: var(--si-text-xs); padding: 0 var(--si-space-3) var(--si-space-2); }
+.si-admin-table th { color: var(--si-color-text-muted); font-size: 0.6875rem; letter-spacing: 0.06em; text-align: left; text-transform: uppercase; }
+.si-admin-table th, .si-admin-table td { border-bottom: 1px solid var(--si-color-border); padding: 13px var(--si-space-3); vertical-align: middle; }
+.si-admin-table tbody tr:hover { background: var(--si-color-row-hover); }
+.si-admin-table td.si-admin-empty { color: var(--si-color-text-muted); padding: var(--si-space-6); text-align: center; }

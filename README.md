@@ -1,84 +1,99 @@
-# 127SI Admin Design System
+# 127SI design system
 
-Shared visual foundation for every 127SI administrative platform.
+`@127si/design-system`: the one source of brand tokens, themes, fonts, logos and shared React components for
+every 127 Sports Intensity platform. Standard: Brand System v4 (blue `#0034B7` primary, orange `#FF8B00`
+accent). Team Shot Tracker alone uses the `tst` ("Scoreboard") theme.
 
-## Platforms
+Before v1.0.0 this package was `@127si/admin-design-system` (admin only, non-brand colours). The repository
+keeps its old name so existing commit pins still resolve.
 
-- Content Platform
-- Curriculum Platform
-- Challenge Platform
-- Referee Platform
+- Decisions: [`docs/decisions/`](docs/decisions/) (0001 one design system, 0002 typography).
+- Starting point measured across the platforms: [`baseline/`](baseline/).
+- Catalogue (every token and component in every theme): `dist/catalogue/index.html`.
 
-## Design direction
+## Layout
 
-The admin experience is intentionally quieter than the public websites: navy workspace navigation, white work surfaces, royal-blue utility color, and orange reserved for primary actions. Every platform keeps the same structure while identifying itself with a prominent platform label.
+```
+brand/                 tokens.css, themes/tst.css, legacy.css, fonts.css, fonts/, logos/, theme.ts, RULES.md
+components/
+  admin-shell/         one folder per component:
+    AdminShell.tsx       the component
+    admin-shell.css      its styles, brand tokens only
+    RULES.md             what it is for, when to use it, what may and may not vary (binding)
+    admin-shell.test.tsx render and accessibility check
+  admin-button/ admin-card/ admin-page-header/ admin-status-badge/ admin-table/
+catalogue/             the page that shows everything in every theme
+dist/                  built output, committed (what consumers install)
+```
 
-## Usage
+Each `RULES.md` is binding on people and agents. Start with [`brand/RULES.md`](brand/RULES.md).
 
-Import the tokens into an admin app:
+## Using it in a platform
+
+Install by the full commit SHA of a tagged release, with the platform's own package manager:
+
+```json
+"@127si/design-system": "github:Schmidt127/127si-admin-design-system#<full 40-character sha>"
+```
+
+- Never pin a branch (`#master`), a tag name or a short SHA. The consumer lockfile records the commit.
+- Upgrade by changing the SHA and regenerating that platform's lockfile in the same PR.
+
+Import the styles once, in the app's global stylesheet:
 
 ```css
-@import "@127si/admin-design-system/tokens.css";
+@import "@127si/design-system/fonts.css";   /* Saira, Maven Pro, Source Sans 3, self-hosted */
+@import "@127si/design-system/styles.css";  /* tokens + all component styles */
 ```
 
-Use the shared label configuration:
-
-```ts
-import { platformLabel } from "@127si/admin-design-system";
-
-platformLabel("content");
-```
-
-Import the browser-compatible React components and the tokens stylesheet:
+`@127si/design-system/tokens.css` is the tokens alone; `components.css` is the component styles alone.
 
 ```tsx
-import "@127si/admin-design-system/tokens.css";
-import {
-  AdminShell, AdminPageHeader, AdminCard, AdminButton,
-  AdminStatusBadge, AdminTable,
-} from "@127si/admin-design-system";
+import { AdminShell, AdminPageHeader, AdminCard, AdminButton, AdminStatusBadge, AdminTable } from "@127si/design-system";
 
-<AdminShell platform="content" navigation={[{ label: "Overview", href: "/admin" }]}>
+<AdminShell platform="content" navigation={[{ label: "Overview", href: "/admin" }]} activeHref="/admin">
   <AdminPageHeader title="Content" actions={<AdminButton>New record</AdminButton>} />
   <AdminCard title="Recent records"><AdminStatusBadge status="published" /></AdminCard>
 </AdminShell>
 ```
 
-The components use plain React and HTML props only. They do not import Next.js, a router, an icon library, or a CSS framework. `AdminShell` accepts platform navigation and page content so each application can connect its own routes and data.
+Components are plain React and plain CSS. They import no Next.js, router, icon library or CSS framework.
+Team Shot Tracker's public layout sets `data-si-theme="tst"`; nothing else sets a theme.
 
-The package is intentionally dependency-light so it can be adopted by separate Next.js repositories without forcing a monorepo migration.
+## Upgrading from `@127si/admin-design-system` (0.1.0)
 
-## Package entry points and types
+1. Rename the dependency to `@127si/design-system` and pin the v1 commit SHA.
+2. Replace `@127si/admin-design-system/tokens.css` with `@127si/design-system/styles.css` (the old
+   `tokens.css` also carried the `.si-admin-*` classes; they now live in `styles.css`).
+3. Replace `from "@127si/admin-design-system"` with `from "@127si/design-system"`. Every old export still
+   exists (`adminTheme` and `AdminPlatform` are deprecated names for `siTheme` and `SiPlatform`).
+4. Delete local overrides of `--127si-*`. Those variables still work but are now aliases of the v1 tokens
+   and already carry Brand System v4 values.
 
-- `@127si/admin-design-system` → runtime `src/index.js`, types `src/index.d.ts` (`exports["."].types` plus the top-level `types` field).
-- `@127si/admin-design-system/tokens.css` → `src/tokens.css`.
+What changes on screen: admin blue, orange and navy become the brand values; the primary admin button turns
+from orange to blue (`variant="accent"` is the orange one); status and table colours come from brand tokens.
 
-The runtime is plain ESM JavaScript; types are hand-written declarations (`src/index.d.ts`, `src/components.d.ts`). There is no build step and no TypeScript source in the published package, so consumers never compile this package's source under their own compiler settings. Type resolution works with `moduleResolution` `bundler`, `node16`, `nodenext`, and `node10`. Keep the declarations in sync with the JavaScript whenever an export or prop changes.
+## How it ships
 
-## Consuming the package
+Sources are TypeScript. `npm run build` compiles them to `dist/` (ES modules and `.d.ts`), bundles the CSS and
+renders the catalogue. `dist/` is committed and CI fails if it is stale, so consumers install ready-to-run
+files with no build step. There are no runtime dependencies and no install scripts; do not add a `prepare`
+script. No lockfile is committed here (consumers pin by SHA; dev dependencies are for local checks only).
 
-Consumers install this package from GitHub, pinned to a **full 40-character commit SHA that exists on GitHub**:
-
-```json
-"@127si/admin-design-system": "github:Schmidt127/127si-admin-design-system#<full-sha>"
-```
-
-- Never pin a branch (`#master`) or omit the ref; that floats and makes builds non-reproducible.
-- Avoid short SHAs: they work today, but a full SHA cannot become ambiguous and matches what lockfiles record.
-- Each consumer uses its own declared package manager (`packageManager` field and committed lockfile: npm `package-lock.json` or pnpm `pnpm-lock.yaml`). The consumer lockfile is what pins the resolved commit.
-- Upgrade by changing the SHA in the consumer's `package.json` and regenerating that consumer's lockfile in the same PR.
-
-## Package manager and lockfile policy (this repository)
-
-This repository is consumed by git SHA, not from a registry, and has no runtime dependencies (React is a peer dependency). It therefore commits **no lockfile** and declares **no `packageManager`**; lockfiles are git-ignored. The dev dependencies exist only for local checks and are never installed by consumers (npm and pnpm do not install a git dependency's dev dependencies unless it has a `prepare` script, so do not add one).
-
-## Local checks
+## Working in this repository
 
 ```sh
 npm install
-npm run check   # tsc declaration/consumer typecheck + server-render smoke test of every component
+npm run check        # build, typecheck, en dash guard, tests (render, brand contrast, structure guards, axe)
+npm run check:dist   # what CI runs first: fails if the committed dist/ differs from a fresh build
 ```
 
-## Change process
+Adding a component is a fixed recipe:
 
-Update tokens and shared conventions here first. Each platform then upgrades to the new full commit SHA in a controlled change, allowing the admin experience to evolve consistently without requiring every platform to change at once.
+1. Create `components/<name>/` with the component, `<name>.css`, `RULES.md` and `<name>.test.tsx`.
+2. Style it with brand tokens only. The guard test rejects raw colours, raw font names and unknown tokens.
+3. Export it from `index.ts` and show it in `catalogue/Catalogue.tsx`.
+4. `npm run check`, commit including `dist/`, open a PR.
+5. Bump the version, tag the merge commit (`vX.Y.Z`) and open an upgrade PR in each platform with the new SHA.
+
+A change to a token name, class name or prop that an app could be using is a major version.

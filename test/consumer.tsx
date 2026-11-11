@@ -1,3 +1,4 @@
+// Type-level check of the public API, resolved through the package's own exports map (dist/).
 import {
   AdminButton,
   AdminCard,
@@ -7,22 +8,31 @@ import {
   AdminTable,
   adminTheme,
   platformLabel,
+  siTheme,
   type AdminPlatform,
-} from "@127si/admin-design-system";
+  type SiPlatform,
+} from "@127si/design-system";
 
-const platform: AdminPlatform = "challenge";
+const platform: SiPlatform = "challenge";
+const legacyPlatform: AdminPlatform = platform;
 const label: "127SI CHALLENGE ADMIN" = platformLabel(platform);
-const navy: "#102A43" = adminTheme.colors.navy;
+const blue: "#0034B7" = siTheme.colors.blue;
+const legacyBlue: "#0034B7" = adminTheme.colors.blue;
 
 // @ts-expect-error unknown platforms are rejected
 platformLabel("unknown");
 
+type Row = { name: string };
+
 export const page = (
-  <AdminShell platform={platform} navigation={[{ href: "/admin", label }]} activeHref="/admin">
+  <AdminShell platform={legacyPlatform} navigation={[{ href: "/admin", label }]} activeHref="/admin">
     <AdminPageHeader title="Records" actions={<AdminButton variant="secondary">New</AdminButton>} />
-    <AdminCard title={navy}>
+    <AdminButton as="a" href="/admin/new" variant="accent">
+      Link styled as a button
+    </AdminButton>
+    <AdminCard title={blue + legacyBlue}>
       <AdminStatusBadge status="published" />
     </AdminCard>
-    <AdminTable columns={[{ key: "name", label: "Name" }]} rows={[{ name: "Row" }]} rowKey={(row) => row.name} />
+    <AdminTable<Row> columns={[{ key: "name", label: "Name" }]} rows={[{ name: "Row" }]} rowKey={(row) => row.name} />
   </AdminShell>
 );
