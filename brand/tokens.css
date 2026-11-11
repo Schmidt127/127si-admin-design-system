@@ -52,8 +52,9 @@
   --si-color-link-hover: var(--si-blue-hover);
   --si-color-surface: var(--si-white);
   --si-color-surface-alt: var(--si-gray-light);
-  --si-color-border: var(--si-line);
-  --si-color-border-strong: var(--si-gray);
+  --si-color-border: var(--si-gray);        /* Brand v4: neutral.gray is the border colour */
+  --si-color-border-soft: var(--si-line);   /* hairline dividers inside a surface */
+  --si-color-border-strong: var(--si-muted); /* input outlines that must reach 3:1 */
   --si-color-shell: var(--si-blue);        /* footer, dark bands */
   --si-color-shell-deep: var(--si-blue-deep); /* full-page form background, admin sidebar */
   --si-color-on-shell: var(--si-white);

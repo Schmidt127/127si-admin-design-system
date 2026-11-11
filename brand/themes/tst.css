@@ -39,6 +39,7 @@
   --si-color-link-hover: var(--si-tst-amber-text);
   --si-color-surface-alt: var(--si-tst-chalk);
   --si-color-border: var(--si-tst-gray-200);
+  --si-color-border-soft: var(--si-tst-gray-100);
   --si-color-border-strong: var(--si-tst-gray-500);
   --si-color-shell: var(--si-tst-black);
   --si-color-shell-deep: var(--si-tst-black-deep);

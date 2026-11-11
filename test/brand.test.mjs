@@ -52,6 +52,7 @@ test("palette is Brand System v4", () => {
 });
 
 test("primary button is blue with white text; TST is amber with black text", () => {
+  assert.equal(resolve(themes.default, "var(--si-color-border)"), "#c4c4c4");
   assert.equal(resolve(themes.default, "var(--si-color-primary)"), "#0034b7");
   assert.equal(resolve(themes.default, "var(--si-color-on-primary)"), "#ffffff");
   assert.equal(resolve(themes.tst, "var(--si-color-primary)"), "#ffb000");
@@ -83,6 +84,7 @@ const PAIRS = [
   ["--si-color-danger-text", "--si-color-danger-soft", 4.5],
   ["--si-color-danger", "--si-color-surface", 4.5],
   ["--si-white", "--si-color-danger", 4.5],
+  ["--si-color-border-strong", "--si-color-surface", 3],
 ];
 
 for (const [name, vars] of Object.entries(themes)) {
