@@ -6,6 +6,9 @@ import { AdminField, AdminFormSection } from "../components/admin-field/AdminFie
 import { AdminNotice } from "../components/admin-notice/AdminNotice.js";
 import { AdminPager } from "../components/admin-pager/AdminPager.js";
 import { AdminToolbar } from "../components/admin-toolbar/AdminToolbar.js";
+import { Footer } from "../components/footer/Footer.js";
+import { HeroCarousel } from "../components/hero-carousel/HeroCarousel.js";
+import { TopNav } from "../components/top-nav/TopNav.js";
 import { AdminPageHeader } from "../components/admin-page-header/AdminPageHeader.js";
 import { AdminShell } from "../components/admin-shell/AdminShell.js";
 import { AdminStatusBadge } from "../components/admin-status-badge/AdminStatusBadge.js";
@@ -142,6 +145,55 @@ function AdminDemo({ idPrefix }: { idPrefix: string }) {
   );
 }
 
+function PublicDemo({ tst }: { tst?: boolean }) {
+  return (
+    <>
+      <TopNav
+        logoSrc={tst ? "../assets/logos/logo-white.png" : "../assets/logos/logo-full-color.png"}
+        badge={tst ? "Team Shot Tracker" : "Challenges"}
+        activeHref="#standings"
+        links={[
+          { href: "#programs", label: "Programs" },
+          { href: "#standings", label: "Standings" },
+          { href: "#help", label: "Help", children: [{ href: "#faq", label: "Parent FAQ" }, { href: "#contact", label: "Contact" }] },
+        ]}
+        action={{ href: "#login", label: "Parent Login" }}
+      />
+      <HeroCarousel
+        label={tst ? "Sample photos, Team Shot Tracker theme" : "Sample photos"}
+        wash={!tst}
+        slides={[
+          { id: "one", src: "../assets/patterns/pattern-3.png", alt: "Sample slide one (brand pattern standing in for a program photo)" },
+          { id: "two", src: "../assets/patterns/pattern-4.png", alt: "Sample slide two" },
+          { id: "three", src: "../assets/patterns/pattern-5.png", alt: "Sample slide three" },
+        ]}
+        eyebrow="127 Sports Intensity"
+        headline={
+          <>
+            Every rep <em>counts</em>
+          </>
+        }
+        subhead="Real program photos go here. The brand pattern stands in for them on this page."
+        primaryCta={{ href: "#register", label: "Register" }}
+        secondaryCta={{ href: "#how", label: "How it works" }}
+      />
+      <Footer
+        id={tst ? "footer-tst" : "footer-default"}
+        logoSrc="../assets/logos/logo-white.png"
+        patternSrc="../assets/patterns/pattern-3.png"
+        year={2026}
+        backToTop={false}
+        contact={{ name: "Coordinator name", role: "Coordinator", phone: { label: "555.010.0100", href: "tel:+15550100100" }, email: { label: "info@example.org", href: "mailto:info@example.org" } }}
+        columns={[
+          { title: "Compete", links: [{ href: "#dribble", label: "Dribble" }, { href: "#shooting", label: "Shooting" }] },
+          { title: "Info", accent: "gray", links: [{ href: "#about", label: "About 127 SI" }, { href: "#faq", label: "Parent FAQ" }] },
+        ]}
+        legalLinks={[{ href: "#privacy", label: "Privacy" }, { href: "#terms", label: "Terms" }]}
+      />
+    </>
+  );
+}
+
 function ThemeBlock({ theme, title, note, children }: { theme?: string; title: string; note: string; children: ReactNode }) {
   return (
     <section className="cat-theme" data-si-theme={theme}>
@@ -178,6 +230,8 @@ main.cat-main { max-width: var(--si-container-max); margin: 0 auto; padding: var
 .cat-gap { height: var(--si-space-5); }
 .cat-frame { border: 1px solid var(--si-gray); border-radius: var(--si-radius-md); overflow: hidden; }
 .cat-frame .si-admin-shell { min-height: 0; }
+.cat-frame .si-hero { min-height: 30rem; }
+.cat-frame .si-top-nav { position: relative; }
 .cat-list { padding-left: 1.25rem; }
 .cat-assets { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: var(--si-space-4); margin-top: var(--si-space-5); }
 .cat-asset { margin: 0; border: 1px solid var(--si-gray); border-radius: var(--si-radius-md); padding: var(--si-space-3); background: var(--si-white); text-align: center; }
@@ -283,6 +337,19 @@ export function renderCatalogue({ version, components }: { version: string; comp
           ))}
         </div>
 
+        <h2>Public shell</h2>
+        <p className="cat-note">The header, hero carousel and footer every public site uses. Only the links, words and photos change between platforms.</p>
+        <ThemeBlock title="Default theme" note="Top navigation, hero carousel and footer.">
+          <div className="cat-frame">
+            <PublicDemo />
+          </div>
+        </ThemeBlock>
+        <ThemeBlock theme="tst" title="Team Shot Tracker theme" note="The same components with the Scoreboard palette; the hero has no colour wash.">
+          <div className="cat-frame">
+            <PublicDemo tst />
+          </div>
+        </ThemeBlock>
+
         <h2>Admin components</h2>
         <p className="cat-note">The admin surface is the same brand, quieter: deep blue sidebar, white work area, blue primary action.</p>
         <ThemeBlock title="Default theme" note="Shell, page header, card, buttons, status badges and table.">
@@ -304,7 +371,7 @@ export function renderCatalogue({ version, components }: { version: string; comp
             </li>
           ))}
         </ul>
-        <p className="cat-note">Public navigation, footer, hero carousel, form shell and tables are added in later versions and will appear here.</p>
+        <p className="cat-note">Buttons, form fields, the full-page form shell and public tables are added in later versions and will appear here.</p>
       </main>
     </>,
   );

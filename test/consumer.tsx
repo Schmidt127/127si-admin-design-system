@@ -6,6 +6,9 @@ import {
   AdminNotice,
   AdminPager,
   AdminToolbar,
+  Footer,
+  HeroCarousel,
+  TopNav,
   AdminPageHeader,
   AdminShell,
   AdminStatusBadge,
@@ -27,6 +30,14 @@ const legacyBlue: "#0034B7" = adminTheme.colors.blue;
 platformLabel("unknown");
 
 type Row = { name: string };
+
+export const publicPage = (
+  <>
+    <TopNav logoSrc="/logo.png" badge="Challenges" links={[{ href: "/a", label: "A", children: [{ href: "/b", label: "B" }] }]} action={{ href: "/login", label: "Login" }} />
+    <HeroCarousel slides={[{ id: "a", src: "/a.webp", alt: "A" }]} headline={<>Title</>} wash={false} />
+    <Footer logoSrc="/white.png" year={2026} contact={{ name: "Name" }} columns={[{ title: "Info", accent: "gray", links: [{ href: "/a", label: "A" }] }]} />
+  </>
+);
 
 export const page = (
   <AdminShell platform={legacyPlatform} navigation={[{ href: "/admin", label }]} activeHref="/admin">

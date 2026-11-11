@@ -18,5 +18,12 @@ export { AdminField, AdminFormSection } from "./components/admin-field/AdminFiel
 export type { AdminFieldProps, AdminFormSectionProps } from "./components/admin-field/AdminField.js";
 export { AdminPager } from "./components/admin-pager/AdminPager.js";
 export type { AdminPagerProps } from "./components/admin-pager/AdminPager.js";
+export { TopNav } from "./components/top-nav/TopNav.js";
+export type { TopNavProps, TopNavLink } from "./components/top-nav/TopNav.js";
+export { Footer } from "./components/footer/Footer.js";
+export type { FooterProps, FooterColumn, FooterContact, FooterLink } from "./components/footer/Footer.js";
+export { BackToTop } from "./components/footer/BackToTop.js";
+export { HeroCarousel } from "./components/hero-carousel/HeroCarousel.js";
+export type { HeroCarouselProps, HeroSlide } from "./components/hero-carousel/HeroCarousel.js";
 export { AdminTable } from "./components/admin-table/AdminTable.js";
 export type { AdminTableProps, AdminTableColumn } from "./components/admin-table/AdminTable.js";

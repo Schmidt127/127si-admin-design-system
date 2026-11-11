@@ -70,7 +70,17 @@
   --si-color-on-shell: var(--si-white);
   --si-color-on-shell-muted: rgb(255 255 255 / 78%);
   --si-color-shell-line: rgb(255 255 255 / 16%);
+  --si-color-on-shell-line-strong: rgb(255 255 255 / 55%);
   --si-color-shell-active: rgb(255 255 255 / 14%);
+  /* Public header bar, the call-to-action button and highlighted words. Separate roles so a theme can
+     move them without touching primary or accent. */
+  --si-color-header: var(--si-color-surface);
+  --si-color-on-header: var(--si-color-link);
+  --si-color-header-line: var(--si-gray-light);
+  --si-color-cta: var(--si-color-accent);
+  --si-color-cta-hover: var(--si-color-accent-hover);
+  --si-color-on-cta: var(--si-color-on-accent);
+  --si-color-highlight: var(--si-color-accent);
   --si-color-table-head: var(--si-blue);
   --si-color-on-table-head: var(--si-white);
   --si-color-row-hover: var(--si-gray-light);
@@ -134,7 +144,13 @@
   --si-radius-pill: 999px;
   --si-shadow-sm: 0 4px 14px rgb(0 31 107 / 6%);
   --si-shadow-md: 0 12px 28px rgb(0 31 107 / 10%);
-  --si-shadow-header: 0 6px 20px rgb(0 52 183 / 12%);
+  --si-shadow-header: 0 0 28px rgb(0 52 183 / 20%);
+  --si-shadow-float: 0 4px 12px rgb(0 0 0 / 20%);
+  --si-text-shadow-on-photo: 0 1px 2px rgb(0 0 0 / 70%), 0 2px 12px rgb(0 0 0 / 55%);
+
+  /* Scrims: darken a photo so text on it stays readable. */
+  --si-scrim-strong: rgb(0 0 0 / 55%);
+  --si-scrim-soft: rgb(0 0 0 / 15%);
 
   /* Focus */
   --si-focus-width: 3px;
@@ -154,6 +170,13 @@
   --si-bp-md: 48rem;
   --si-bp-lg: 64rem;
   --si-bp-xl: 78rem;
+
+  /* Set by the footer when a platform passes a pattern image. */
+  --si-footer-pattern: none;
+
+  /* Public header heights (public shell standard) */
+  --si-header-height: 5.5rem;
+  --si-header-height-scrolled: 4.75rem;
 
   /* Admin shell dimensions */
   --si-sidebar-width: 248px;
