@@ -146,23 +146,22 @@
   --si-sidebar-width: 248px;
 }
 
-/* Admin surface: same brand, quieter. Dense data font, smaller type, tighter radius. */
+/* Admin surface: same brand, quieter. Dense data font, stronger helper text, tighter controls.
+   It only re-points roles at other tokens, so it follows whichever theme it sits inside. */
 [data-si-surface="admin"] {
   --si-font-ui: var(--si-font-data);
-  --si-color-text: var(--si-black);
-  --si-color-text-muted: var(--si-slate);
-  --si-color-heading: var(--si-blue-deep);
-  --si-color-surface-alt: #f5f7fb;
-  --si-color-row-hover: #f5f7fb;
+  --si-color-text-muted: var(--si-color-text-subtle);
+  --si-color-heading: var(--si-color-shell-deep);
   --si-control-height: 2.375rem;
-  --si-radius-md: 0.5rem;
   --si-radius-lg: 0.625rem;
 }
 
 /*
  * Team Shot Tracker "Scoreboard" theme (owner decision 2026-11-08). TST only.
  * Values are the documented palette in 127si-tst-platform docs/BRAND.md and decisions.md.
- * Apply with data-si-theme="tst" on <html> or a wrapper. Fonts are not overridden.
+ * Apply with data-si-theme="tst" on the public layout. Fonts are not overridden.
+ * TST admin screens stay on the default theme (TST docs/BRAND.md: admin UI is not Scoreboard),
+ * so do not set the attribute on the admin layout.
  */
 [data-si-theme="tst"] {
   --si-tst-black: #121417;
