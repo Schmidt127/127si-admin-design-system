@@ -27,7 +27,9 @@ export type TopNavProps = {
     homeHref?: string;
     /** The app's router link (next/link). */
     LinkComponent?: ElementType;
+    /** Render with the phone menu already open. For tests and previews only. */
+    defaultOpen?: boolean;
     className?: string;
 };
 /** Public site header: logo with platform badge, primary navigation, one action, and a phone menu. */
-export declare function TopNav({ logoSrc, badge, links, action, activeHref, homeHref, LinkComponent, className }: TopNavProps): import("react").JSX.Element;
+export declare function TopNav({ logoSrc, badge, links, action, activeHref, homeHref, LinkComponent, defaultOpen, className }: TopNavProps): import("react").JSX.Element;

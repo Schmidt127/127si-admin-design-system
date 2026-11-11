@@ -56,6 +56,12 @@ test("HeroCarousel has the colour wash by default and none when wash is off (Tea
   assert.match(unwashed, /class="si-hero is-unwashed"/);
 });
 
+test("HeroCarousel passes responsive image candidates through", () => {
+  const responsive = renderToStaticMarkup(<HeroCarousel slides={[{ id: "a", src: "/a.webp", srcSet: "/a-640.webp 640w, /a-1920.webp 1920w", alt: "A" }]} headline="x" />);
+  assert.match(responsive, /srcSet="\/a-640.webp 640w, \/a-1920.webp 1920w" sizes="100vw"/);
+  assert.ok(!html.includes("sizes="));
+});
+
 test("HeroCarousel with a single slide shows no controls", () => {
   const single = renderToStaticMarkup(<HeroCarousel slides={slides.slice(0, 1)} headline="x" />);
   assert.ok(!single.includes("si-hero__controls"));

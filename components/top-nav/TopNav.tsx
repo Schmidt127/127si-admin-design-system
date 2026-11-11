@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, type ElementType } from "react";
+import { useEffect, useId, useRef, useState, type ElementType } from "react";
 import { cx } from "../_shared/cx.js";
 
 export type TopNavLink = {
@@ -25,6 +25,8 @@ export type TopNavProps = {
   homeHref?: string;
   /** The app's router link (next/link). */
   LinkComponent?: ElementType;
+  /** Render with the phone menu already open. For tests and previews only. */
+  defaultOpen?: boolean;
   className?: string;
 };
 
@@ -33,11 +35,12 @@ function isPlain(link: { href: string; external?: boolean }) {
 }
 
 /** Public site header: logo with platform badge, primary navigation, one action, and a phone menu. */
-export function TopNav({ logoSrc, badge, links, action, activeHref, homeHref = "/", LinkComponent, className }: TopNavProps) {
+export function TopNav({ logoSrc, badge, links, action, activeHref, homeHref = "/", LinkComponent, defaultOpen = false, className }: TopNavProps) {
   const Link: ElementType = LinkComponent ?? "a";
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(defaultOpen);
   const menuId = useId();
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -50,7 +53,12 @@ export function TopNav({ logoSrc, badge, links, action, activeHref, homeHref = "
     document.body.classList.toggle("si-top-nav-open", open);
     if (!open) return () => document.body.classList.remove("si-top-nav-open");
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        // Return focus to the button that opened the menu (from Referee's port).
+        toggleRef.current?.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     return () => {
@@ -88,6 +96,7 @@ export function TopNav({ logoSrc, badge, links, action, activeHref, homeHref = "
       <div className="si-top-nav__bar">
         <div className="si-container si-top-nav__inner">
           <button
+            ref={toggleRef}
             type="button"
             className="si-top-nav__toggle"
             aria-expanded={open}

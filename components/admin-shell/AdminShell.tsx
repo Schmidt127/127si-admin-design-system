@@ -42,7 +42,7 @@ export function AdminSidebar({
     <aside className="si-admin-sidebar">
       {logoSrc ? (
         <Link href={homeHref} className="si-admin-brand si-admin-brand--logo">
-          <img className="si-admin-brand-image" src={logoSrc} alt="127 Sports Intensity" width={180} height={64} />
+          <img className="si-admin-brand-image" src={logoSrc} alt="127 Sports Intensity" width={180} height={29} />
         </Link>
       ) : (
         <div className="si-admin-brand">

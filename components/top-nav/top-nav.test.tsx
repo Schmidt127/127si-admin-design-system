@@ -49,6 +49,16 @@ test("TopNav phone menu button is labelled, starts closed and controls the menu"
   assert.ok(!html.includes("si-top-nav__sheet"));
 });
 
+test("TopNav phone menu lists every link, the dropdown and the action, in order", () => {
+  const open = renderToStaticMarkup(<TopNav logoSrc="/logo.png" badge="Challenges" links={links} action={{ href: "/login", label: "Parent Login" }} defaultOpen />);
+  const sheet = open.slice(open.indexOf("si-top-nav__sheet"));
+  assert.match(open, /aria-expanded="true"/);
+  assert.match(sheet, /<nav aria-label="Mobile primary">/);
+  const order = [">Programs<", ">Standings<", ">Club<", ">Help<", ">FAQ<", ">Parent Login<"].map((label) => sheet.indexOf(label));
+  assert.ok(order.every((position) => position > -1));
+  assert.deepEqual([...order].sort((a, b) => a - b), order);
+});
+
 test("TopNav uses the app link component for internal links only", () => {
   const Router = (props: { href: string; className?: string; children?: unknown }) => (
     <a data-router="yes" href={props.href} className={props.className}>
