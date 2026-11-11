@@ -42,7 +42,9 @@ Tailwind v4 apps map tokens, they do not copy values:
 - **Surface.** Admin areas set `data-si-surface="admin"` (the admin shell does this itself).
 - **Program accent.** A program page may use one supporting colour for its assigned purpose: `--si-teal`
   (learning, Curriculum) or `--si-gold` (awards). Never as a replacement for blue and orange.
-- **Imagery.** Photos and artwork are content and belong to the app.
+- **Imagery.** Photos and artwork are content and belong to the app. Form pictures (background and header)
+  go in the platform's `public/forms/<program>/` folder with fixed names: see
+  [`docs/FORM-IMAGES.md`](../docs/FORM-IMAGES.md).
 
 ## What may not vary
 
