@@ -16,10 +16,10 @@
 .si-admin-nav-link:focus-visible { outline: var(--si-focus-width) solid var(--si-color-on-shell); outline-offset: var(--si-focus-offset); }
 .si-admin-nav-icon { width: 18px; text-align: center; opacity: 0.8; }
 .si-admin-main { min-width: 0; flex: 1; }
-.si-admin-header { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: var(--si-space-4) var(--si-space-6); background: var(--si-color-surface); border-bottom: 1px solid var(--si-color-border); }
+.si-admin-header { min-height: 72px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--si-space-2) 20px; padding: var(--si-space-4) var(--si-space-6); background: var(--si-color-surface); border-bottom: 1px solid var(--si-color-border); }
 .si-admin-eyebrow { color: var(--si-color-text-subtle); font-size: var(--si-text-xs); font-weight: var(--si-weight-bold); letter-spacing: 0.07em; text-transform: uppercase; }
 .si-admin-header-label { color: var(--si-color-heading); font-size: var(--si-text-sm); font-weight: var(--si-weight-black); margin-top: var(--si-space-1); }
-.si-admin-header-actions { display: flex; align-items: center; gap: 10px; }
+.si-admin-header-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .si-admin-content { max-width: 1440px; margin: 0 auto; padding: var(--si-space-6); }
 .si-admin-footer { color: var(--si-color-text-subtle); font-size: var(--si-text-xs); padding: 0 var(--si-space-6) var(--si-space-5); }
 @media (max-width: 760px) {
