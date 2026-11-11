@@ -3,7 +3,7 @@ import { cx } from "../_shared/cx.js";
 
 export type AdminCardProps = {
   title?: string;
-  description?: string;
+  description?: ReactNode;
   actions?: ReactNode;
   children?: ReactNode;
   className?: string;

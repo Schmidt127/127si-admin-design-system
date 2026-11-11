@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 
 export type AdminPageHeaderProps = {
   title: string;
-  description?: string;
+  /** One line under the title. Text, or text with a link. */
+  description?: ReactNode;
   actions?: ReactNode;
   eyebrow?: string;
 };
