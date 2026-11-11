@@ -1,0 +1,6 @@
+.si-admin-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--si-space-3); margin-bottom: var(--si-space-4); }
+.si-admin-toolbar-filters, .si-admin-toolbar-actions { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--si-space-3); }
+@media (max-width: 760px) {
+  .si-admin-toolbar, .si-admin-toolbar-filters { align-items: stretch; }
+  .si-admin-toolbar-filters { flex: 1 1 100%; }
+}

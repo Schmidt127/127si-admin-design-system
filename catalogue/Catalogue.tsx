@@ -2,6 +2,10 @@ import type { ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { AdminButton } from "../components/admin-button/AdminButton.js";
 import { AdminCard } from "../components/admin-card/AdminCard.js";
+import { AdminField, AdminFormSection } from "../components/admin-field/AdminField.js";
+import { AdminNotice } from "../components/admin-notice/AdminNotice.js";
+import { AdminPager } from "../components/admin-pager/AdminPager.js";
+import { AdminToolbar } from "../components/admin-toolbar/AdminToolbar.js";
 import { AdminPageHeader } from "../components/admin-page-header/AdminPageHeader.js";
 import { AdminShell } from "../components/admin-shell/AdminShell.js";
 import { AdminStatusBadge } from "../components/admin-status-badge/AdminStatusBadge.js";
@@ -59,10 +63,14 @@ function Swatches({ prefix, names }: { prefix: string; names: string[] }) {
   );
 }
 
-function AdminDemo() {
+function AdminDemo({ idPrefix }: { idPrefix: string }) {
   return (
     <AdminShell
       platform="challenge"
+      logoSrc="../assets/logos/logo-white.png"
+      homeHref="#"
+      sidebarFooter={<span>Signed in as coach@example.org</span>}
+      headerActions={<AdminStatusBadge status="active">Production</AdminStatusBadge>}
       activeHref="/admin/enrollments"
       navigation={[
         { href: "/admin", label: "Overview" },
@@ -82,6 +90,14 @@ function AdminDemo() {
           </>
         }
       />
+      <AdminNotice tone="success" title="Saved">
+        The enrollment was updated.
+      </AdminNotice>
+      <div className="cat-gap" />
+      <AdminNotice tone="warning" title="3 payments need review">
+        Open Payments to resolve them before the deadline.
+      </AdminNotice>
+      <div className="cat-gap" />
       <AdminCard title="Buttons" description="Primary is blue. Orange is for emphasis only.">
         <div className="cat-row">
           <AdminButton>Primary</AdminButton>
@@ -93,7 +109,23 @@ function AdminDemo() {
         </div>
       </AdminCard>
       <div className="cat-gap" />
+      <AdminCard title="Form fields">
+        <AdminFormSection title="Contact" description="How we reach the family.">
+          <AdminField htmlFor={`${idPrefix}-email`} label="Parent email" required hint="Used for receipts only.">
+            <input id={`${idPrefix}-email`} className="si-admin-input" type="email" defaultValue="parent@example.org" aria-describedby={`${idPrefix}-email-hint`} />
+          </AdminField>
+          <AdminField htmlFor={`${idPrefix}-zip`} label="ZIP code" error="Enter a 5-digit ZIP code.">
+            <input id={`${idPrefix}-zip`} className="si-admin-input" defaultValue="594" aria-invalid aria-describedby={`${idPrefix}-zip-error`} />
+          </AdminField>
+        </AdminFormSection>
+      </AdminCard>
+      <div className="cat-gap" />
       <AdminCard title="Recent enrollments" actions={<AdminStatusBadge status="active" />}>
+        <AdminToolbar label={`${idPrefix} enrollment filters`} actions={<AdminButton variant="ghost">Export</AdminButton>}>
+          <AdminField htmlFor={`${idPrefix}-search`} label="Search">
+            <input id={`${idPrefix}-search`} className="si-admin-input" type="search" />
+          </AdminField>
+        </AdminToolbar>
         <AdminTable
           caption="Sample rows"
           columns={[
@@ -104,6 +136,7 @@ function AdminDemo() {
           rows={rows}
           rowKey={(row) => row.name}
         />
+        <AdminPager page={2} pageCount={7} total={128} hrefFor={(p) => `#page-${p}`} />
       </AdminCard>
     </AdminShell>
   );
@@ -254,12 +287,12 @@ export function renderCatalogue({ version, components }: { version: string; comp
         <p className="cat-note">The admin surface is the same brand, quieter: deep blue sidebar, white work area, blue primary action.</p>
         <ThemeBlock title="Default theme" note="Shell, page header, card, buttons, status badges and table.">
           <div className="cat-frame">
-            <AdminDemo />
+            <AdminDemo idPrefix="default" />
           </div>
         </ThemeBlock>
         <ThemeBlock theme="tst" title="Team Shot Tracker theme" note="The same components with the Scoreboard palette.">
           <div className="cat-frame">
-            <AdminDemo />
+            <AdminDemo idPrefix="tst" />
           </div>
         </ThemeBlock>
 

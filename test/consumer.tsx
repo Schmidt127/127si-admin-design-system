@@ -2,6 +2,10 @@
 import {
   AdminButton,
   AdminCard,
+  AdminField,
+  AdminNotice,
+  AdminPager,
+  AdminToolbar,
   AdminPageHeader,
   AdminShell,
   AdminStatusBadge,
@@ -30,6 +34,13 @@ export const page = (
     <AdminButton as="a" href="/admin/new" variant="accent">
       Link styled as a button
     </AdminButton>
+    <AdminNotice tone="warning" title="Check">Body</AdminNotice>
+    <AdminToolbar label="Filters" actions={<AdminButton variant="ghost">Export</AdminButton>}>
+      <AdminField htmlFor="q" label="Search">
+        <input id="q" className="si-admin-input" />
+      </AdminField>
+    </AdminToolbar>
+    <AdminPager page={1} pageCount={3} hrefFor={(p) => `/admin?page=${p}`} />
     <AdminCard title={blue + legacyBlue}>
       <AdminStatusBadge status="published" />
     </AdminCard>
