@@ -13,7 +13,7 @@ const PALETTE = [
 ];
 const ROLES = [
     "primary", "primary-hover", "on-primary", "primary-soft", "accent", "accent-hover", "on-accent", "accent-soft",
-    "accent-text", "text", "text-muted", "heading", "link", "surface", "surface-alt", "border", "border-strong",
+    "accent-text", "text", "text-muted", "heading", "link", "surface", "surface-alt", "border", "border-soft", "border-strong",
     "shell", "shell-deep", "on-shell", "table-head", "on-table-head", "row-hover", "row-selected",
     "success", "success-soft", "warning", "warning-soft", "danger", "danger-soft", "focus",
 ];
