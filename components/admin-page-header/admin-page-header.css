@@ -1,6 +1,6 @@
 .si-admin-page-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--si-space-5); margin-bottom: 28px; }
 .si-admin-page-header h1 { margin: 0; color: var(--si-color-heading); font-size: clamp(25px, 3vw, 34px); letter-spacing: -0.04em; }
-.si-admin-page-header p { color: var(--si-color-text-muted); margin: var(--si-space-2) 0 0; }
+.si-admin-page-header p { color: var(--si-color-text-subtle); margin: var(--si-space-2) 0 0; }
 .si-admin-page-actions { display: flex; align-items: center; gap: 10px; }
 @media (max-width: 760px) {
   .si-admin-page-header { display: block; }
