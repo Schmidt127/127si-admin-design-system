@@ -1,0 +1,960 @@
+{
+  "ref": "origin/main",
+  "repos": [
+    {
+      "repo": "127si-communication-platform",
+      "ref": "origin/main",
+      "sha": "8e2224350151c24d1c7048a69a128e5e9aed506f",
+      "committed": "2026-11-10T08:02:42-07:00",
+      "next": "^16.4.5",
+      "tailwind": null,
+      "packageManager": null,
+      "lockfiles": [
+        "package-lock.json"
+      ],
+      "workflows": [
+        ".github/workflows/admin-console-browser.yml",
+        ".github/workflows/challenge-production-auth-check.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/consumer-issue.yml",
+        ".github/workflows/consumer-register.yml",
+        ".github/workflows/enable-challenge-callbacks.yml",
+        ".github/workflows/enable-consumer-callbacks.yml",
+        ".github/workflows/fly-delivery-mode.yml",
+        ".github/workflows/fly-deploy.yml",
+        ".github/workflows/registry-sync.yml",
+        ".github/workflows/retention-purge.yml",
+        ".github/workflows/tier1-commissioning-proof.yml",
+        ".github/workflows/unsubscribe-links.yml",
+        ".github/workflows/unsubscribe-production-verify.yml",
+        ".github/workflows/validate-smoke-daily-family-digest.yml",
+        ".github/workflows/worker-health-monitor.yml"
+      ],
+      "package": {
+        "name": "@127si/admin-design-system",
+        "pin": "github:Schmidt127/127si-admin-design-system#ae9357d0974fa258fcc17edb035128e7cfd2fc42",
+        "pinKind": "full SHA",
+        "imports": {
+          "tokens.css": 1
+        },
+        "localOverridesOfLegacyTokens": 6
+      },
+      "css": {
+        "files": 2,
+        "modules": 0,
+        "lines": 2355
+      },
+      "hex": {
+        "total": 121,
+        "inCss": 57,
+        "inJsx": 64,
+        "distinct": 51,
+        "top": {
+          "#224": 8,
+          "#ffffff": 7,
+          "#262626": 6,
+          "#a9c1ff": 6,
+          "#0034b7": 5,
+          "#c4c4c4": 5,
+          "#f2f2f2": 5,
+          "#ff8b00": 5,
+          "#fff": 4,
+          "#002a94": 3,
+          "#409": 3,
+          "#d97700": 3,
+          "#e8f0ff": 3,
+          "#f4f4f5": 3,
+          "#fff1dc": 3,
+          "#0f766e": 2,
+          "#111827": 2,
+          "#15803d": 2,
+          "#1e1e1e": 2,
+          "#384": 2,
+          "#408": 2,
+          "#52525b": 2,
+          "#64748b": 2,
+          "#9fb3c8": 2,
+          "#d97706": 2
+        }
+      },
+      "tokenPrefixes": {
+        "--color": 18,
+        "--admin": 7,
+        "--127si": 6,
+        "--space": 5,
+        "--blue": 4,
+        "--font": 2,
+        "--orange": 2,
+        "--radius": 2,
+        "--shadow": 2,
+        "--container": 1,
+        "--gray": 1,
+        "--header": 1,
+        "--section": 1
+      },
+      "fonts": {
+        "cssFamilies": {
+          "Consolas": 2,
+          "Menlo": 2,
+          "SFMono-Regular": 2,
+          "Source Sans 3": 2,
+          "IBM Plex Sans": 1
+        },
+        "nextFont": {
+          "maven-pro (local)": 4,
+          "saira (local)": 2,
+          "Source Sans 3": 1
+        }
+      },
+      "raw": {
+        "button": 30,
+        "table": 10,
+        "input": 17,
+        "select": 1,
+        "textarea": 1,
+        "inlineStyle": 2
+      },
+      "local": {
+        "nav": [
+          "app/marketing/SiteHeader.tsx"
+        ],
+        "footer": [
+          "app/marketing/SiteFooter.tsx"
+        ],
+        "hero": [
+          "app/marketing/HeroCarousel.tsx"
+        ],
+        "formShell": [],
+        "adminShell": [
+          "app/admin/admin-shell.tsx"
+        ],
+        "table": [
+          "app/marketing/ResourceTable.tsx"
+        ],
+        "button": []
+      }
+    },
+    {
+      "repo": "127si-content-platform",
+      "ref": "origin/main",
+      "sha": "e4b656651aee5ccbba12f4f9e8ad857a1b9d720e",
+      "committed": "2026-11-09T12:52:49-07:00",
+      "next": "^16.4.5",
+      "tailwind": null,
+      "packageManager": "npm@10.9.9",
+      "lockfiles": [
+        "package-lock.json"
+      ],
+      "workflows": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/production-smoke.yml"
+      ],
+      "package": {
+        "name": "@127si/admin-design-system",
+        "pin": "github:Schmidt127/127si-admin-design-system#ae9357d0974fa258fcc17edb035128e7cfd2fc42",
+        "pinKind": "full SHA",
+        "imports": {
+          "tokens.css": 1
+        },
+        "localOverridesOfLegacyTokens": 0
+      },
+      "css": {
+        "files": 2,
+        "modules": 0,
+        "lines": 232
+      },
+      "hex": {
+        "total": 77,
+        "inCss": 71,
+        "inJsx": 6,
+        "distinct": 37,
+        "top": {
+          "#d9e2ec": 13,
+          "#bcccdc": 8,
+          "#f4f7fa": 6,
+          "#9fb3c8": 4,
+          "#e6edf3": 4,
+          "#243b53": 3,
+          "#9b2c2c": 3,
+          "#fff": 3,
+          "#52606d": 2,
+          "#7b8794": 2,
+          "#eceff3": 2,
+          "#f0b429": 2,
+          "#0034b7": 1,
+          "#102a43": 1,
+          "#176b45": 1,
+          "#1d4f91": 1,
+          "#2f9e68": 1,
+          "#334e68": 1,
+          "#3e7cb1": 1,
+          "#486581": 1,
+          "#8a4b12": 1,
+          "#8a6200": 1,
+          "#8c5e34": 1,
+          "#a61b1b": 1,
+          "#b8d4ed": 1
+        }
+      },
+      "tokenPrefixes": {},
+      "fonts": {
+        "cssFamilies": {
+          "Arial": 1
+        },
+        "nextFont": {}
+      },
+      "raw": {
+        "button": 26,
+        "table": 1,
+        "input": 39,
+        "select": 6,
+        "textarea": 9,
+        "inlineStyle": 45
+      },
+      "local": {
+        "nav": [],
+        "footer": [
+          "src/components/SiteFooter.tsx"
+        ],
+        "hero": [],
+        "formShell": [],
+        "adminShell": [
+          "src/app/admin/AdminShell.tsx"
+        ],
+        "table": [
+          "src/app/admin/assets/AssetsTable.tsx",
+          "src/components/DataTable.tsx"
+        ],
+        "button": []
+      }
+    },
+    {
+      "repo": "127si-shared-data",
+      "ref": "origin/main",
+      "sha": "e2c64d5354ade8df25551db90fcf62e3968de152",
+      "committed": "2026-11-09T15:05:34-07:00",
+      "next": "16.4.5",
+      "tailwind": null,
+      "packageManager": null,
+      "lockfiles": [
+        "package-lock.json",
+        "pnpm-lock.yaml"
+      ],
+      "workflows": [
+        ".github/workflows/ci.yml"
+      ],
+      "package": {
+        "name": "@127si/admin-design-system",
+        "pin": "github:Schmidt127/127si-admin-design-system#ae9357d0974fa258fcc17edb035128e7cfd2fc42",
+        "pinKind": "full SHA",
+        "imports": {
+          "tokens.css": 1
+        },
+        "localOverridesOfLegacyTokens": 6
+      },
+      "css": {
+        "files": 2,
+        "modules": 0,
+        "lines": 1685
+      },
+      "hex": {
+        "total": 65,
+        "inCss": 32,
+        "inJsx": 33,
+        "distinct": 45,
+        "top": {
+          "#0034b7": 7,
+          "#dc2626": 3,
+          "#ff8b00": 3,
+          "#000000": 2,
+          "#262626": 2,
+          "#808080": 2,
+          "#c4c4c4": 2,
+          "#e4f7ed": 2,
+          "#e8f0ff": 2,
+          "#f2f2f2": 2,
+          "#fef2f2": 2,
+          "#fff1dc": 2,
+          "#ffffff": 2,
+          "#000080": 1,
+          "#0000ff": 1,
+          "#002277": 1,
+          "#002a94": 1,
+          "#008000": 1,
+          "#008080": 1,
+          "#228b22": 1,
+          "#32527b": 1,
+          "#355e3b": 1,
+          "#40e0d0": 1,
+          "#4169e1": 1,
+          "#475569": 1
+        }
+      },
+      "tokenPrefixes": {
+        "--admin": 7,
+        "--127si": 6,
+        "--blue": 3,
+        "--font": 2,
+        "--orange": 2,
+        "--container": 1,
+        "--gray": 1,
+        "--header": 1,
+        "--section": 1,
+        "--shadow": 1
+      },
+      "fonts": {
+        "cssFamilies": {
+          "Maven Pro": 1,
+          "Source Sans 3": 1
+        },
+        "nextFont": {
+          "maven-pro (local)": 6,
+          "source-sans (local)": 3,
+          "saira (local)": 2
+        }
+      },
+      "raw": {
+        "button": 33,
+        "table": 5,
+        "input": 36,
+        "select": 16,
+        "textarea": 3,
+        "inlineStyle": 4
+      },
+      "local": {
+        "nav": [
+          "src/components/public/site-header.tsx"
+        ],
+        "footer": [
+          "src/components/public/site-footer.tsx"
+        ],
+        "hero": [
+          "src/components/public/directory-hero.tsx"
+        ],
+        "formShell": [],
+        "adminShell": [],
+        "table": [],
+        "button": []
+      }
+    },
+    {
+      "repo": "127si-curriculum-platform",
+      "ref": "origin/main",
+      "sha": "4bb5d68c90522af8f688b975faafa3624f9dfba2",
+      "committed": "2026-11-09T14:22:12-07:00",
+      "next": "^16.4.5",
+      "tailwind": null,
+      "packageManager": null,
+      "lockfiles": [
+        "package-lock.json"
+      ],
+      "workflows": [
+        ".github/workflows/audit-watchdog.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/hosted-migrations-apply.yml",
+        ".github/workflows/nightly-audit.yml"
+      ],
+      "package": {
+        "name": "@127si/admin-design-system",
+        "pin": "github:Schmidt127/127si-admin-design-system#ae9357d0974fa258fcc17edb035128e7cfd2fc42",
+        "pinKind": "full SHA",
+        "imports": {
+          "AdminButton": 1,
+          "AdminPageHeader": 1,
+          "AdminShell": 1,
+          "tokens.css": 1
+        },
+        "localOverridesOfLegacyTokens": 0
+      },
+      "css": {
+        "files": 5,
+        "modules": 3,
+        "lines": 4021
+      },
+      "hex": {
+        "total": 575,
+        "inCss": 563,
+        "inJsx": 12,
+        "distinct": 266,
+        "top": {
+          "#fff": 125,
+          "#d5e0ec": 31,
+          "#3a516c": 12,
+          "#eef5fb": 12,
+          "#e4ebf3": 10,
+          "#e4e4e4": 7,
+          "#123b66": 6,
+          "#44566a": 6,
+          "#f0f6fb": 6,
+          "#08233f": 5,
+          "#12324f": 5,
+          "#e6b353": 5,
+          "#e7eef6": 5,
+          "#f47b20": 5,
+          "#f7f9fc": 5,
+          "#0034b7": 4,
+          "#1f6b8a": 4,
+          "#8a2b12": 4,
+          "#f3f6fa": 4,
+          "#ffad67": 4,
+          "#fff8f0": 4,
+          "#2a6b58": 3,
+          "#2c4058": 3,
+          "#333": 3,
+          "#3e4d46": 3
+        }
+      },
+      "tokenPrefixes": {
+        "--accent": 25,
+        "--admin": 14,
+        "--brand": 6,
+        "--iefa": 5,
+        "--navy": 5,
+        "--orange": 3,
+        "--radius": 3,
+        "--shadow": 3,
+        "--blue": 2,
+        "--ease": 1
+      },
+      "fonts": {
+        "cssFamilies": {
+          "Arial": 12,
+          "Saira": 5,
+          "Georgia": 4,
+          "Inter": 1,
+          "Maven Pro": 1,
+          "Segoe UI": 1,
+          "Times New Roman": 1
+        },
+        "nextFont": {
+          "maven-pro (local)": 4,
+          "saira (local)": 2,
+          "Geist": 1,
+          "Geist Mono": 1
+        }
+      },
+      "raw": {
+        "button": 89,
+        "table": 16,
+        "input": 90,
+        "select": 15,
+        "textarea": 28,
+        "inlineStyle": 21
+      },
+      "local": {
+        "nav": [
+          "src/components/brand/site-public-header.tsx"
+        ],
+        "footer": [],
+        "hero": [
+          "src/components/brand/marketing-hero-carousel.tsx"
+        ],
+        "formShell": [],
+        "adminShell": [
+          "src/app/admin/components/admin-nav.tsx"
+        ],
+        "table": [
+          "src/components/public/family-homework-library-table.tsx"
+        ],
+        "button": []
+      }
+    },
+    {
+      "repo": "127si-referee-platform",
+      "ref": "origin/main",
+      "sha": "a681c1910205e5fb3cf031229dc6689b6a3328c4",
+      "committed": "2026-11-11T03:44:12-07:00",
+      "next": "16.4.5",
+      "tailwind": "4.3.3",
+      "packageManager": "pnpm@11.25.0",
+      "lockfiles": [
+        "pnpm-lock.yaml"
+      ],
+      "workflows": [
+        ".github/workflows/application-ci.yml",
+        ".github/workflows/database-ci.yml",
+        ".github/workflows/foundation-ci.yml",
+        ".github/workflows/secrets-ci.yml"
+      ],
+      "package": {
+        "name": "@127si/admin-design-system",
+        "pin": "github:Schmidt127/127si-admin-design-system#master",
+        "pinKind": "branch or tag (master)",
+        "imports": {
+          "AdminPlatform": 1,
+          "platformLabel": 1,
+          "tokens.css": 1
+        },
+        "localOverridesOfLegacyTokens": 7
+      },
+      "css": {
+        "files": 9,
+        "modules": 0,
+        "lines": 3413
+      },
+      "hex": {
+        "total": 200,
+        "inCss": 192,
+        "inJsx": 8,
+        "distinct": 75,
+        "top": {
+          "#fff": 29,
+          "#262626": 14,
+          "#0034b7": 13,
+          "#ff8b00": 12,
+          "#000": 8,
+          "#002a94": 5,
+          "#10243a": 5,
+          "#526579": 5,
+          "#dce4ec": 5,
+          "#001f6b": 4,
+          "#cbd5e1": 4,
+          "#e8f0ff": 4,
+          "#f2f2f2": 4,
+          "#294": 3,
+          "#486581": 3,
+          "#e2e8f0": 3,
+          "#ffd2b8": 3,
+          "#15803d": 2,
+          "#166": 2,
+          "#263d53": 2,
+          "#475569": 2,
+          "#4a5568": 2,
+          "#667085": 2,
+          "#7a94ad": 2,
+          "#b8c5d4": 2
+        }
+      },
+      "tokenPrefixes": {
+        "--ref": 29,
+        "--xp": 25,
+        "--si": 16,
+        "--gitg": 8,
+        "--127si": 7,
+        "--admin": 7,
+        "--font": 3,
+        "--blue": 2,
+        "--header": 2,
+        "--reg": 2,
+        "--container": 1,
+        "--gray": 1,
+        "--jr": 1,
+        "--section": 1,
+        "--shadow": 1
+      },
+      "fonts": {
+        "cssFamilies": {},
+        "nextFont": {
+          "source-sans (local)": 12,
+          "maven-pro (local)": 7,
+          "barlow-condensed (local)": 4
+        }
+      },
+      "raw": {
+        "button": 38,
+        "table": 14,
+        "input": 182,
+        "select": 15,
+        "textarea": 6,
+        "inlineStyle": 16
+      },
+      "local": {
+        "nav": [
+          "src/components/public/public-chrome.tsx",
+          "src/components/public/site-header.tsx"
+        ],
+        "footer": [
+          "src/app/(admin)/admin/ui/admin-guest-footer.tsx",
+          "src/components/public/site-footer.tsx"
+        ],
+        "hero": [
+          "src/components/marketing/home-hero-slideshow.tsx",
+          "src/components/public/interior-hero.tsx"
+        ],
+        "formShell": [
+          "src/app/(public)/clinics/[slug]/register-form.tsx",
+          "src/app/(public)/registration-flow/registration-flow-shell.tsx",
+          "src/app/(registration-full)/clinics/[slug]/teams/team-register-form.tsx",
+          "src/app/(registration-full)/mentors/register/mentor-register-form.tsx",
+          "src/app/(registration-full)/t/join/[token]/player-register-form.tsx",
+          "src/components/registration/jr-ref-registration-shell.tsx",
+          "src/components/registration/registration-intensity-shell.tsx"
+        ],
+        "adminShell": [],
+        "table": [],
+        "button": []
+      }
+    },
+    {
+      "repo": "127si-bracket-platform",
+      "ref": "origin/main",
+      "sha": "263bf8efa636df285f8a4c34e52321cb25c2b37b",
+      "committed": "2026-11-09T06:29:01-07:00",
+      "next": "16.4.3",
+      "tailwind": null,
+      "packageManager": null,
+      "lockfiles": [
+        "package-lock.json"
+      ],
+      "workflows": [
+        ".github/workflows/ci.yml"
+      ],
+      "package": {
+        "name": null,
+        "pin": null,
+        "pinKind": "not installed",
+        "imports": {},
+        "localOverridesOfLegacyTokens": 0
+      },
+      "css": {
+        "files": 20,
+        "modules": 17,
+        "lines": 2785
+      },
+      "hex": {
+        "total": 186,
+        "inCss": 116,
+        "inJsx": 70,
+        "distinct": 57,
+        "top": {
+          "#fff": 22,
+          "#0034b7": 15,
+          "#ffffff": 11,
+          "#2563eb": 10,
+          "#15803d": 8,
+          "#e5e7eb": 8,
+          "#475569": 6,
+          "#64748b": 6,
+          "#991b1b": 6,
+          "#b91c1c": 6,
+          "#001a66": 5,
+          "#262626": 5,
+          "#6b7280": 5,
+          "#0f172a": 4,
+          "#1e293b": 4,
+          "#334155": 4,
+          "#d97700": 4,
+          "#112233": 3,
+          "#526174": 3,
+          "#e2e8f0": 3,
+          "#f2f2f2": 3,
+          "#92400e": 2,
+          "#cbd5e1": 2,
+          "#d7dde5": 2,
+          "#dbeafe": 2
+        }
+      },
+      "tokenPrefixes": {
+        "--mkt": 10,
+        "--brand": 4,
+        "--print": 4,
+        "--font": 2,
+        "--surface": 1
+      },
+      "fonts": {
+        "cssFamilies": {
+          "Menlo": 1,
+          "SFMono-Regular": 1
+        },
+        "nextFont": {
+          "saira (local)": 2
+        }
+      },
+      "raw": {
+        "button": 80,
+        "table": 8,
+        "input": 71,
+        "select": 15,
+        "textarea": 1,
+        "inlineStyle": 170
+      },
+      "local": {
+        "nav": [
+          "src/components/marketing/SiteHeaderBar.tsx",
+          "src/components/site-header.tsx"
+        ],
+        "footer": [
+          "src/components/marketing/SiteFooter.tsx"
+        ],
+        "hero": [
+          "src/components/marketing/HeroSlideshow.tsx",
+          "src/components/marketing/HomeMarketingHero.tsx"
+        ],
+        "formShell": [
+          "src/app/register/register-bracket-form.tsx"
+        ],
+        "adminShell": [],
+        "table": [
+          "src/app/score/[tournamentId]/scorer-unscored-games-table.tsx",
+          "src/app/tournaments/billing/payment-history-table.tsx"
+        ],
+        "button": []
+      }
+    },
+    {
+      "repo": "127si-tst-platform",
+      "ref": "origin/main",
+      "sha": "48aa7baff54d26ad587ace7843eed3297e33106b",
+      "committed": "2026-11-09T14:22:09-07:00",
+      "next": "^16.4.5",
+      "tailwind": "^4",
+      "packageManager": null,
+      "lockfiles": [
+        "package-lock.json"
+      ],
+      "workflows": [
+        ".github/workflows/ci.yml"
+      ],
+      "package": {
+        "name": null,
+        "pin": null,
+        "pinKind": "not installed",
+        "imports": {},
+        "localOverridesOfLegacyTokens": 0
+      },
+      "css": {
+        "files": 1,
+        "modules": 0,
+        "lines": 954
+      },
+      "hex": {
+        "total": 48,
+        "inCss": 23,
+        "inJsx": 25,
+        "distinct": 38,
+        "top": {
+          "#ffffff": 4,
+          "#003da5": 2,
+          "#27272a": 2,
+          "#6b7280": 2,
+          "#b81f2f": 2,
+          "#d62839": 2,
+          "#e4e4e7": 2,
+          "#f58426": 2,
+          "#0034b7": 1,
+          "#06b6d4": 1,
+          "#0891b2": 1,
+          "#09090b": 1,
+          "#0b0c0e": 1,
+          "#0e7490": 1,
+          "#10b981": 1,
+          "#121417": 1,
+          "#18181b": 1,
+          "#1c1f24": 1,
+          "#1f2937": 1,
+          "#2a2d33": 1,
+          "#315": 1,
+          "#52525b": 1,
+          "#5b6068": 1,
+          "#71717a": 1,
+          "#7a7f87": 1
+        }
+      },
+      "tokenPrefixes": {
+        "--tst": 26,
+        "--sb": 17,
+        "--si": 6,
+        "--color": 2,
+        "--font": 2
+      },
+      "fonts": {
+        "cssFamilies": {},
+        "nextFont": {
+          "Barlow": 1,
+          "Barlow Condensed": 1
+        }
+      },
+      "raw": {
+        "button": 81,
+        "table": 15,
+        "input": 64,
+        "select": 15,
+        "textarea": 4,
+        "inlineStyle": 12
+      },
+      "local": {
+        "nav": [
+          "src/components/public/PublicShell.tsx",
+          "src/components/public/SiteHeaderLockup.tsx"
+        ],
+        "footer": [
+          "src/components/public/SiteFooter.tsx"
+        ],
+        "hero": [
+          "src/components/public/landing/LandingHero.tsx",
+          "src/components/public/landing/LandingHeroSlideshow.tsx",
+          "src/components/public/landing/landing-hero-carousel.tsx"
+        ],
+        "formShell": [
+          "src/components/daily-form/DailyFormClient.tsx",
+          "src/components/daily-form/DailyFormHomeworkPanel.tsx"
+        ],
+        "adminShell": [
+          "src/components/admin/AdminShell.tsx"
+        ],
+        "table": [
+          "src/components/coach/CoachStatsTable.tsx",
+          "src/components/public/HomeTeamsTable.tsx",
+          "src/components/public/PublicStatsTable.tsx"
+        ],
+        "button": [
+          "src/components/ui/Button.tsx"
+        ]
+      }
+    },
+    {
+      "repo": "127si-challenge-platform",
+      "ref": "origin/main",
+      "sha": "624334ee3e50aa551997e2d9d7d675f6b6c58977",
+      "committed": "2026-11-11T06:49:33-07:00",
+      "next": "^16.4.5",
+      "tailwind": null,
+      "packageManager": "pnpm@9.15.9",
+      "lockfiles": [
+        "pnpm-lock.yaml"
+      ],
+      "workflows": [
+        ".github/workflows/application-ci.yml",
+        ".github/workflows/apply-production-migrations.yml",
+        ".github/workflows/bootstrap-platform-admin.yml",
+        ".github/workflows/foundation-ci.yml",
+        ".github/workflows/ops-dribble-buffalo-jump-backfill.yml",
+        ".github/workflows/ops-github-production-env-bootstrap.yml",
+        ".github/workflows/ops-m15-verify-production-gates.yml",
+        ".github/workflows/ops-oar13-commission.yml",
+        ".github/workflows/pr-policy.yml",
+        ".github/workflows/public-smoke-readonly.yml",
+        ".github/workflows/sim-dry-run.yml",
+        ".github/workflows/sync-labels.yml",
+        ".github/workflows/workflow-controller.yml"
+      ],
+      "package": {
+        "name": "@127si/admin-design-system",
+        "pin": "github:Schmidt127/127si-admin-design-system#39eef235c054fd696f4c0111d7fd07a26ef44102",
+        "pinKind": "full SHA",
+        "imports": {
+          "AdminShell": 1,
+          "tokens.css": 1
+        },
+        "localOverridesOfLegacyTokens": 0
+      },
+      "css": {
+        "files": 7,
+        "modules": 0,
+        "lines": 15373
+      },
+      "hex": {
+        "total": 376,
+        "inCss": 351,
+        "inJsx": 25,
+        "distinct": 151,
+        "top": {
+          "#fff": 91,
+          "#ffffff": 17,
+          "#000": 7,
+          "#0034b7": 7,
+          "#b42318": 7,
+          "#262626": 6,
+          "#e8f0ff": 6,
+          "#384": 5,
+          "#dce4ec": 5,
+          "#e5e9f0": 5,
+          "#ff8b00": 5,
+          "#409": 4,
+          "#7a1f1f": 4,
+          "#e2a5a5": 4,
+          "#eef4ff": 4,
+          "#f2f2f2": 4,
+          "#f5b301": 4,
+          "#fff5f5": 4,
+          "#002a94": 3,
+          "#0f766e": 3,
+          "#64748b": 3,
+          "#ccc": 3,
+          "#dbe7ff": 3,
+          "#e2d2a0": 3,
+          "#e67d00": 3
+        }
+      },
+      "tokenPrefixes": {
+        "--admin": 37,
+        "--tone": 24,
+        "--xp": 24,
+        "--cx": 17,
+        "--color": 13,
+        "--portal": 9,
+        "--si": 9,
+        "--space": 7,
+        "--font": 6,
+        "--reg": 6,
+        "--radius": 4,
+        "--blue": 2,
+        "--bp": 2,
+        "--header": 2,
+        "--shadow": 2,
+        "--container": 1,
+        "--content": 1,
+        "--gray": 1,
+        "--page": 1,
+        "--scan": 1,
+        "--section": 1
+      },
+      "fonts": {
+        "cssFamilies": {
+          "Consolas": 1,
+          "Menlo": 1,
+          "SFMono-Regular": 1
+        },
+        "nextFont": {
+          "maven-pro (local)": 4,
+          "saira (local)": 2
+        }
+      },
+      "raw": {
+        "button": 176,
+        "table": 44,
+        "input": 446,
+        "select": 83,
+        "textarea": 22,
+        "inlineStyle": 141
+      },
+      "local": {
+        "nav": [
+          "src/components/marketing/SiteHeader.tsx"
+        ],
+        "footer": [
+          "src/app/auth/(branded)/sign-in/sign-in-footer-links.tsx",
+          "src/components/app-shell/PortalFooter.tsx",
+          "src/components/marketing/SiteFooter.tsx",
+          "src/components/portal/PortalFooterNote.tsx"
+        ],
+        "hero": [
+          "src/components/marketing/HeroSlideshow.tsx",
+          "src/components/marketing/PublicInteriorHero.tsx",
+          "src/components/marketing/showcase/ShowcaseHero.tsx"
+        ],
+        "formShell": [
+          "src/app/(app)/activity/submit-form.tsx",
+          "src/app/register/join-form.tsx",
+          "src/app/register/register-form-progress.tsx",
+          "src/app/register/register-form-section.tsx",
+          "src/styles/registration-template.css"
+        ],
+        "adminShell": [
+          "src/components/admin/AdminNav.tsx"
+        ],
+        "table": [
+          "src/app/admin/enrollments/roster-table.tsx",
+          "src/components/admin/AdminTable.tsx",
+          "src/components/marketing/standings/PublicStandingsView.tsx",
+          "src/components/meetings/MeetingAttendanceTable.tsx",
+          "src/components/portal/engagement/StandingsPodium.tsx",
+          "src/components/standings/StandingsTable.tsx",
+          "src/components/xp/XpActivityTable.tsx"
+        ],
+        "button": []
+      }
+    }
+  ],
+  "skipped": []
+}
