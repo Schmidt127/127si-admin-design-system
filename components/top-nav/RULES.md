@@ -25,6 +25,7 @@ Full-page forms (registration, daily submission) have no site header. Admin uses
 ## What may not vary
 
 - White sticky bar, 5.5rem tall, 4.75rem with a blue shadow once the page scrolls.
+- The logo is 9rem wide at its natural proportions; it is never stretched or squashed.
 - The badge sits directly under the logo: orange background, dark text, uppercase.
 - Links are blue in the display font; the current and hovered link get the orange underline; the current link
   carries `aria-current="page"`.

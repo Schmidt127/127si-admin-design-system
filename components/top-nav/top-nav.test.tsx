@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -69,4 +70,9 @@ test("TopNav uses the app link component for internal links only", () => {
   assert.match(routed, /<a data-router="yes" href="\/programs" class="si-top-nav__link">Programs/);
   assert.ok(!/data-router="yes" href="https:/.test(routed));
   assert.ok(!routed.includes('class="si-top-nav__action"'));
+});
+
+test("TopNav logo keeps its natural proportions (fixed width, automatic height)", () => {
+  const css = readFileSync(new URL("./top-nav.css", import.meta.url), "utf8");
+  assert.match(css, /\.si-top-nav__logo \{ width: 9rem; max-width: 100%; height: auto;/);
 });
