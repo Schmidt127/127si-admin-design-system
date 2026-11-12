@@ -75,6 +75,8 @@ export function HeroCarousel({
   const [reducedMotion, setReducedMotion] = useState(false);
   const [failed, setFailed] = useState<Record<string, boolean>>({});
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Bumped when a turn is skipped (tab in the background) so the timer starts again.
+  const [skipped, setSkipped] = useState(0);
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -91,12 +93,13 @@ export function HeroCarousel({
     if (paused || held || count <= 1) return;
     const seconds = reducedMotion ? Math.max(intervalSeconds, 10) : intervalSeconds;
     timer.current = setTimeout(() => {
-      if (!document.hidden) go(index + 1);
+      if (document.hidden) setSkipped((value) => value + 1);
+      else go(index + 1);
     }, seconds * 1000);
     return () => {
       if (timer.current) clearTimeout(timer.current);
     };
-  }, [paused, held, count, index, go, intervalSeconds, reducedMotion]);
+  }, [paused, held, count, index, go, intervalSeconds, reducedMotion, skipped]);
 
   return (
     <section

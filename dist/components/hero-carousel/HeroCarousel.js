@@ -13,6 +13,8 @@ export function HeroCarousel({ slides, eyebrow, headline, subhead, primaryCta, s
     const [reducedMotion, setReducedMotion] = useState(false);
     const [failed, setFailed] = useState({});
     const timer = useRef(null);
+    // Bumped when a turn is skipped (tab in the background) so the timer starts again.
+    const [skipped, setSkipped] = useState(0);
     useEffect(() => {
         const query = window.matchMedia("(prefers-reduced-motion: reduce)");
         const apply = () => setReducedMotion(query.matches);
@@ -28,14 +30,16 @@ export function HeroCarousel({ slides, eyebrow, headline, subhead, primaryCta, s
             return;
         const seconds = reducedMotion ? Math.max(intervalSeconds, 10) : intervalSeconds;
         timer.current = setTimeout(() => {
-            if (!document.hidden)
+            if (document.hidden)
+                setSkipped((value) => value + 1);
+            else
                 go(index + 1);
         }, seconds * 1000);
         return () => {
             if (timer.current)
                 clearTimeout(timer.current);
         };
-    }, [paused, held, count, index, go, intervalSeconds, reducedMotion]);
+    }, [paused, held, count, index, go, intervalSeconds, reducedMotion, skipped]);
     return (_jsxs("section", { className: cx("si-hero", paused && "is-paused", !wash && "is-unwashed", className), "aria-roledescription": "carousel", "aria-label": label, onMouseEnter: () => setHeld(true), onMouseLeave: () => setHeld(false), onFocusCapture: () => setHeld(true), onBlurCapture: (event) => {
             if (!event.currentTarget.contains(event.relatedTarget))
                 setHeld(false);
