@@ -75,3 +75,13 @@ test("HeroCarousel can keep one photo still and keep a group photo fully in view
   assert.match(framed, /<picture class="is-keep-group" style="--si-hero-keep-h:1\.3500">/);
   assert.match(framed, /class="si-hero__slide" aria-hidden="true" data-motion="2"><picture>/);
 });
+
+test("HeroCarousel shows the current slide's caption and allows a slide with no photo", () => {
+  const captioned = renderToStaticMarkup(
+    <HeroCarousel slides={[{ id: "a", alt: "", caption: "Open to every family" }, { id: "b", src: "/b.webp", alt: "B", caption: "Second" }]} headline="x" />,
+  );
+  assert.match(captioned, /<p class="si-hero__caption">Open to every family<\/p>/);
+  assert.ok(!captioned.includes("Second"));
+  assert.match(captioned, /class="si-hero__slide is-active" aria-hidden="false" data-motion="1"><\/div>/);
+  assert.match(captioned, /data-slide-id="b"/);
+});

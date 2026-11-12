@@ -19,6 +19,8 @@ another slideshow in a platform.
   Pass `srcSet` from the app image optimiser (in Next.js, `getImageProps`) so phones do not download the
   full-size file.
   Photos are content and live in the platform.
+  `caption` is one short line shown while that slide is up. A slide without `src` is the plain brand
+  colour, for a message that has no real photo yet; never fill it with stock or generated art.
   `motion: "none"` keeps one photo still when the slow zoom would cut into it (heads at the top edge).
   `keepVisibleWidth` (a fraction of the photo's width) keeps a whole group in view on phones.
 - `eyebrow`, `headline`, `subhead`, `primaryCta`, `secondaryCta`. In the headline, `<em>` or `<strong>`

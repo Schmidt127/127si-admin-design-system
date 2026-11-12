@@ -1,7 +1,8 @@
 import { type ElementType, type ReactNode } from "react";
 export type HeroSlide = {
     id: string;
-    src: string;
+    /** The photo. Leave it out for a slide that is the plain brand colour (use with a caption). */
+    src?: string;
     /** Responsive candidates for `src`, e.g. from the app image optimiser (next/image `getImageProps`). */
     srcSet?: string;
     /** `sizes` for `srcSet`. Default "100vw". */
@@ -9,6 +10,8 @@ export type HeroSlide = {
     /** Smaller or taller crop for phones (below 768px). */
     srcMobile?: string;
     alt: string;
+    /** One short line shown under the buttons while this slide is showing. */
+    caption?: string;
     /** CSS object-position for the crop, e.g. "50% 30%". Default "center". */
     objectPosition?: string;
     /** "none" keeps this photo still (no slow zoom), for photos framed to an edge, e.g. heads at the top. */
