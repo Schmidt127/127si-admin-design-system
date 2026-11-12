@@ -5,7 +5,8 @@ import { cx } from "../_shared/cx.js";
 
 export type HeroSlide = {
   id: string;
-  src: string;
+  /** The photo. Leave it out for a slide that is the plain brand colour (use with a caption). */
+  src?: string;
   /** Responsive candidates for `src`, e.g. from the app image optimiser (next/image `getImageProps`). */
   srcSet?: string;
   /** `sizes` for `srcSet`. Default "100vw". */
@@ -13,6 +14,8 @@ export type HeroSlide = {
   /** Smaller or taller crop for phones (below 768px). */
   srcMobile?: string;
   alt: string;
+  /** One short line shown under the buttons while this slide is showing. */
+  caption?: string;
   /** CSS object-position for the crop, e.g. "50% 30%". Default "center". */
   objectPosition?: string;
   /** "none" keeps this photo still (no slow zoom), for photos framed to an edge, e.g. heads at the top. */
@@ -75,6 +78,16 @@ export function HeroCarousel({
   const [reducedMotion, setReducedMotion] = useState(false);
   const [failed, setFailed] = useState<Record<string, boolean>>({});
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const media = useRef<HTMLDivElement>(null);
+
+  // A photo that failed before the page became interactive never reported its error: find it once.
+  useEffect(() => {
+    const broken: Record<string, boolean> = {};
+    for (const img of media.current?.querySelectorAll<HTMLImageElement>("img[data-slide-id]") ?? []) {
+      if (img.complete && img.naturalWidth === 0 && img.currentSrc) broken[img.dataset.slideId ?? ""] = true;
+    }
+    if (Object.keys(broken).length) setFailed((current) => ({ ...current, ...broken }));
+  }, []);
   // Bumped when a turn is skipped (tab in the background) so the timer starts again.
   const [skipped, setSkipped] = useState(0);
 
@@ -113,7 +126,7 @@ export function HeroCarousel({
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setHeld(false);
       }}
     >
-      <div className="si-hero__media">
+      <div className="si-hero__media" ref={media}>
         {slides.map((slide, i) => (
           <div
             key={slide.id}
@@ -121,7 +134,7 @@ export function HeroCarousel({
             aria-hidden={i !== index}
             data-motion={slide.motion === "none" ? 0 : (i % 4) + 1}
           >
-            {failed[slide.id] ? null : (
+            {!slide.src || failed[slide.id] ? null : (
               <picture
                 className={slide.keepVisibleWidth ? "is-keep-group" : undefined}
                 style={slide.keepVisibleWidth ? ({ "--si-hero-keep-h": (9 / 16 / slide.keepVisibleWidth).toFixed(4) } as CSSProperties) : undefined}
@@ -130,6 +143,7 @@ export function HeroCarousel({
                 <img
                   className="si-hero__img"
                   src={slide.src}
+                  data-slide-id={slide.id}
                   srcSet={slide.srcSet}
                   sizes={slide.srcSet ? (slide.sizes ?? "100vw") : undefined}
                   alt={i === index ? slide.alt : ""}
@@ -166,6 +180,7 @@ export function HeroCarousel({
             </div>
           ) : null}
           {children}
+          {slides[index]?.caption ? <p className="si-hero__caption">{slides[index].caption}</p> : null}
         </div>
 
         {aside ? <div className="si-hero__aside">{aside}</div> : null}

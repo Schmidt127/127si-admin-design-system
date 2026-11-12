@@ -1,6 +1,6 @@
 {
   "name": "@127si/design-system",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "private": true,
   "description": "The 127 Sports Intensity design system: brand tokens, themes, fonts and shared React components.",
   "type": "module",
