@@ -66,3 +66,12 @@ test("HeroCarousel with a single slide shows no controls", () => {
   const single = renderToStaticMarkup(<HeroCarousel slides={slides.slice(0, 1)} headline="x" />);
   assert.ok(!single.includes("si-hero__controls"));
 });
+
+test("HeroCarousel can keep one photo still and keep a group photo fully in view on phones", () => {
+  const framed = renderToStaticMarkup(
+    <HeroCarousel slides={[{ id: "a", src: "/a.webp", alt: "A", motion: "none", keepVisibleWidth: 800 / 1920 }, { id: "b", src: "/b.webp", alt: "B" }]} headline="x" />,
+  );
+  assert.match(framed, /class="si-hero__slide is-active" aria-hidden="false" data-motion="0"/);
+  assert.match(framed, /<picture class="is-keep-group" style="--si-hero-keep-h:1\.3500">/);
+  assert.match(framed, /class="si-hero__slide" aria-hidden="true" data-motion="2"><picture>/);
+});

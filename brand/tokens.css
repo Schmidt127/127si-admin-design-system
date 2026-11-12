@@ -173,6 +173,7 @@
 
   /* Set by the footer when a platform passes a pattern image. */
   --si-footer-pattern: none;
+  --si-hero-keep-h: 0.5625; /* set per slide by the hero carousel (keepVisibleWidth); 16:9 by default */
 
   /* Public header heights (public shell standard) */
   --si-header-height: 5.5rem;
