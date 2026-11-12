@@ -11,6 +11,14 @@ export type HeroSlide = {
     alt: string;
     /** CSS object-position for the crop, e.g. "50% 30%". Default "center". */
     objectPosition?: string;
+    /** "none" keeps this photo still (no slow zoom), for photos framed to an edge, e.g. heads at the top. */
+    motion?: "auto" | "none";
+    /**
+     * Group photos that must keep every face in view on tall, narrow screens: the fraction (0 to 1) of the
+     * photo's width that must stay visible. When the hero is too tall for that, the photo is shortened from
+     * the top and its lower edge fades into the hero background. Assumes a 16:9 photo.
+     */
+    keepVisibleWidth?: number;
 };
 export type HeroCarouselProps = {
     slides: HeroSlide[];

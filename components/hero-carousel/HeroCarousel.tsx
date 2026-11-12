@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type ElementType, type ReactNode } from "react";
 import { cx } from "../_shared/cx.js";
 
 export type HeroSlide = {
@@ -15,6 +15,14 @@ export type HeroSlide = {
   alt: string;
   /** CSS object-position for the crop, e.g. "50% 30%". Default "center". */
   objectPosition?: string;
+  /** "none" keeps this photo still (no slow zoom), for photos framed to an edge, e.g. heads at the top. */
+  motion?: "auto" | "none";
+  /**
+   * Group photos that must keep every face in view on tall, narrow screens: the fraction (0 to 1) of the
+   * photo's width that must stay visible. When the hero is too tall for that, the photo is shortened from
+   * the top and its lower edge fades into the hero background. Assumes a 16:9 photo.
+   */
+  keepVisibleWidth?: number;
 };
 
 export type HeroCarouselProps = {
@@ -108,10 +116,13 @@ export function HeroCarousel({
             key={slide.id}
             className={cx("si-hero__slide", i === index && "is-active")}
             aria-hidden={i !== index}
-            data-motion={(i % 4) + 1}
+            data-motion={slide.motion === "none" ? 0 : (i % 4) + 1}
           >
             {failed[slide.id] ? null : (
-              <picture>
+              <picture
+                className={slide.keepVisibleWidth ? "is-keep-group" : undefined}
+                style={slide.keepVisibleWidth ? ({ "--si-hero-keep-h": (9 / 16 / slide.keepVisibleWidth).toFixed(4) } as CSSProperties) : undefined}
+              >
                 {slide.srcMobile ? <source media="(max-width: 767px)" srcSet={slide.srcMobile} /> : null}
                 <img
                   className="si-hero__img"
