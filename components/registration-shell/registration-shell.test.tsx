@@ -41,3 +41,19 @@ test("RegistrationShell uses the picture component the app passes in", () => {
   assert.match(html, /data-custom="1"/);
   assert.match(html, /alt="Program"/);
 });
+
+test("RegistrationShell renders the app logo and a title id for the form to name itself", () => {
+  const html = renderToStaticMarkup(
+    <RegistrationShell
+      titleAccent="A"
+      titlePlace="B"
+      subtitle="C"
+      titleId="registration-form-title"
+      logo={<a href="/">Home</a>}
+    >
+      <p>Form</p>
+    </RegistrationShell>,
+  );
+  assert.match(html, /<div class="si-reg-logo"><a href="\/">Home<\/a><\/div>/);
+  assert.match(html, /<h1 id="registration-form-title">/);
+});

@@ -16,6 +16,10 @@ export type RegistrationShellProps = {
     formHeroSrc?: string;
     /** Empty string or omitted means the picture is decorative. */
     formHeroAlt?: string;
+    /** Optional logo shown above the title, e.g. the app's link to its home page. */
+    logo?: ReactNode;
+    /** Id of the title, so a form can name itself with it (aria-labelledby). */
+    titleId?: string;
     /** Use next/image in Next.js apps. Defaults to a plain img. */
     ImageComponent?: ElementType;
     /** The form: registration summary, then the registration steps. */
@@ -26,4 +30,4 @@ export type RegistrationShellProps = {
  * The full-page registration layout: deep brand-blue page, a faint program photo behind
  * the masthead, a fact strip, and a white form sheet that holds the steps.
  */
-export declare function RegistrationShell({ titleAccent, titlePlace, subtitle, facts, factsLabel, formHeroSrc, formHeroAlt, ImageComponent, children, className, }: RegistrationShellProps): import("react").JSX.Element;
+export declare function RegistrationShell({ titleAccent, titlePlace, subtitle, facts, factsLabel, formHeroSrc, formHeroAlt, logo, titleId, ImageComponent, children, className, }: RegistrationShellProps): import("react").JSX.Element;

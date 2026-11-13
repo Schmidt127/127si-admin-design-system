@@ -43,6 +43,16 @@
   color: var(--si-white);
 }
 
+.si-reg-logo {
+  margin-bottom: var(--si-space-3);
+}
+
+.si-reg-logo img {
+  display: block;
+  width: min(259px, 70vw);
+  height: auto;
+}
+
 .si-reg-accent {
   color: var(--si-orange);
 }
