@@ -25,6 +25,8 @@ components/
     RULES.md             what it is for, when to use it, what may and may not vary (binding)
     admin-shell.test.tsx render and accessibility check
   admin-button/ admin-card/ admin-page-header/ admin-status-badge/ admin-table/
+  data-table/            participant rosters (public and staff presets)
+  top-nav/ footer/ hero-carousel/
 catalogue/             the page that shows everything in every theme
 dist/                  built output, committed (what consumers install)
 ```
@@ -52,16 +54,35 @@ Import the styles once, in the app's global stylesheet:
 `@127si/design-system/tokens.css` is the tokens alone; `components.css` is the component styles alone.
 
 ```tsx
-import { AdminShell, AdminPageHeader, AdminCard, AdminButton, AdminStatusBadge, AdminTable } from "@127si/design-system";
+import {
+  AdminShell,
+  AdminPageHeader,
+  AdminCard,
+  AdminButton,
+  AdminStatusBadge,
+  AdminTable,
+  DataTable,
+  participantColumnsPublic,
+} from "@127si/design-system";
 
 <AdminShell platform="content" navigation={[{ label: "Overview", href: "/admin" }]} activeHref="/admin">
   <AdminPageHeader title="Content" actions={<AdminButton>New record</AdminButton>} />
   <AdminCard title="Recent records"><AdminStatusBadge status="published" /></AdminCard>
 </AdminShell>
+
+<DataTable
+  caption="Program roster"
+  columns={participantColumnsPublic()}
+  rows={rows}
+  columnVisibilityPreset="public"
+  rowKey={(row) => row.id}
+  showSchoolRail
+/>
 ```
 
 Components are plain React and plain CSS. They import no Next.js, router, icon library or CSS framework.
-Team Shot Tracker's public layout sets `data-si-theme="tst"`; nothing else sets a theme.
+`DataTable` requires peer dependency `@tanstack/react-table` (v8+). Team Shot Tracker's public layout sets
+`data-si-theme="tst"`; nothing else sets a theme.
 
 ## Upgrading from `@127si/admin-design-system` (0.1.0)
 

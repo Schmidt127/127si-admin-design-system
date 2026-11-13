@@ -8,8 +8,8 @@ Dense, scannable lists of records in admin screens.
 
 ## When to use it
 
-Any admin list of rows and columns. Put it inside an `AdminCard`. Public tables (standings, directories) use
-the public data table, not this one.
+Any admin list of rows and columns. Put it inside an `AdminCard`. Public rosters and rich participant lists
+use `DataTable`, not this one.
 
 ## What may vary
 

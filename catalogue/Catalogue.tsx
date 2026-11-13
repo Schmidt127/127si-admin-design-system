@@ -13,6 +13,8 @@ import { AdminPageHeader } from "../components/admin-page-header/AdminPageHeader
 import { AdminShell } from "../components/admin-shell/AdminShell.js";
 import { AdminStatusBadge } from "../components/admin-status-badge/AdminStatusBadge.js";
 import { AdminTable } from "../components/admin-table/AdminTable.js";
+import { DataTable } from "../components/data-table/DataTable.js";
+import { PARTICIPANT_DEMO_ROWS, participantColumnsPublic, participantColumnsStaff } from "../components/data-table/participantPresets.js";
 
 const PALETTE = [
   "blue", "blue-hover", "blue-deep", "blue-light", "orange", "orange-hover", "orange-light", "orange-text",
@@ -338,7 +340,10 @@ export function renderCatalogue({ version, components }: { version: string; comp
         </div>
 
         <h2>Public shell</h2>
-        <p className="cat-note">The header, hero carousel and footer every public site uses. Only the links, words and photos change between platforms.</p>
+        <p className="cat-note">
+          The header, hero, footer, and shared participant table on public and program pages. Only links, words,
+          photos, and column data change between platforms.
+        </p>
         <ThemeBlock title="Default theme" note="Top navigation, hero carousel and footer.">
           <div className="cat-frame">
             <PublicDemo />
@@ -347,6 +352,52 @@ export function renderCatalogue({ version, components }: { version: string; comp
         <ThemeBlock theme="tst" title="Team Shot Tracker theme" note="The same components with the Scoreboard palette; the hero has no colour wash.">
           <div className="cat-frame">
             <PublicDemo tst />
+          </div>
+        </ThemeBlock>
+        <div className="cat-gap" />
+        <p className="cat-note">
+          <strong>DataTable</strong>: TanStack Table, gradient header, participant avatars, tier pills, toolbar, pinned first column, mobile
+          cards below 768px.
+        </p>
+        <ThemeBlock title="Public roster preset" note="Parent-facing columns: participant, school, grade, jersey size, clinics attended.">
+          <AdminCard title="Registered participants" description="Public visibility preset.">
+            <DataTable
+              caption="Sample winter roster"
+              columns={participantColumnsPublic()}
+              rows={PARTICIPANT_DEMO_ROWS}
+              columnVisibilityPreset="public"
+              showSchoolRail
+              enableSelection
+              rowKey={(row) => row.id}
+            />
+          </AdminCard>
+        </ThemeBlock>
+        <div className="cat-gap" />
+        <ThemeBlock title="Staff roster preset" note="Adds email, cell, and status. Export is available when enableExport is set.">
+          <AdminCard title="Staff view" description="Staff visibility preset with selection and CSV export.">
+            <DataTable
+              caption="Staff roster with contact fields"
+              columns={participantColumnsStaff()}
+              rows={PARTICIPANT_DEMO_ROWS}
+              columnVisibilityPreset="staff"
+              showSchoolRail
+              enableSelection
+              enableExport
+              rowKey={(row) => row.id}
+            />
+          </AdminCard>
+        </ThemeBlock>
+        <div className="cat-gap" />
+        <ThemeBlock title="Dark theme" note="theme=&quot;dark&quot; for night-side admin or embedded shells.">
+          <div className="cat-frame" style={{ padding: "var(--si-space-4)", background: "var(--si-blue-deep)" }}>
+            <DataTable
+              theme="dark"
+              caption="Dark roster"
+              columns={participantColumnsPublic()}
+              rows={PARTICIPANT_DEMO_ROWS.slice(0, 4)}
+              columnVisibilityPreset="public"
+              rowKey={(row) => row.id}
+            />
           </div>
         </ThemeBlock>
 
@@ -371,7 +422,7 @@ export function renderCatalogue({ version, components }: { version: string; comp
             </li>
           ))}
         </ul>
-        <p className="cat-note">Buttons, form fields, the full-page form shell and public tables are added in later versions and will appear here.</p>
+        <p className="cat-note">Buttons, form fields and the full-page form shell are added in later versions and will appear here when they ship.</p>
       </main>
     </>,
   );
