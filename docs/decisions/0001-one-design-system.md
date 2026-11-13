@@ -37,7 +37,7 @@ colours that are not the brand, and was mostly consumed for its token file. The 
    `RULES.md`, add it to the catalogue, release.
 7. **Masters.** Shared components are extracted from: Referee `registration-intensity-shell.tsx` (form
    shell), Challenge `SiteHeader.tsx`, `SiteFooter.tsx` and `HeroSlideshow.tsx` (public shell), the public
-   shell standard's Tables section (public table), and this package (admin). Where a platform's copy
+   shell standard's Tables section (`DataTable`, ADR 0003), and this package (admin). Where a platform's copy
    differs from the master, the master wins unless the difference is the TST exception.
 8. **Pages stay in the apps.** The package provides layout and controls. Data, validation, pricing, routes
    and rules stay in the owning platform.

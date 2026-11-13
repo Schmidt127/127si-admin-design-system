@@ -13,3 +13,5 @@ export { Footer } from "./components/footer/Footer.js";
 export { BackToTop } from "./components/footer/BackToTop.js";
 export { HeroCarousel } from "./components/hero-carousel/HeroCarousel.js";
 export { AdminTable } from "./components/admin-table/AdminTable.js";
+export { DataTable } from "./components/data-table/DataTable.js";
+export { participantColumnsPublic, participantColumnsStaff, PARTICIPANT_DEMO_ROWS, DATA_TABLE_VISIBILITY_PUBLIC, DATA_TABLE_VISIBILITY_STAFF, } from "./components/data-table/participantPresets.js";

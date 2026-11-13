@@ -8,8 +8,9 @@ Dense, scannable lists of records in admin screens.
 
 ## When to use it
 
-Any admin list of rows and columns. Put it inside an `AdminCard`. Public tables (standings, directories) use
-the public data table, not this one.
+Any admin list of rows and columns. Put it inside an `AdminCard`. **Public** tables (rosters, standings,
+directories on marketing or program pages) must use **`DataTable`**, not this component. See
+[`docs/PUBLIC-DATA-TABLE.md`](../../docs/PUBLIC-DATA-TABLE.md).
 
 ## What may vary
 
