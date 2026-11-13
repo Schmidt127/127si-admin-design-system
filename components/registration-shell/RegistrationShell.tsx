@@ -16,6 +16,10 @@ export type RegistrationShellProps = {
   formHeroSrc?: string;
   /** Empty string or omitted means the picture is decorative. */
   formHeroAlt?: string;
+  /** Optional logo shown above the title, e.g. the app's link to its home page. */
+  logo?: ReactNode;
+  /** Id of the title, so a form can name itself with it (aria-labelledby). */
+  titleId?: string;
   /** Use next/image in Next.js apps. Defaults to a plain img. */
   ImageComponent?: ElementType;
   /** The form: registration summary, then the registration steps. */
@@ -35,6 +39,8 @@ export function RegistrationShell({
   factsLabel = "Details",
   formHeroSrc,
   formHeroAlt = "",
+  logo,
+  titleId,
   ImageComponent = "img",
   children,
   className,
@@ -45,7 +51,8 @@ export function RegistrationShell({
       <div className="si-reg-page">
         <header className="si-reg-masthead">
           <div>
-            <h1>
+            {logo ? <div className="si-reg-logo">{logo}</div> : null}
+            <h1 id={titleId}>
               <span className="si-reg-accent">{titleAccent}</span> <span className="si-reg-place">{titlePlace}</span>
             </h1>
             <p className="si-reg-subtitle">{subtitle}</p>

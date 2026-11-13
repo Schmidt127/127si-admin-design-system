@@ -18,6 +18,8 @@ Once per public registration page (clinics, teams, mentors, challenges and futur
 - `titleAccent`, `titlePlace`, `subtitle`, `facts`, `factsLabel`.
 - The program picture (`formHeroSrc`, `formHeroAlt`). The picture file belongs to the app's
   `public/forms/<program>/` folder; the package never ships program photos.
+- `logo`: the app's logo, with the app's own link to its home page. The package does not ship logo files here.
+- `titleId`: the id of the title, so the form can name itself with it.
 - `ImageComponent`: pass `next/image` in Next.js apps.
 - `className` for layout only.
 
