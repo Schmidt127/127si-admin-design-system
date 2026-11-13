@@ -36,6 +36,13 @@ Tailwind v4 apps map tokens, they do not copy values:
 }
 ```
 
+## Registration template
+
+Every public registration includes the **Before you register** summary defined in
+[`docs/REGISTRATION-SUMMARY.md`](../docs/REGISTRATION-SUMMARY.md). This owner-approved ecosystem pattern
+covers program facts, preparation, next steps and matching expandable policy/help/waiver information.
+The layout is shared; each platform owns the correct program content and rules.
+
 ## What may vary
 
 - **Theme.** Team Shot Tracker sets `data-si-theme="tst"` on `<html>`. Nobody else sets a theme.
