@@ -1,0 +1,98 @@
+/* Registration shell: layout only. Colours, fonts and radii come from brand tokens. */
+.si-reg-root {
+  position: relative;
+  min-height: 100dvh;
+  color: var(--si-color-on-shell);
+  background: var(--si-blue-deep);
+}
+
+/* Fixed backdrop so the deep blue stays behind long forms. */
+.si-reg-atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--si-blue-deep);
+}
+
+.si-reg-page {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--si-space-4);
+  width: min(1040px, 100%);
+  margin: 0 auto;
+  padding: clamp(0.75rem, 3vw, 1.5rem) clamp(0.65rem, 3vw, 1.25rem) clamp(2rem, 5vw, 3rem);
+}
+
+.si-reg-masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--si-space-4);
+}
+
+.si-reg-masthead h1 {
+  margin: 0;
+  font-family: var(--si-font-display);
+  font-size: clamp(1.75rem, 5vw, var(--si-text-3xl));
+  font-weight: var(--si-weight-black);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--si-white);
+}
+
+.si-reg-accent {
+  color: var(--si-orange);
+}
+
+.si-reg-subtitle {
+  margin: var(--si-space-2) 0 0;
+  color: var(--si-color-on-shell-muted);
+}
+
+.si-reg-hero {
+  width: min(220px, 40vw);
+  height: auto;
+  border-radius: var(--si-radius-md);
+}
+
+.si-reg-facts dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--si-space-2);
+  margin: 0;
+}
+
+.si-reg-facts dl > div {
+  display: grid;
+  gap: 0.15rem;
+  padding: var(--si-space-3);
+  border: 1px solid var(--si-color-shell-line);
+  border-radius: var(--si-radius-md);
+  background: var(--si-color-shell-deep);
+}
+
+.si-reg-facts dt {
+  font-size: var(--si-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--si-color-on-shell-muted);
+}
+
+.si-reg-facts dd {
+  margin: 0;
+  font-weight: var(--si-weight-bold);
+  color: var(--si-white);
+}
+
+.si-reg-sheet {
+  display: grid;
+  gap: var(--si-space-4);
+  padding: clamp(1rem, 4vw, 2rem);
+  border-radius: var(--si-radius-lg);
+  background: var(--si-color-surface);
+  color: var(--si-color-text);
+  box-shadow: var(--si-shadow-float);
+}

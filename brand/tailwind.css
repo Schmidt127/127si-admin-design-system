@@ -1,0 +1,4 @@
+/* Tailwind v4 input for the package's utility classes. Only classes written in these folders are generated. */
+@import "tailwindcss" source(none);
+@source "../components";
+@source "../catalogue";

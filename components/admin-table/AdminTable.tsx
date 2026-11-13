@@ -17,7 +17,7 @@ export type AdminTableProps<Row = any> = {
 
 export function AdminTable<Row = any>({ columns = [], rows = [], rowKey, emptyMessage = "No records found.", caption }: AdminTableProps<Row>) {
   return (
-    <div className="si-admin-table-wrap">
+    <div className="si-admin-table-wrap" tabIndex={0} role="region" aria-label={caption ?? "Scrollable table"}>
       <table className="si-admin-table">
         {caption ? <caption>{caption}</caption> : null}
         <thead>

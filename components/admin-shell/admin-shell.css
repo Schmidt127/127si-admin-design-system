@@ -8,7 +8,7 @@
 .si-admin-brand--logo:focus-visible { outline: var(--si-focus-width) solid var(--si-color-on-shell); outline-offset: var(--si-focus-offset); }
 .si-admin-brand-image { display: block; width: 180px; max-width: 100%; height: auto; }
 .si-admin-brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: var(--si-radius-md); background: var(--si-color-accent); color: var(--si-color-on-accent); font-size: var(--si-text-xs); }
-.si-admin-platform-label { border-top: 1px solid var(--si-color-shell-line); border-bottom: 1px solid var(--si-color-shell-line); padding: 13px var(--si-space-2); color: var(--si-color-accent); font-size: 0.6875rem; font-weight: var(--si-weight-black); letter-spacing: 0.11em; }
+.si-admin-platform-label { border-top: 1px solid var(--si-color-shell-line); border-bottom: 1px solid var(--si-color-shell-line); padding: 13px var(--si-space-2); color: var(--si-color-on-shell-muted); font-size: 0.6875rem; font-weight: var(--si-weight-black); letter-spacing: 0.11em; }
 .si-admin-nav { display: grid; gap: 5px; margin-top: 20px; }
 .si-admin-nav-link { display: flex; align-items: center; gap: 10px; color: var(--si-color-on-shell-muted); border-radius: var(--si-radius-md); padding: 10px var(--si-space-3); text-decoration: none; font-size: var(--si-text-sm); }
 .si-admin-nav-link:hover, .si-admin-nav-link.is-active { background: var(--si-color-shell-active); color: var(--si-color-on-shell); }
