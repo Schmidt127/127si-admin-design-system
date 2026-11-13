@@ -6,6 +6,9 @@ import { AdminField, AdminFormSection } from "../components/admin-field/AdminFie
 import { AdminNotice } from "../components/admin-notice/AdminNotice.js";
 import { AdminPager } from "../components/admin-pager/AdminPager.js";
 import { AdminToolbar } from "../components/admin-toolbar/AdminToolbar.js";
+import { RegistrationShell } from "../components/registration-shell/RegistrationShell.js";
+import { RegistrationStep } from "../components/registration-step/RegistrationStep.js";
+import { RegistrationSummary } from "../components/registration-summary/RegistrationSummary.js";
 import { Footer } from "../components/footer/Footer.js";
 import { HeroCarousel } from "../components/hero-carousel/HeroCarousel.js";
 import { TopNav } from "../components/top-nav/TopNav.js";
@@ -194,6 +197,38 @@ function PublicDemo({ tst }: { tst?: boolean }) {
   );
 }
 
+function RegistrationDemo() {
+  return (
+    <RegistrationShell
+      titleAccent="JR REF CLINIC"
+      titlePlace="Sample City"
+      subtitle="Learn the rules. Practice officiating."
+      facts={[
+        { label: "Date", value: "Saturday, March 20" },
+        { label: "Location", value: "Sample City" },
+        { label: "Grades", value: "Grades 6-12" },
+        { label: "Tuition", value: "Sample price" },
+      ]}
+      factsLabel="Clinic details"
+    >
+      <RegistrationSummary
+        preparation={{ body: <p>A headshot of the participant and a payment method.</p> }}
+        nextSteps={{ body: <p>Submit the form. If a seat is available you will continue to payment.</p> }}
+        disclosures={[
+          { id: "refund", label: "Refund policy", content: <p>Policy text comes from the app.</p> },
+          { id: "questions", label: "Questions", content: <p>Contact details come from the app.</p> },
+        ]}
+      />
+      <RegistrationStep headingId="cat-step-1" title="Participant Information" subtitle="Tell us about the participant.">
+        <p>Form fields go here.</p>
+      </RegistrationStep>
+      <RegistrationStep headingId="cat-step-2" title="Parent Information" subtitle="We will send clinic updates to this contact.">
+        <p>Form fields go here.</p>
+      </RegistrationStep>
+    </RegistrationShell>
+  );
+}
+
 function ThemeBlock({ theme, title, note, children }: { theme?: string; title: string; note: string; children: ReactNode }) {
   return (
     <section className="cat-theme" data-si-theme={theme}>
@@ -360,6 +395,14 @@ export function renderCatalogue({ version, components }: { version: string; comp
         <ThemeBlock theme="tst" title="Team Shot Tracker theme" note="The same components with the Scoreboard palette.">
           <div className="cat-frame">
             <AdminDemo idPrefix="tst" />
+          </div>
+        </ThemeBlock>
+
+        <h2>Registration components</h2>
+        <p className="cat-note">The full-page registration layout: masthead, fact strip, the "Before you register" summary, and step cards on a white form sheet.</p>
+        <ThemeBlock title="Default theme" note="Shell, summary with closed disclosures, and two step cards.">
+          <div className="cat-frame">
+            <RegistrationDemo />
           </div>
         </ThemeBlock>
 

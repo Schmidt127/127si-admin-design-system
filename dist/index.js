@@ -13,3 +13,6 @@ export { Footer } from "./components/footer/Footer.js";
 export { BackToTop } from "./components/footer/BackToTop.js";
 export { HeroCarousel } from "./components/hero-carousel/HeroCarousel.js";
 export { AdminTable } from "./components/admin-table/AdminTable.js";
+export { RegistrationShell } from "./components/registration-shell/RegistrationShell.js";
+export { RegistrationStep } from "./components/registration-step/RegistrationStep.js";
+export { RegistrationSummary } from "./components/registration-summary/RegistrationSummary.js";

@@ -25,12 +25,15 @@ rmSync(dist, { recursive: true, force: true });
 
 const require = createRequire(import.meta.url);
 execFileSync(process.execPath, [require.resolve("typescript/bin/tsc"), "-p", "tsconfig.build.json"], { cwd: root, stdio: "inherit" });
+// Tailwind v4 compiles only the utility classes the components use, into dist/utilities.css.
+execFileSync(path.join(root, "node_modules", ".bin", "tailwindcss"), ["-i", "brand/tailwind.css", "-o", "dist/utilities.css"], { cwd: root, stdio: "inherit" });
 
 const componentDirs = readdirSync(path.join(root, "components"), { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"))
   .map((entry) => entry.name)
   .sort();
-const componentCss = componentDirs
+const utilityCss = read("dist/utilities.css");
+const componentCss = utilityCss + "\n" + componentDirs
   .flatMap((dir) =>
     readdirSync(path.join(root, "components", dir))
       .filter((file) => file.endsWith(".css"))
