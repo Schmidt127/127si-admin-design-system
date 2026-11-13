@@ -27,20 +27,3 @@ export { HeroCarousel } from "./components/hero-carousel/HeroCarousel.js";
 export type { HeroCarouselProps, HeroSlide } from "./components/hero-carousel/HeroCarousel.js";
 export { AdminTable } from "./components/admin-table/AdminTable.js";
 export type { AdminTableProps, AdminTableColumn } from "./components/admin-table/AdminTable.js";
-export { DataTable } from "./components/data-table/DataTable.js";
-export type {
-  DataTableProps,
-  DataTableColumnDef,
-  DataTableCellKind,
-  DataTableEmptyState,
-  DataTableTheme,
-  DataTableDensity,
-} from "./components/data-table/DataTable.js";
-export {
-  participantColumnsPublic,
-  participantColumnsStaff,
-  PARTICIPANT_DEMO_ROWS,
-  DATA_TABLE_VISIBILITY_PUBLIC,
-  DATA_TABLE_VISIBILITY_STAFF,
-  type ParticipantRow,
-} from "./components/data-table/participantPresets.js";

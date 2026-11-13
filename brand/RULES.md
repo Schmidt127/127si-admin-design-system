@@ -43,14 +43,6 @@ Every public registration includes the **Before you register** summary defined i
 covers program facts, preparation, next steps and matching expandable policy/help/waiver information.
 The layout is shared; each platform owns the correct program content and rules.
 
-## Public data table
-
-Every **public** roster or visitor-facing table uses **`DataTable`** from this package, not hand-written
-`<table>` styling in apps. Binding rules: [`docs/PUBLIC-DATA-TABLE.md`](../docs/PUBLIC-DATA-TABLE.md) and
-[ADR 0003](../docs/decisions/0003-public-data-table.md). Platforms configure columns and data only; the
-gradient header, pills, toolbar, mobile cards, and accessibility behaviour are not forked locally. Admin-only
-simple lists inside `AdminCard` may use `AdminTable` per its RULES.
-
 ## What may vary
 
 - **Theme.** Team Shot Tracker sets `data-si-theme="tst"` on `<html>`. Nobody else sets a theme.

@@ -13,9 +13,6 @@ import {
   AdminShell,
   AdminStatusBadge,
   AdminTable,
-  DataTable,
-  participantColumnsPublic,
-  PARTICIPANT_DEMO_ROWS,
   adminTheme,
   platformLabel,
   siTheme,
@@ -59,13 +56,5 @@ export const page = (
       <AdminStatusBadge status="published" />
     </AdminCard>
     <AdminTable<Row> columns={[{ key: "name", label: "Name" }]} rows={[{ name: "Row" }]} rowKey={(row) => row.name} />
-    <DataTable
-      columns={participantColumnsPublic()}
-      rows={PARTICIPANT_DEMO_ROWS}
-      columnVisibilityPreset="public"
-      caption="Roster"
-      rowKey={(row) => row.id}
-      showSchoolRail
-    />
   </AdminShell>
 );
