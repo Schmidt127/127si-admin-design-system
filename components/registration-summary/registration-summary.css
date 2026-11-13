@@ -43,7 +43,7 @@ section.si-reg-summary > h2 {
   font-weight: var(--si-weight-bold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--si-color-text-muted);
+  color: var(--si-color-text);  /* muted grey is 4.25:1 on the panel; text colour passes WCAG AA */
 }
 
 .si-reg-summary dd {
