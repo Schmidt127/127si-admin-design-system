@@ -1,6 +1,6 @@
 # ADR 0001: one 127SI design system, in this repository
 
-Status: Accepted, 2026-11-11 (owner defaults from the design system build prompt).
+Status: Accepted, 2026-11-11 (owner defaults from the design system build prompt). Decision 5 amended by the owner on 2026-11-13.
 
 ## Context
 
@@ -27,10 +27,15 @@ colours that are not the brand, and was mostly consumed for its token file. The 
 4. **Tokens first.** One file of CSS custom properties with one prefix, `--si-*`. Components use tokens
    only: no raw colours and no font names in component CSS. Themes and surfaces are attribute-scoped
    overrides of the same tokens.
-5. **Plain CSS and plain React.** No Tailwind, no CSS-in-JS and no Next.js imports here, so the package works
-   in plain-CSS, CSS-module and Tailwind v4 apps. Components that render links or images accept
-   `LinkComponent` and `ImageComponent` props; each app passes `next/link` and `next/image`. Tailwind apps
-   map tokens through `@theme inline` and never redefine values.
+5. **Tailwind v4 and shadcn/ui are allowed; accessibility is required.** (Owner amendment, 2026-11-13,
+   replacing the earlier "plain CSS and plain React" rule.) Components may be built with Tailwind CSS v4 and
+   shadcn/ui patterns. The published package ships compiled CSS (`styles.css`) and ready-to-run JavaScript, so a
+   consumer app does not need Tailwind to use it, and apps that do use Tailwind map the tokens through
+   `@theme inline` and never redefine values. The package still has no Next.js imports: components that render
+   links or images accept `LinkComponent` and `ImageComponent` props, and each app passes `next/link` and
+   `next/image`. Every component must meet WCAG 2.1 AA: no serious or critical axe findings, visible keyboard
+   focus, labelled controls, and 44 CSS px touch targets on phones. Tokens still come from `brand/`; component
+   code still uses `var(--si-*)` only.
 6. **Layout: one folder per component, each with a binding `RULES.md`.** `brand/` (tokens, themes, fonts,
    logos), `components/<name>/` (component, styles, `RULES.md`, test), `catalogue/` (every token and
    component in every theme). Adding a component is: create the folder, build from brand tokens, write
