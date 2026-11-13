@@ -9,6 +9,7 @@ keeps its old name so existing commit pins still resolve.
 
 - Decisions: [`docs/decisions/`](docs/decisions/) (0001 one design system, 0002 typography).
 - Starting point measured across the platforms: [`baseline/`](baseline/).
+- Registration template: [`docs/REGISTRATION-SUMMARY.md`](docs/REGISTRATION-SUMMARY.md) (required Before you register summary for every registration).
 - Catalogue (every token and component in every theme): `dist/catalogue/index.html`.
 
 ## Layout
