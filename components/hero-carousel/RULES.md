@@ -28,6 +28,7 @@ another slideshow in a platform.
 - `children`: the platform's own extra block under the buttons (for example Challenge's "choose your
   challenge" list). `aside`: a compact card beside the copy on wide screens.
 - `wash`: `false` only for Team Shot Tracker (owner decision 2026-11-09: no colour wash; text keeps a shadow).
+- `washDirection="left"`: Referee owner decision 2026-11-14. Blue from the left edge, transparent at 70% of the photo width, replacing the bottom wash. Other consumers keep the default wash.
 - `intervalSeconds`, `label`, `LinkComponent`.
 
 ## What may not vary

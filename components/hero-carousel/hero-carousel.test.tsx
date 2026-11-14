@@ -85,3 +85,9 @@ test("HeroCarousel shows the current slide's caption and allows a slide with no 
   assert.match(captioned, /class="si-hero__slide is-active" aria-hidden="false" data-motion="1"><\/div>/);
   assert.match(captioned, /data-slide-id="b"/);
 });
+
+ test("HeroCarousel supports the left blue wash without changing the default", () => {
+  const left = renderToStaticMarkup(<HeroCarousel slides={slides} headline="x" washDirection="left" />);
+  assert.match(left, /class="si-hero__wash si-hero__wash--left"/);
+  assert.ok(!html.includes("si-hero__wash--left"));
+});
