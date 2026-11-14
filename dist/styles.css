@@ -814,7 +814,7 @@
 @keyframes si-hero-in-left { from { transform: scale(1.05) translate3d(2%, 1%, 0); } to { transform: scale(1.15) translate3d(-2%, -1%, 0); } }
 @keyframes si-hero-out-right { from { transform: scale(1.15) translate3d(-2%, -1%, 0); } to { transform: scale(1.05) translate3d(2%, 1%, 0); } }
 .si-hero__wash { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(90deg, var(--si-scrim-strong), var(--si-scrim-soft) 60%, transparent), linear-gradient(180deg, transparent 55%, var(--si-color-shell) 100%); }
-.si-hero__wash--left { background: linear-gradient(90deg, var(--si-color-shell) 0%, color-mix(in srgb, var(--si-color-shell) 85%, transparent) 25%, transparent 70%); }
+.si-hero__wash--left { background: linear-gradient(90deg, color-mix(in srgb, var(--si-color-shell) 65%, transparent) 0%, color-mix(in srgb, var(--si-color-shell) 45%, transparent) 25%, transparent 70%); }
 .si-hero__content { position: relative; z-index: 3; flex: 1; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "copy" "aside" "controls"; align-content: safe center; align-items: start; gap: 1.15rem; padding-block: var(--si-space-7) var(--si-space-6); }
 .si-hero__copy { grid-area: copy; max-width: 40rem; }
 .si-hero__aside { grid-area: aside; }
