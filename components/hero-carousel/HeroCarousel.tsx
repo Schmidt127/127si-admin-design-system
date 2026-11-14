@@ -44,6 +44,8 @@ export type HeroCarouselProps = {
    * Team Shot Tracker sets false (owner decision 2026-11-09) and relies on the text shadow.
    */
   wash?: boolean;
+  /** Referee: blue wash from the left edge, transparent at 70% of the photo width. */
+  washDirection?: "default" | "left";
   /** Seconds each slide shows. Default 7 (10 when the visitor prefers reduced motion). */
   intervalSeconds?: number;
   /** Names the carousel for screen readers. Default "Featured photos". */
@@ -65,6 +67,7 @@ export function HeroCarousel({
   children,
   aside,
   wash = true,
+  washDirection = "default",
   intervalSeconds = 7,
   label = "Featured photos",
   LinkComponent,
@@ -157,7 +160,7 @@ export function HeroCarousel({
             )}
           </div>
         ))}
-        {wash ? <div className="si-hero__wash" aria-hidden="true" /> : null}
+        {wash ? <div className={cx("si-hero__wash", washDirection === "left" && "si-hero__wash--left")} aria-hidden="true" /> : null}
       </div>
 
       <div className="si-container si-hero__content">

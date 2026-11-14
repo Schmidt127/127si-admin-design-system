@@ -45,6 +45,8 @@ export type HeroCarouselProps = {
      * Team Shot Tracker sets false (owner decision 2026-11-09) and relies on the text shadow.
      */
     wash?: boolean;
+    /** Referee: blue wash from the left edge, transparent at 70% of the photo width. */
+    washDirection?: "default" | "left";
     /** Seconds each slide shows. Default 7 (10 when the visitor prefers reduced motion). */
     intervalSeconds?: number;
     /** Names the carousel for screen readers. Default "Featured photos". */
@@ -53,4 +55,4 @@ export type HeroCarouselProps = {
     className?: string;
 };
 /** Full-bleed photo carousel with a headline and calls to action. */
-export declare function HeroCarousel({ slides, eyebrow, headline, subhead, primaryCta, secondaryCta, children, aside, wash, intervalSeconds, label, LinkComponent, className, }: HeroCarouselProps): import("react").JSX.Element;
+export declare function HeroCarousel({ slides, eyebrow, headline, subhead, primaryCta, secondaryCta, children, aside, wash, washDirection, intervalSeconds, label, LinkComponent, className, }: HeroCarouselProps): import("react").JSX.Element;
