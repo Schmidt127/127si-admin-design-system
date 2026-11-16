@@ -1,6 +1,6 @@
 {
   "name": "@127si/design-system",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "private": true,
   "description": "The 127 Sports Intensity design system: brand tokens, themes, fonts and shared React components.",
   "type": "module",
@@ -24,7 +24,8 @@
     "test": "node --import tsx --test \"components/**/*.test.tsx\" \"test/*.test.mjs\"",
     "check:ui-en-dash": "node scripts/check-no-ui-en-dash.mjs",
     "check:dist": "node scripts/build.mjs && git diff --exit-code -- dist && node scripts/check-dist-untracked.mjs",
-    "check": "npm run build && npm run typecheck && npm run check:ui-en-dash && npm test"
+    "check": "npm run build && npm run typecheck && npm run check:ui-en-dash && npm test",
+    "preview:catalogue": "node scripts/preview-catalogue.mjs"
   },
   "peerDependencies": { "react": ">=18", "react-dom": ">=18" },
   "devDependencies": {

@@ -61,4 +61,6 @@ cpSync(path.join(root, "brand/assets/logos/logo-white.png"), path.join(dist, "lo
 const { renderCatalogue } = await import(pathToFileURL(path.join(dist, "catalogue/Catalogue.js")).href);
 write("catalogue/index.html", renderCatalogue({ version, components: componentDirs }));
 
+execFileSync(process.execPath, [path.join(root, "scripts", "render-datatable-demo-html.mjs")], { cwd: root, stdio: "inherit" });
+
 console.log(`Built dist/ for v${version}: ${componentDirs.length} component folders.`);
