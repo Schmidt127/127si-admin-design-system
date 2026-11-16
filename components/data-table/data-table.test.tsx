@@ -54,6 +54,48 @@ test("DataTable renders premium header band, toolbar, and roster", () => {
   assert.doesNotMatch(html, /hidden@example\.org/);
 });
 
+test("DataTableBanner titleLevel selects heading tag while keeping title styles", () => {
+  const defaultTitle = renderToStaticMarkup(<DataTableBanner title="Default">child</DataTableBanner>);
+  assert.match(defaultTitle, /<h2[^>]*class="si-dt-directory__title"/);
+
+  const pageTitle = renderToStaticMarkup(
+    <DataTableBanner title="Page title" titleLevel={1}>
+      child
+    </DataTableBanner>,
+  );
+  assert.match(pageTitle, /<h1[^>]*class="si-dt-directory__title"/);
+  assert.doesNotMatch(pageTitle, /<h2[^>]*class="si-dt-directory__title"/);
+});
+
+test("DataTable countLabel customizes toolbar result count", () => {
+  const rows = [{ id: "a", name: "One" }];
+  const singular = renderToStaticMarkup(
+    <DataTable
+      columns={[{ id: "name", header: "Name", accessorKey: "name" }]}
+      rows={rows}
+      countLabel={{ one: "participant", other: "participants" }}
+    />,
+  );
+  assert.match(singular, /1<\/span> participant/);
+
+  const plural = renderToStaticMarkup(
+    <DataTable
+      columns={[{ id: "name", header: "Name", accessorKey: "name" }]}
+      rows={[
+        { id: "a", name: "One" },
+        { id: "b", name: "Two" },
+      ]}
+      countLabel={{ one: "participant", other: "participants" }}
+    />,
+  );
+  assert.match(plural, /2<\/span> participants/);
+
+  const defaultRows = renderToStaticMarkup(
+    <DataTable columns={[{ id: "name", header: "Name", accessorKey: "name" }]} rows={rows} />,
+  );
+  assert.match(defaultRows, /1<\/span> row/);
+});
+
 test("DataTable shows loading and empty states", () => {
   const loading = renderToStaticMarkup(
     <DataTable columns={[{ id: "name", header: "Name", accessorKey: "name" }]} rows={[]} loading />,

@@ -28,6 +28,10 @@ export type DataTableEmptyState = {
     actionHref?: string;
     onAction?: () => void;
 };
+export type DataTableCountLabel = {
+    one: string;
+    other: string;
+};
 export type DataTableChipFilter<Row> = {
     id: string;
     ariaLabel: string;
@@ -57,5 +61,7 @@ export type DataTableProps<Row extends Record<string, unknown> = Record<string, 
     clinicsTierField?: keyof Row & string;
     chipFilters?: Array<DataTableChipFilter<Row>>;
     autoChipFilters?: Array<"school" | "grade">;
+    /** Toolbar count noun (e.g. `{ one: "participant", other: "participants" }`). Defaults to row/rows. */
+    countLabel?: DataTableCountLabel;
 };
-export declare function DataTable<Row extends Record<string, unknown> = Record<string, unknown>>({ columns: columnDefs, rows, audience, optOutField, loading, enableExport, exportFileName, emptyState, theme, variant, density, caption, rowKey, className, showSchoolRail, toolbarLabel, showToolbar, showSchoolInParticipantCell, enableClinicsTierFilter, clinicsTierField, chipFilters, autoChipFilters, }: DataTableProps<Row>): import("react").JSX.Element;
+export declare function DataTable<Row extends Record<string, unknown> = Record<string, unknown>>({ columns: columnDefs, rows, audience, optOutField, loading, enableExport, exportFileName, emptyState, theme, variant, density, caption, rowKey, className, showSchoolRail, toolbarLabel, showToolbar, showSchoolInParticipantCell, enableClinicsTierFilter, clinicsTierField, chipFilters, autoChipFilters, countLabel, }: DataTableProps<Row>): import("react").JSX.Element;

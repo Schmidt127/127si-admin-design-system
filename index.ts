@@ -43,10 +43,15 @@ export type {
   DataTableDensity,
   DataTableVariant,
   DataTableCellKind,
+  DataTableCountLabel,
 } from "./components/data-table/DataTable.js";
 export type { DataTableAudience } from "./components/data-table/privacy.js";
 export { DataTableBanner } from "./components/data-table/DataTableBanner.js";
-export type { DataTableBannerProps, DataTableStat } from "./components/data-table/DataTableBanner.js";
+export type {
+  DataTableBannerProps,
+  DataTableBannerTitleLevel,
+  DataTableStat,
+} from "./components/data-table/DataTableBanner.js";
 export { clinicTierDisplay, clinicTierKind, normalizeClinicsAttended } from "./components/data-table/clinic-tier.js";
 export type { ClinicTierDisplay, ClinicTierKind } from "./components/data-table/clinic-tier.js";
 export {

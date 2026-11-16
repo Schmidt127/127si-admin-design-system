@@ -34,10 +34,10 @@ export type { RegistrationStepProps } from "./components/registration-step/Regis
 export { RegistrationSummary } from "./components/registration-summary/RegistrationSummary.js";
 export type { RegistrationSummaryProps, RegistrationSummaryDisclosure } from "./components/registration-summary/RegistrationSummary.js";
 export { DataTable } from "./components/data-table/DataTable.js";
-export type { DataTableProps, DataTableColumnDef, DataTableEmptyState, DataTableChipFilter, DataTableTheme, DataTableDensity, DataTableVariant, DataTableCellKind, } from "./components/data-table/DataTable.js";
+export type { DataTableProps, DataTableColumnDef, DataTableEmptyState, DataTableChipFilter, DataTableTheme, DataTableDensity, DataTableVariant, DataTableCellKind, DataTableCountLabel, } from "./components/data-table/DataTable.js";
 export type { DataTableAudience } from "./components/data-table/privacy.js";
 export { DataTableBanner } from "./components/data-table/DataTableBanner.js";
-export type { DataTableBannerProps, DataTableStat } from "./components/data-table/DataTableBanner.js";
+export type { DataTableBannerProps, DataTableBannerTitleLevel, DataTableStat, } from "./components/data-table/DataTableBanner.js";
 export { clinicTierDisplay, clinicTierKind, normalizeClinicsAttended } from "./components/data-table/clinic-tier.js";
 export type { ClinicTierDisplay, ClinicTierKind } from "./components/data-table/clinic-tier.js";
 export { applyPublicColumnPolicy, filterOptedOutRows, DEFAULT_PUBLIC_OPT_OUT_FIELD, isSensitiveColumnKind, } from "./components/data-table/privacy.js";

@@ -46,6 +46,17 @@ export type DataTableEmptyState = {
   onAction?: () => void;
 };
 
+export type DataTableCountLabel = {
+  one: string;
+  other: string;
+};
+
+const DEFAULT_COUNT_LABEL: DataTableCountLabel = { one: "row", other: "rows" };
+
+function formatCountSuffix(count: number, label: DataTableCountLabel): string {
+  return count === 1 ? label.one : label.other;
+}
+
 export type DataTableChipFilter<Row> = {
   id: string;
   ariaLabel: string;
@@ -76,6 +87,8 @@ export type DataTableProps<Row extends Record<string, unknown> = Record<string, 
   clinicsTierField?: keyof Row & string;
   chipFilters?: Array<DataTableChipFilter<Row>>;
   autoChipFilters?: Array<"school" | "grade">;
+  /** Toolbar count noun (e.g. `{ one: "participant", other: "participants" }`). Defaults to row/rows. */
+  countLabel?: DataTableCountLabel;
 };
 
 type ParticipantFields = {
@@ -247,6 +260,7 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
   clinicsTierField = "clinicsAttended" as keyof Row & string,
   chipFilters,
   autoChipFilters,
+  countLabel = DEFAULT_COUNT_LABEL,
 }: DataTableProps<Row>) {
   const baseId = useId();
   const visibleColumns = useMemo(() => applyPublicColumnPolicy(columnDefs, audience), [columnDefs, audience]);
@@ -457,7 +471,9 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
               ) : (
                 <>
                   <span className="si-dt-count-strong">{visibleCount}</span>
-                  {globalFilter ? ` of ${totalCount} shown` : ` row${visibleCount === 1 ? "" : "s"}`}
+                  {globalFilter
+                    ? ` of ${totalCount} shown`
+                    : ` ${formatCountSuffix(visibleCount, countLabel)}`}
                 </>
               )}
             </span>
