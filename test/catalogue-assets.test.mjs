@@ -25,3 +25,9 @@ test("catalogue includes the DataTable example markup", () => {
   assert.match(html, /si-data-table is-premium/);
   assert.match(html, /Youth Participants/);
 });
+
+test("built standalone DataTable demo html exists for screenshots", () => {
+  const demo = readFileSync(new URL("../dist/demos/youth-participant-datatable.html", import.meta.url), "utf8");
+  assert.match(demo, /si-dt-directory__band/);
+  assert.match(demo, /href="\.\.\/styles\.css"/);
+});

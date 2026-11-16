@@ -11,7 +11,12 @@ import "@127si/design-system/styles.css";
 
 `styles.css` includes every `DataTable` rule (premium gradient band, pills, badges, mobile cards). CI fails if those selectors are missing from `dist/styles.css` or `dist/components.css`.
 
-Preview the catalogue example with styles loaded: `npm run preview:catalogue` then open `http://127.0.0.1:4173/catalogue/index.html` (serve **`dist/`** as the web root, not `dist/catalogue/` alone).
+Preview with styles loaded:
+
+- `npm run preview:catalogue` then open `http://127.0.0.1:4173/catalogue/index.html`, or
+- open `dist/demos/youth-participant-datatable.html` via the same server at `http://127.0.0.1:4173/demos/youth-participant-datatable.html`.
+
+Always serve **`dist/`** as the web root (not `dist/catalogue/` alone). The catalogue uses `<base href="../">` so `fonts.css` and `styles.css` resolve next to `dist/catalogue/`.
 
 ## Minimal example (Referee sample)
 
