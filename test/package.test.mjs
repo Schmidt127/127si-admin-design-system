@@ -48,6 +48,25 @@ test("styles.css is tokens.css plus components.css, and tokens.css has no compon
   assert.ok(css("components.css").includes(".si-admin-shell"));
 });
 
+const DATA_TABLE_CSS_MARKERS = [
+  ".si-data-table",
+  ".si-data-table.is-premium",
+  ".si-dt-directory__band",
+  ".si-dt-pill.is-clinics.tier-first",
+  ".si-dt-pill.is-clinics.tier-veteran",
+  ".si-dt-mobile",
+  ".si-dt-chip.is-active",
+];
+
+test("published CSS ships the DataTable premium styles", () => {
+  for (const file of ["components.css", "styles.css"]) {
+    const sheet = css(file);
+    for (const marker of DATA_TABLE_CSS_MARKERS) {
+      assert.ok(sheet.includes(marker), `${file} is missing ${marker}`);
+    }
+  }
+});
+
 test("fonts.css points at font files that ship", () => {
   const fonts = css("fonts.css");
   const files = [...fonts.matchAll(/url\("\.\/fonts\/([^"]+)"\)/g)].map((m) => m[1]);
