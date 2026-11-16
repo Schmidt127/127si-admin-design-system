@@ -56,6 +56,8 @@ const DATA_TABLE_CSS_MARKERS = [
   ".si-dt-pill.is-clinics.tier-veteran",
   ".si-dt-mobile",
   ".si-dt-chip.is-active",
+  ".si-dt-caption-bar",
+  ".si-dt-table-controls",
 ];
 
 test("published CSS ships the DataTable premium styles", () => {

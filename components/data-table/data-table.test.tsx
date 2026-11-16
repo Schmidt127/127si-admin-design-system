@@ -48,10 +48,28 @@ test("DataTable renders premium header band, toolbar, and roster", () => {
   assert.match(html, /si-dt-directory__band/);
   assert.match(html, /si-dt-directory__title/);
   assert.match(html, /Youth participant highlights/);
+  assert.match(html, /si-dt-caption-bar/);
+  assert.match(html, /si-dt-table-controls/);
+  assert.match(html, /aria-pressed="true"/);
+  assert.match(html, /Comfortable/);
+  assert.match(html, /si-dt-table-controls[\s\S]*Comfortable/);
   assert.match(html, /First clinic/);
   assert.match(html, /si-dt-chip/);
   assert.match(html, /Preview/);
   assert.doesNotMatch(html, /hidden@example\.org/);
+});
+
+test("DataTable aligns view controls without a caption", () => {
+  const html = renderToStaticMarkup(
+    <DataTable
+      columns={[{ id: "name", header: "Name", accessorKey: "name" }]}
+      rows={[{ id: "1", name: "Alex" }]}
+      showToolbar={false}
+    />,
+  );
+  assert.match(html, /si-dt-caption-bar si-dt-caption-bar--solo/);
+  assert.match(html, /si-dt-table-controls/);
+  assert.match(html, /Columns/);
 });
 
 test("DataTableBanner titleLevel selects heading tag while keeping title styles", () => {

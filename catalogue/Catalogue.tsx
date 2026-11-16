@@ -401,7 +401,7 @@ export function renderCatalogue({ version, components }: { version: string; comp
 
         <h2>Public data table</h2>
         <p className="cat-note">
-          Referee-style youth participant directory: gradient band, stat boxes, tier filter pills, clinic badges, and phone card layout.
+          Referee-style youth participant directory: gradient band, stat boxes, tier filter pills, ghost density/columns on the caption bar, clinic badges, and phone card layout.
           Sample data only.
         </p>
         <ThemeBlock title="Youth participants (premium)" note="Default public roster pattern from referee.fairfieldbasketballclub.com/youth-participants.">

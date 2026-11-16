@@ -384,6 +384,64 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
   const empty = emptyState ?? { message: "No rows match these filters." };
   const resolveRowKey = (row: Row, index: number) => (rowKey ? rowKey(row) : String((row as { id?: string }).id ?? index));
 
+  const tableViewControls = (
+    <div className="si-dt-table-controls">
+      <div className="si-dt-density" role="group" aria-label="Row density">
+        <button
+          type="button"
+          className={cx("si-dt-density-btn", densityState === "comfortable" && "is-active")}
+          onClick={() => setDensityState("comfortable")}
+          aria-pressed={densityState === "comfortable"}
+          disabled={loading}
+        >
+          Comfortable
+        </button>
+        <button
+          type="button"
+          className={cx("si-dt-density-btn", densityState === "compact" && "is-active")}
+          onClick={() => setDensityState("compact")}
+          aria-pressed={densityState === "compact"}
+          disabled={loading}
+        >
+          Compact
+        </button>
+      </div>
+      <div className="si-dt-columns">
+        <button
+          type="button"
+          className="si-dt-columns-toggle"
+          aria-expanded={columnsOpen}
+          aria-controls={`${baseId}-columns`}
+          onClick={() => setColumnsOpen((open) => !open)}
+          disabled={loading}
+        >
+          Columns
+        </button>
+        {columnsOpen ? (
+          <div className="si-dt-columns-panel" id={`${baseId}-columns`} role="group" aria-label="Column visibility">
+            {visibleColumns
+              .filter((column) => column.enableHiding !== false)
+              .map((column) => (
+                <label key={column.id} className="si-dt-columns-item">
+                  <input
+                    type="checkbox"
+                    checked={hiddenColumns[column.id] !== true}
+                    onChange={() =>
+                      setHiddenColumns((state) => ({
+                        ...state,
+                        [column.id]: state[column.id] === true ? false : true,
+                      }))
+                    }
+                  />
+                  <span>{column.header}</span>
+                </label>
+              ))}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+
   return (
     <div
       className={cx(
@@ -477,59 +535,6 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
                 </>
               )}
             </span>
-            <div className="si-dt-density" role="group" aria-label="Row density">
-              <button
-                type="button"
-                className={cx("si-dt-density-btn", densityState === "comfortable" && "is-active")}
-                onClick={() => setDensityState("comfortable")}
-                aria-pressed={densityState === "comfortable"}
-                disabled={loading}
-              >
-                Comfortable
-              </button>
-              <button
-                type="button"
-                className={cx("si-dt-density-btn", densityState === "compact" && "is-active")}
-                onClick={() => setDensityState("compact")}
-                aria-pressed={densityState === "compact"}
-                disabled={loading}
-              >
-                Compact
-              </button>
-            </div>
-            <div className="si-dt-columns">
-              <button
-                type="button"
-                className="si-dt-columns-toggle"
-                aria-expanded={columnsOpen}
-                aria-controls={`${baseId}-columns`}
-                onClick={() => setColumnsOpen((open) => !open)}
-                disabled={loading}
-              >
-                Columns
-              </button>
-              {columnsOpen ? (
-                <div className="si-dt-columns-panel" id={`${baseId}-columns`} role="group" aria-label="Column visibility">
-                  {visibleColumns
-                    .filter((column) => column.enableHiding !== false)
-                    .map((column) => (
-                      <label key={column.id} className="si-dt-columns-item">
-                        <input
-                          type="checkbox"
-                          checked={hiddenColumns[column.id] !== true}
-                          onChange={() =>
-                            setHiddenColumns((state) => ({
-                              ...state,
-                              [column.id]: state[column.id] === true ? false : true,
-                            }))
-                          }
-                        />
-                        <span>{column.header}</span>
-                      </label>
-                    ))}
-                </div>
-              ) : null}
-            </div>
             {enableExport ? (
               <button type="button" className="si-dt-export" onClick={handleExport} disabled={loading}>
                 Export CSV
@@ -541,8 +546,15 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
 
       <div className={cx("si-dt-card", variant === "premium" && "si-dt-card--premium")}>
         <div className="si-dt-scroll">
-          <table className="si-dt-table" id={`${baseId}-table`}>
-            {caption ? <caption className="si-dt-caption">{caption}</caption> : null}
+          <div className={cx("si-dt-caption-bar", !caption && "si-dt-caption-bar--solo")}>
+            {caption ? (
+              <p className="si-dt-caption-text" id={`${baseId}-caption`}>
+                {caption}
+              </p>
+            ) : null}
+            {tableViewControls}
+          </div>
+          <table className="si-dt-table" id={`${baseId}-table`} aria-labelledby={caption ? `${baseId}-caption` : undefined}>
             <thead className="si-dt-head">
               <tr>
                 {displayedColumns.map((column) => {
