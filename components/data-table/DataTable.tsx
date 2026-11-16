@@ -53,6 +53,11 @@ export type DataTableCountLabel = {
 
 const DEFAULT_COUNT_LABEL: DataTableCountLabel = { one: "row", other: "rows" };
 
+/** Referee youth-participant directory defaults; callers override for other rosters. */
+export const DEFAULT_DATA_TABLE_SEARCH_PLACEHOLDER = "Search participants";
+export const DEFAULT_DATA_TABLE_LOADING_MESSAGE = "Loading participants…";
+export const DEFAULT_DATA_TABLE_EXPORT_FILE_NAME = "participants.csv";
+
 function formatCountSuffix(count: number, label: DataTableCountLabel): string {
   return count === 1 ? label.one : label.other;
 }
@@ -91,6 +96,10 @@ export type DataTableProps<Row extends Record<string, unknown> = Record<string, 
   autoChipFilters?: Array<"school" | "grade">;
   /** Toolbar count noun (e.g. `{ one: "participant", other: "participants" }`). Defaults to row/rows. */
   countLabel?: DataTableCountLabel;
+  /** Search field placeholder when `showSearch` is true. Default Referee “Search participants”. */
+  searchPlaceholder?: string;
+  /** Loading row and mobile card copy when `loading` is true. Default Referee “Loading participants…”. */
+  loadingMessage?: string;
 };
 
 type ParticipantFields = {
@@ -246,7 +255,7 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
   optOutField = DEFAULT_PUBLIC_OPT_OUT_FIELD as keyof Row & string,
   loading = false,
   enableExport = false,
-  exportFileName = "participants.csv",
+  exportFileName = DEFAULT_DATA_TABLE_EXPORT_FILE_NAME,
   emptyState,
   theme = "light",
   variant = "premium",
@@ -264,6 +273,8 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
   chipFilters,
   autoChipFilters,
   countLabel = DEFAULT_COUNT_LABEL,
+  searchPlaceholder = DEFAULT_DATA_TABLE_SEARCH_PLACEHOLDER,
+  loadingMessage = DEFAULT_DATA_TABLE_LOADING_MESSAGE,
 }: DataTableProps<Row>) {
   const baseId = useId();
   const visibleColumns = useMemo(() => applyPublicColumnPolicy(columnDefs, audience), [columnDefs, audience]);
@@ -475,7 +486,7 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
                   className="si-dt-search-input"
                   value={globalFilter}
                   onChange={(event) => setGlobalFilter(event.target.value)}
-                  placeholder="Search participants"
+                  placeholder={searchPlaceholder}
                   aria-controls={`${baseId}-table`}
                   disabled={loading}
                 />
@@ -603,7 +614,7 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
                   <td colSpan={displayedColumns.length || 1} className="si-dt-loading-cell">
                     <div className="si-dt-loading" role="status">
                       <span className="si-dt-loading-mark" aria-hidden />
-                      Loading participants…
+                      {loadingMessage}
                     </div>
                   </td>
                 </tr>
@@ -652,7 +663,7 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
         <ul className="si-dt-mobile" aria-label={caption ?? "Participant roster"}>
           {loading ? (
             <li className="si-dt-mobile-card is-loading" role="status">
-              Loading participants…
+              {loadingMessage}
             </li>
           ) : isEmpty ? (
             <li className="si-dt-mobile-card is-empty">
