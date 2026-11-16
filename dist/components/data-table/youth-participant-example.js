@@ -114,7 +114,7 @@ export function YouthParticipantDataTableExample() {
             { id: "total", value: stats.total, label: "Participants" },
             { id: "schools", value: stats.schools, label: "Schools" },
             { id: "veterans", value: stats.veterans, label: "Veterans", emphasis: "gold" },
-        ], children: _jsx(DataTable, { columns: youthParticipantColumns(), rows: enriched, audience: "public", variant: "premium", enableClinicsTierFilter: true, autoChipFilters: ["school", "grade"], showSchoolRail: false, caption: "Youth participant highlights", toolbarLabel: "Filter youth participants", countLabel: { one: "participant", other: "participants" }, emptyState: {
+        ], children: _jsx(DataTable, { columns: youthParticipantColumns(), rows: enriched, audience: "public", variant: "premium", enableClinicsTierFilter: true, autoChipFilters: ["school", "grade"], showSchoolRail: false, showSearch: false, caption: "Youth participant highlights", toolbarLabel: "Filter youth participants", countLabel: { one: "participant", other: "participants" }, emptyState: {
                 title: "No registered participants yet",
                 message: "Registered participants appear here by default. Families who opt out during registration are not listed.",
                 actionLabel: "Find a clinic",

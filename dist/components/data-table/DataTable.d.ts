@@ -56,6 +56,8 @@ export type DataTableProps<Row extends Record<string, unknown> = Record<string, 
     showSchoolRail?: boolean;
     toolbarLabel?: string;
     showToolbar?: boolean;
+    /** When false, hides the toolbar search field (default true). */
+    showSearch?: boolean;
     showSchoolInParticipantCell?: boolean;
     enableClinicsTierFilter?: boolean;
     clinicsTierField?: keyof Row & string;
@@ -64,4 +66,4 @@ export type DataTableProps<Row extends Record<string, unknown> = Record<string, 
     /** Toolbar count noun (e.g. `{ one: "participant", other: "participants" }`). Defaults to row/rows. */
     countLabel?: DataTableCountLabel;
 };
-export declare function DataTable<Row extends Record<string, unknown> = Record<string, unknown>>({ columns: columnDefs, rows, audience, optOutField, loading, enableExport, exportFileName, emptyState, theme, variant, density, caption, rowKey, className, showSchoolRail, toolbarLabel, showToolbar, showSchoolInParticipantCell, enableClinicsTierFilter, clinicsTierField, chipFilters, autoChipFilters, countLabel, }: DataTableProps<Row>): import("react").JSX.Element;
+export declare function DataTable<Row extends Record<string, unknown> = Record<string, unknown>>({ columns: columnDefs, rows, audience, optOutField, loading, enableExport, exportFileName, emptyState, theme, variant, density, caption, rowKey, className, showSchoolRail, toolbarLabel, showToolbar, showSearch, showSchoolInParticipantCell, enableClinicsTierFilter, clinicsTierField, chipFilters, autoChipFilters, countLabel, }: DataTableProps<Row>): import("react").JSX.Element;

@@ -145,6 +145,7 @@ export function YouthParticipantDataTableExample() {
         enableClinicsTierFilter
         autoChipFilters={["school", "grade"]}
         showSchoolRail={false}
+        showSearch={false}
         caption="Youth participant highlights"
         toolbarLabel="Filter youth participants"
         countLabel={{ one: "participant", other: "participants" }}

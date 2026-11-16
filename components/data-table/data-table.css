@@ -118,6 +118,15 @@
   gap: var(--si-space-2);
 }
 
+.si-dt-toolbar--no-search {
+  gap: var(--si-space-2);
+}
+
+.si-dt-toolbar-start--no-search {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .si-dt-visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
