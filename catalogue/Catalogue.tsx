@@ -16,6 +16,7 @@ import { AdminPageHeader } from "../components/admin-page-header/AdminPageHeader
 import { AdminShell } from "../components/admin-shell/AdminShell.js";
 import { AdminStatusBadge } from "../components/admin-status-badge/AdminStatusBadge.js";
 import { AdminTable } from "../components/admin-table/AdminTable.js";
+import { YouthParticipantDataTableExample } from "../components/data-table/youth-participant-example.js";
 
 const PALETTE = [
   "blue", "blue-hover", "blue-deep", "blue-light", "orange", "orange-hover", "orange-light", "orange-text",
@@ -73,7 +74,7 @@ function AdminDemo({ idPrefix }: { idPrefix: string }) {
   return (
     <AdminShell
       platform="challenge"
-      logoSrc="../assets/logos/logo-white.png"
+      logoSrc="assets/logos/logo-white.png"
       homeHref="#"
       sidebarFooter={<span>Signed in as coach@example.org</span>}
       headerActions={<AdminStatusBadge status="active">Production</AdminStatusBadge>}
@@ -152,7 +153,7 @@ function PublicDemo({ tst }: { tst?: boolean }) {
   return (
     <>
       <TopNav
-        logoSrc={tst ? "../assets/logos/logo-white.png" : "../assets/logos/logo-full-color.png"}
+        logoSrc={tst ? "assets/logos/logo-white.png" : "assets/logos/logo-full-color.png"}
         badge={tst ? "Team Shot Tracker" : "Challenges"}
         activeHref="#standings"
         links={[
@@ -166,9 +167,9 @@ function PublicDemo({ tst }: { tst?: boolean }) {
         label={tst ? "Sample photos, Team Shot Tracker theme" : "Sample photos"}
         wash={!tst}
         slides={[
-          { id: "one", src: "../assets/patterns/pattern-3.png", alt: "Sample slide one (brand pattern standing in for a program photo)" },
-          { id: "two", src: "../assets/patterns/pattern-4.png", alt: "Sample slide two" },
-          { id: "three", src: "../assets/patterns/pattern-5.png", alt: "Sample slide three" },
+          { id: "one", src: "assets/patterns/pattern-3.png", alt: "Sample slide one (brand pattern standing in for a program photo)" },
+          { id: "two", src: "assets/patterns/pattern-4.png", alt: "Sample slide two" },
+          { id: "three", src: "assets/patterns/pattern-5.png", alt: "Sample slide three" },
         ]}
         eyebrow="127 Sports Intensity"
         headline={
@@ -182,8 +183,8 @@ function PublicDemo({ tst }: { tst?: boolean }) {
       />
       <Footer
         id={tst ? "footer-tst" : "footer-default"}
-        logoSrc="../assets/logos/logo-white.png"
-        patternSrc="../assets/patterns/pattern-3.png"
+        logoSrc="assets/logos/logo-white.png"
+        patternSrc="assets/patterns/pattern-3.png"
         year={2026}
         backToTop={false}
         contact={{ name: "Coordinator name", role: "Coordinator", phone: { label: "555.010.0100", href: "tel:+15550100100" }, email: { label: "info@example.org", href: "mailto:info@example.org" } }}
@@ -280,7 +281,7 @@ export function renderCatalogue({ version, components }: { version: string; comp
   const body = renderToStaticMarkup(
     <>
       <header className="cat-top">
-        <img src="../assets/logos/logo-white.png" alt="127 Sports Intensity" />
+        <img src="assets/logos/logo-white.png" alt="127 Sports Intensity" />
         <h1>127SI design system</h1>
         <p>
           Version {version}. Every colour, font and shared component used by the 127 Sports Intensity platforms, shown in the default theme
@@ -294,19 +295,19 @@ export function renderCatalogue({ version, components }: { version: string; comp
         <div className="cat-assets">
           {LOGOS.map(([file, label, dark]) => (
             <figure key={file} className={dark ? "cat-asset is-dark" : "cat-asset"}>
-              <img src={`../assets/${file}`} alt={label} loading="lazy" />
+              <img src={`assets/${file}`} alt={label} loading="lazy" />
               <figcaption>{label}</figcaption>
             </figure>
           ))}
           {STAMPS.map((n) => (
             <figure key={n} className="cat-asset">
-              <img src={`../assets/stamps/stamp-${n}.png`} alt={`Stamp ${n}`} loading="lazy" />
+              <img src={`assets/stamps/stamp-${n}.png`} alt={`Stamp ${n}`} loading="lazy" />
               <figcaption>Stamp {n}</figcaption>
             </figure>
           ))}
           {PATTERNS.map((n) => (
             <figure key={n} className="cat-asset">
-              <img src={`../assets/patterns/pattern-${n}.png`} alt={`Pattern ${n}`} loading="lazy" />
+              <img src={`assets/patterns/pattern-${n}.png`} alt={`Pattern ${n}`} loading="lazy" />
               <figcaption>Pattern {n}</figcaption>
             </figure>
           ))}
@@ -398,6 +399,17 @@ export function renderCatalogue({ version, components }: { version: string; comp
           </div>
         </ThemeBlock>
 
+        <h2>Public data table</h2>
+        <p className="cat-note">
+          Referee-style youth participant directory: gradient band, stat boxes, tier filter pills, ghost density/columns on the caption bar, clinic badges, and phone card layout.
+          Sample data only.
+        </p>
+        <ThemeBlock title="Youth participants (premium)" note="Default public roster pattern from referee.fairfieldbasketballclub.com/youth-participants.">
+          <div className="cat-frame">
+            <YouthParticipantDataTableExample />
+          </div>
+        </ThemeBlock>
+
         <h2>Registration components</h2>
         <p className="cat-note">The full-page registration layout: masthead, fact strip, the "Before you register" summary, and step cards on a white form sheet.</p>
         <ThemeBlock title="Default theme" note="Shell, summary with closed disclosures, and two step cards.">
@@ -414,7 +426,7 @@ export function renderCatalogue({ version, components }: { version: string; comp
             </li>
           ))}
         </ul>
-        <p className="cat-note">Buttons, form fields, the full-page form shell and public tables are added in later versions and will appear here.</p>
+        <p className="cat-note">Additional public components will appear here as they graduate from live-site review.</p>
       </main>
     </>,
   );
@@ -425,8 +437,9 @@ export function renderCatalogue({ version, components }: { version: string; comp
     '<meta charset="utf-8">',
     '<meta name="viewport" content="width=device-width, initial-scale=1">',
     `<title>127SI design system v${version}</title>`,
-    '<link rel="stylesheet" href="../fonts.css">',
-    '<link rel="stylesheet" href="../styles.css">',
+    '<base href="../">',
+    '<link rel="stylesheet" href="fonts.css">',
+    '<link rel="stylesheet" href="styles.css">',
     `<style>${PAGE_CSS}</style>`,
     "</head>",
     `<body>${body}</body>`,
