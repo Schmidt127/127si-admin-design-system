@@ -9,7 +9,11 @@ import {
   filterOptedOutRows,
   isSensitiveColumnKind,
 } from "./privacy.js";
-import { youthParticipantColumns, YOUTH_PARTICIPANT_SAMPLE_ROWS } from "./youth-participant-example.js";
+import {
+  youthParticipantColumns,
+  YOUTH_PARTICIPANT_SAMPLE_ROWS,
+  YouthParticipantDataTableExample,
+} from "./youth-participant-example.js";
 
 test("clinic tier labels match the Referee directory", () => {
   assert.deepEqual(clinicTierDisplay(null), { kind: "first", label: "First clinic", count: 0 });
@@ -83,6 +87,42 @@ test("DataTableBanner titleLevel selects heading tag while keeping title styles"
   );
   assert.match(pageTitle, /<h1[^>]*class="si-dt-directory__title"/);
   assert.doesNotMatch(pageTitle, /<h2[^>]*class="si-dt-directory__title"/);
+});
+
+test("DataTable showSearch=false omits the search field from the toolbar", () => {
+  const rows = YOUTH_PARTICIPANT_SAMPLE_ROWS.filter((row) => !row.publicDirectoryOptOut);
+  const withSearch = renderToStaticMarkup(
+    <DataTable
+      columns={youthParticipantColumns()}
+      rows={rows}
+      autoChipFilters={["school", "grade"]}
+      showSearch
+    />,
+  );
+  assert.match(withSearch, /placeholder="Search participants"/);
+  assert.match(withSearch, /si-dt-search-input/);
+
+  const withoutSearch = renderToStaticMarkup(
+    <DataTable
+      columns={youthParticipantColumns()}
+      rows={rows}
+      autoChipFilters={["school", "grade"]}
+      showSearch={false}
+    />,
+  );
+  assert.doesNotMatch(withoutSearch, /Search participants/);
+  assert.doesNotMatch(withoutSearch, /si-dt-search-input/);
+  assert.match(withoutSearch, /si-dt-toolbar--no-search/);
+  assert.match(withoutSearch, /si-dt-toolbar-start--no-search/);
+  assert.match(withoutSearch, /All schools/);
+  assert.match(withoutSearch, /si-dt-count/);
+});
+
+test("YouthParticipantDataTableExample hides participant search", () => {
+  const html = renderToStaticMarkup(<YouthParticipantDataTableExample />);
+  assert.doesNotMatch(html, /Search participants/);
+  assert.match(html, /si-dt-toolbar--no-search/);
+  assert.match(html, /All schools/);
 });
 
 test("DataTable countLabel customizes toolbar result count", () => {

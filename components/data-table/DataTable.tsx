@@ -82,6 +82,8 @@ export type DataTableProps<Row extends Record<string, unknown> = Record<string, 
   showSchoolRail?: boolean;
   toolbarLabel?: string;
   showToolbar?: boolean;
+  /** When false, hides the toolbar search field (default true). */
+  showSearch?: boolean;
   showSchoolInParticipantCell?: boolean;
   enableClinicsTierFilter?: boolean;
   clinicsTierField?: keyof Row & string;
@@ -255,6 +257,7 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
   showSchoolRail = true,
   toolbarLabel = "Table filters",
   showToolbar = true,
+  showSearch = true,
   showSchoolInParticipantCell = false,
   enableClinicsTierFilter = false,
   clinicsTierField = "clinicsAttended" as keyof Row & string,
@@ -454,20 +457,30 @@ export function DataTable<Row extends Record<string, unknown> = Record<string, u
       data-si-dt-density={densityState}
     >
       {showToolbar ? (
-        <div className={cx("si-dt-toolbar", variant === "premium" && "si-dt-toolbar--card")} role="group" aria-label={toolbarLabel}>
-          <div className="si-dt-toolbar-start">
-            <label className="si-dt-search">
-              <span className="si-dt-visually-hidden">Search table</span>
-              <input
-                type="search"
-                className="si-dt-search-input"
-                value={globalFilter}
-                onChange={(event) => setGlobalFilter(event.target.value)}
-                placeholder="Search participants"
-                aria-controls={`${baseId}-table`}
-                disabled={loading}
-              />
-            </label>
+        <div
+          className={cx(
+            "si-dt-toolbar",
+            variant === "premium" && "si-dt-toolbar--card",
+            !showSearch && "si-dt-toolbar--no-search",
+          )}
+          role="group"
+          aria-label={toolbarLabel}
+        >
+          <div className={cx("si-dt-toolbar-start", !showSearch && "si-dt-toolbar-start--no-search")}>
+            {showSearch ? (
+              <label className="si-dt-search">
+                <span className="si-dt-visually-hidden">Search table</span>
+                <input
+                  type="search"
+                  className="si-dt-search-input"
+                  value={globalFilter}
+                  onChange={(event) => setGlobalFilter(event.target.value)}
+                  placeholder="Search participants"
+                  aria-controls={`${baseId}-table`}
+                  disabled={loading}
+                />
+              </label>
+            ) : null}
             {activeChipFilters.map((filter) => {
               const options = chipOptions[filter.id] ?? [];
               if (options.length <= 1) return null;

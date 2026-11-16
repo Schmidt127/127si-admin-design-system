@@ -29,7 +29,7 @@ Use `AdminTable` for simple admin-only lists inside `AdminCard`.
 
 ## Toolbar layout
 
-- Filter chips, search, and the live row count live in the toolbar.
+- Filter chips, search (optional via `showSearch`), and the live row count live in the toolbar.
 - Row density and column visibility sit on the caption bar (right-aligned, ghost style), not in the toolbar.
 
 ## What may not vary
