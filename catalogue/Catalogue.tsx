@@ -16,6 +16,7 @@ import { AdminPageHeader } from "../components/admin-page-header/AdminPageHeader
 import { AdminShell } from "../components/admin-shell/AdminShell.js";
 import { AdminStatusBadge } from "../components/admin-status-badge/AdminStatusBadge.js";
 import { AdminTable } from "../components/admin-table/AdminTable.js";
+import { YouthParticipantDataTableExample } from "../components/data-table/youth-participant-example.js";
 
 const PALETTE = [
   "blue", "blue-hover", "blue-deep", "blue-light", "orange", "orange-hover", "orange-light", "orange-text",
@@ -398,6 +399,17 @@ export function renderCatalogue({ version, components }: { version: string; comp
           </div>
         </ThemeBlock>
 
+        <h2>Public data table</h2>
+        <p className="cat-note">
+          Referee-style youth participant directory: gradient band, stat boxes, tier filter pills, clinic badges, and phone card layout.
+          Sample data only.
+        </p>
+        <ThemeBlock title="Youth participants (premium)" note="Default public roster pattern from referee.fairfieldbasketballclub.com/youth-participants.">
+          <div className="cat-frame">
+            <YouthParticipantDataTableExample />
+          </div>
+        </ThemeBlock>
+
         <h2>Registration components</h2>
         <p className="cat-note">The full-page registration layout: masthead, fact strip, the "Before you register" summary, and step cards on a white form sheet.</p>
         <ThemeBlock title="Default theme" note="Shell, summary with closed disclosures, and two step cards.">
@@ -414,7 +426,7 @@ export function renderCatalogue({ version, components }: { version: string; comp
             </li>
           ))}
         </ul>
-        <p className="cat-note">Buttons, form fields, the full-page form shell and public tables are added in later versions and will appear here.</p>
+        <p className="cat-note">Additional public components will appear here as they graduate from live-site review.</p>
       </main>
     </>,
   );
