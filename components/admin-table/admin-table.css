@@ -1,7 +1,9 @@
 .si-admin-table-wrap { overflow-x: auto; }
-.si-admin-table { width: 100%; border-collapse: collapse; font-size: var(--si-text-sm); }
-.si-admin-table caption { text-align: left; color: var(--si-color-text-subtle); font-size: var(--si-text-xs); padding: 0 var(--si-space-3) var(--si-space-2); }
-.si-admin-table th { color: var(--si-color-text-subtle); font-size: 0.6875rem; letter-spacing: 0.06em; text-align: left; text-transform: uppercase; }
-.si-admin-table th, .si-admin-table td { border-bottom: 1px solid var(--si-color-border); padding: 13px var(--si-space-3); vertical-align: middle; }
+.si-admin-table { width: 100%; border-collapse: collapse; font-size: var(--si-text-xs); font-variant-numeric: tabular-nums; }
+.si-admin-table caption { text-align: left; color: var(--si-color-text-subtle); font-size: var(--si-text-xs); padding: 0 var(--si-space-2) var(--si-space-2); }
+.si-admin-table th { background: var(--si-color-shell-deep); color: var(--si-color-on-shell); font-size: 0.6875rem; font-weight: var(--si-weight-bold); letter-spacing: 0.06em; text-align: left; text-transform: uppercase; white-space: nowrap; }
+.si-admin-table th, .si-admin-table td { border-bottom: 1px solid var(--si-color-border); padding: var(--si-space-1) var(--si-space-2); vertical-align: middle; }
+.si-admin-table td { color: var(--si-color-text); }
+.si-admin-table tbody tr:last-child td { border-bottom: 0; }
 .si-admin-table tbody tr:hover { background: var(--si-color-row-hover); }
 .si-admin-table td.si-admin-empty { color: var(--si-color-text-subtle); padding: var(--si-space-6); text-align: center; }
