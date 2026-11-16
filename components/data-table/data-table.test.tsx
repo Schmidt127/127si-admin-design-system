@@ -154,6 +154,22 @@ test("DataTable countLabel customizes toolbar result count", () => {
   assert.match(defaultRows, /1<\/span> row/);
 });
 
+test("DataTable searchPlaceholder and loadingMessage override Referee defaults", () => {
+  const html = renderToStaticMarkup(
+    <DataTable
+      columns={[{ id: "name", header: "Name", accessorKey: "name" }]}
+      rows={[]}
+      loading
+      searchPlaceholder="Search lessons"
+      loadingMessage="Loading lessons…"
+      exportFileName="lessons.csv"
+    />,
+  );
+  assert.match(html, /placeholder="Search lessons"/);
+  assert.match(html, /Loading lessons…/);
+  assert.doesNotMatch(html, /Search participants/);
+});
+
 test("DataTable shows loading and empty states", () => {
   const loading = renderToStaticMarkup(
     <DataTable columns={[{ id: "name", header: "Name", accessorKey: "name" }]} rows={[]} loading />,

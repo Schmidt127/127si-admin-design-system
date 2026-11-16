@@ -32,6 +32,10 @@ export type DataTableCountLabel = {
     one: string;
     other: string;
 };
+/** Referee youth-participant directory defaults; callers override for other rosters. */
+export declare const DEFAULT_DATA_TABLE_SEARCH_PLACEHOLDER = "Search participants";
+export declare const DEFAULT_DATA_TABLE_LOADING_MESSAGE = "Loading participants\u2026";
+export declare const DEFAULT_DATA_TABLE_EXPORT_FILE_NAME = "participants.csv";
 export type DataTableChipFilter<Row> = {
     id: string;
     ariaLabel: string;
@@ -65,5 +69,9 @@ export type DataTableProps<Row extends Record<string, unknown> = Record<string, 
     autoChipFilters?: Array<"school" | "grade">;
     /** Toolbar count noun (e.g. `{ one: "participant", other: "participants" }`). Defaults to row/rows. */
     countLabel?: DataTableCountLabel;
+    /** Search field placeholder when `showSearch` is true. Default Referee “Search participants”. */
+    searchPlaceholder?: string;
+    /** Loading row and mobile card copy when `loading` is true. Default Referee “Loading participants…”. */
+    loadingMessage?: string;
 };
-export declare function DataTable<Row extends Record<string, unknown> = Record<string, unknown>>({ columns: columnDefs, rows, audience, optOutField, loading, enableExport, exportFileName, emptyState, theme, variant, density, caption, rowKey, className, showSchoolRail, toolbarLabel, showToolbar, showSearch, showSchoolInParticipantCell, enableClinicsTierFilter, clinicsTierField, chipFilters, autoChipFilters, countLabel, }: DataTableProps<Row>): import("react").JSX.Element;
+export declare function DataTable<Row extends Record<string, unknown> = Record<string, unknown>>({ columns: columnDefs, rows, audience, optOutField, loading, enableExport, exportFileName, emptyState, theme, variant, density, caption, rowKey, className, showSchoolRail, toolbarLabel, showToolbar, showSearch, showSchoolInParticipantCell, enableClinicsTierFilter, clinicsTierField, chipFilters, autoChipFilters, countLabel, searchPlaceholder, loadingMessage, }: DataTableProps<Row>): import("react").JSX.Element;
