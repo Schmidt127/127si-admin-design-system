@@ -264,7 +264,7 @@
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--si-radius-sm);
-  color: color-mix(in srgb, var(--si-color-text-subtle) 72%, transparent);
+  color: var(--si-color-text-subtle);
   cursor: pointer;
   font: inherit;
   font-size: 0.6875rem;
