@@ -21,4 +21,4 @@ the public data table, not this one.
 
 - Header style, row height, borders and hover colour.
 - It is always a real `<table>` with `scope="col"` headers; it scrolls sideways on narrow screens.
-- Paging, sorting and filters are not in v1.0.0. If a page needs them, add them here first.
+- Sorting and filters are not supported. Paging is a separate component: put `AdminPager` (`components/admin-pager/RULES.md`) below the table. If a page needs sorting or filters, add them here first.
