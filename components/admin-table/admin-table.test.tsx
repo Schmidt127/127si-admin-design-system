@@ -31,3 +31,22 @@ test("AdminTable shows the empty message across all columns", () => {
   const html = renderToStaticMarkup(<AdminTable columns={[{ key: "a", label: "A" }, { key: "b", label: "B" }]} rows={[]} emptyMessage="Nothing yet." />);
   assert.match(html, /<td colSpan="2" class="si-admin-empty">Nothing yet\.<\/td>/i);
 });
+
+test("AdminTable can render the first column as row headers and keep the caption for screen readers only", () => {
+  const html = renderToStaticMarkup(
+    <AdminTable<Row>
+      caption="Athletes"
+      captionHidden
+      rowHeader
+      columns={[
+        { key: "name", label: "Name" },
+        { key: "paid", label: "Paid", render: (row) => (row.paid ? "Yes" : "No") },
+      ]}
+      rows={rows}
+      rowKey={(row) => row.id}
+    />,
+  );
+  assert.match(html, /<caption class="si-admin-sr-caption">Athletes<\/caption>/);
+  assert.match(html, /<th scope="row" class="si-admin-row-header">Ava<\/th><td>Yes<\/td>/);
+  assert.equal((html.match(/<th scope="col">/g) || []).length, 2);
+});

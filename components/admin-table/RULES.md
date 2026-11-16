@@ -16,6 +16,8 @@ the public data table, not this one.
 - `columns` (`key`, `label`, optional `render`), `rows`, `rowKey`.
 - `caption`: a short name for the table. Give one whenever the card title does not already name it.
 - `emptyMessage`.
+- `captionHidden`: keep the caption for screen readers only, when the card title already names the table.
+- `rowHeader`: render the first column as row headers (`th scope="row"`), for tables where each row has a name.
 
 ## What may not vary
 
