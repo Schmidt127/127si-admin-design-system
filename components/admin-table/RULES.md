@@ -19,6 +19,7 @@ the public data table, not this one.
 
 ## What may not vary
 
-- Header style, row height, borders and hover colour.
+- Header: the admin navigation colour (`--si-color-shell-deep`) with `--si-color-on-shell` text, uppercase labels, no wrapping.
+- Body text is `--si-text-xs` (12px) with tabular numerals, in compact rows (`--si-space-1` top and bottom, `--si-space-2` sides). Borders and hover colour are fixed.
 - It is always a real `<table>` with `scope="col"` headers; it scrolls sideways on narrow screens.
 - Sorting and filters are not supported. Paging is a separate component: put `AdminPager` (`components/admin-pager/RULES.md`) below the table. If a page needs sorting or filters, add them here first.
