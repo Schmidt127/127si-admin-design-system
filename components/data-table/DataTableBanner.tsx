@@ -9,12 +9,18 @@ export type DataTableStat = {
   emphasis?: "gold";
 };
 
+export type DataTableBannerTitleLevel = 1 | 2 | 3 | 4 | 5 | 6;
+
+const BANNER_TITLE_TAGS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
+
 export type DataTableBannerProps = {
   eyebrow?: string;
   title: string;
   lede?: string;
   stats?: DataTableStat[];
   titleId?: string;
+  /** Use `1` when the banner is the page’s sole primary heading (e.g. Referee /youth-participants). */
+  titleLevel?: DataTableBannerTitleLevel;
   className?: string;
   children: ReactNode;
 };
@@ -25,17 +31,19 @@ export function DataTableBanner({
   lede,
   stats = [],
   titleId = "si-dt-banner-title",
+  titleLevel = 2,
   className,
   children,
 }: DataTableBannerProps) {
+  const TitleTag = BANNER_TITLE_TAGS[titleLevel - 1];
   return (
     <div className={cx("si-dt-directory", className)}>
       <header className="si-dt-directory__band" aria-labelledby={titleId}>
         <div className="si-dt-directory__band-copy">
           {eyebrow ? <p className="si-dt-directory__eyebrow">{eyebrow}</p> : null}
-          <h2 id={titleId} className="si-dt-directory__title">
+          <TitleTag id={titleId} className="si-dt-directory__title">
             {title}
-          </h2>
+          </TitleTag>
           {lede ? <p className="si-dt-directory__lede">{lede}</p> : null}
         </div>
         {stats.length ? (

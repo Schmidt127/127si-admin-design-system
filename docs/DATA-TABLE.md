@@ -71,6 +71,15 @@ export function Directory({ rows }) {
 }
 ```
 
+## Banner and toolbar options
+
+| Prop | Component | Purpose |
+| --- | --- | --- |
+| `titleLevel` | `DataTableBanner` | Heading level for `title` (`1`–`6`, default `2`). Use `1` when the banner is the page’s only primary heading. Styling comes from `.si-dt-directory__title`, so the band title looks the same at any level. |
+| `countLabel` | `DataTable` | Singular/plural noun for the toolbar count (default `{ one: "row", other: "rows" }`). Example: `{ one: "participant", other: "participants" }`. Search mode still appends `of N shown` and does not repeat the noun. |
+
+The bundled `YouthParticipantDataTableExample` sets `countLabel` to participant/participants.
+
 ## Column API
 
 | Field | Purpose |

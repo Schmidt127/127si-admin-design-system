@@ -147,6 +147,7 @@ export function YouthParticipantDataTableExample() {
         showSchoolRail={false}
         caption="Youth participant highlights"
         toolbarLabel="Filter youth participants"
+        countLabel={{ one: "participant", other: "participants" }}
         emptyState={{
           title: "No registered participants yet",
           message:
