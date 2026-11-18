@@ -10,6 +10,7 @@ keeps its old name so existing commit pins still resolve.
 - Decisions: [`docs/decisions/`](docs/decisions/) (0001 one design system, 0002 typography).
 - Starting point measured across the platforms: [`baseline/`](baseline/).
 - Registration template: [`docs/REGISTRATION-SUMMARY.md`](docs/REGISTRATION-SUMMARY.md) (required Before you register summary for every registration).
+- Releases: [`CHANGELOG.md`](CHANGELOG.md); how to cut one: [`docs/RELEASING.md`](docs/RELEASING.md).
 - Catalogue (every token and component in every theme): `dist/catalogue/index.html`.
 
 ## Layout
@@ -97,6 +98,7 @@ Adding a component is a fixed recipe:
 2. Style it with brand tokens only. The guard test rejects raw colours, raw font names and unknown tokens.
 3. Export it from `index.ts` and show it in `catalogue/Catalogue.tsx`.
 4. `npm run check`, commit including `dist/`, open a PR.
-5. Bump the version, tag the merge commit (`vX.Y.Z`) and open an upgrade PR in each platform with the new SHA.
+5. Bump the version, add a [`CHANGELOG.md`](CHANGELOG.md) entry, tag the merge commit (`vX.Y.Z`) and open an
+   upgrade PR in each platform with the new SHA. Details: [`docs/RELEASING.md`](docs/RELEASING.md).
 
 A change to a token name, class name or prop that an app could be using is a major version.
