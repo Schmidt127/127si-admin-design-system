@@ -16,6 +16,12 @@ export type RegistrationShellProps = {
   formHeroSrc?: string;
   /** Empty string or omitted means the picture is decorative. */
   formHeroAlt?: string;
+  /**
+   * Program photo behind the deep-blue page (FORM-IMAGES.md "background" slot), e.g.
+   * "/forms/default/background.png". Always decorative: shown in grey at low strength, hidden from
+   * assistive technology, never carries information. Omit for the plain deep-blue page.
+   */
+  formBackgroundSrc?: string;
   /** Optional logo shown above the title, e.g. the app's link to its home page. */
   logo?: ReactNode;
   /** Id of the title, so a form can name itself with it (aria-labelledby). */
@@ -28,8 +34,9 @@ export type RegistrationShellProps = {
 };
 
 /**
- * The full-page registration layout: deep brand-blue page, a faint program photo behind
- * the masthead, a fact strip, and a white form sheet that holds the steps.
+ * The full-page registration layout: deep brand-blue page, an optional faint program photo
+ * behind it (formBackgroundSrc), the masthead with an optional program picture (formHeroSrc),
+ * a fact strip, and a white form sheet that holds the steps.
  */
 export function RegistrationShell({
   titleAccent,
@@ -39,6 +46,7 @@ export function RegistrationShell({
   factsLabel = "Details",
   formHeroSrc,
   formHeroAlt = "",
+  formBackgroundSrc,
   logo,
   titleId,
   ImageComponent = "img",
@@ -47,7 +55,9 @@ export function RegistrationShell({
 }: RegistrationShellProps) {
   return (
     <div className={cx("si-reg-root", className)}>
-      <div className="si-reg-atmosphere" aria-hidden="true" />
+      <div className="si-reg-atmosphere" aria-hidden="true">
+        {formBackgroundSrc ? <img className="si-reg-atmosphere__photo" src={formBackgroundSrc} alt="" decoding="async" /> : null}
+      </div>
       <div className="si-reg-page">
         <header className="si-reg-masthead">
           <div>

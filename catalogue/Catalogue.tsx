@@ -211,6 +211,7 @@ function RegistrationDemo() {
         { label: "Tuition", value: "Sample price" },
       ]}
       factsLabel="Clinic details"
+      formBackgroundSrc="assets/patterns/pattern-3.png"
     >
       <RegistrationSummary
         preparation={{ body: <p>A headshot of the participant and a payment method.</p> }}

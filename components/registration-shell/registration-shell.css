@@ -13,6 +13,28 @@
   z-index: 0;
   pointer-events: none;
   background: var(--si-blue-deep);
+  overflow: hidden;
+}
+
+/*
+ * Background photo (Brand System v4, Full-page forms: "a real program photo in grayscale, seen at about
+ * 20% opacity through the deep blue, fading to solid deep blue behind the lower form").
+ * The opacity is a ceiling: white text on the masthead stays readable even over a pure white photo,
+ * which registration-shell.test.tsx checks. Do not raise it.
+ */
+.si-reg-atmosphere__photo {
+  position: absolute;
+  top: -4%;
+  left: -4%;
+  width: 108%;
+  height: 108%;
+  max-width: none; /* apps often reset img { max-width: 100% }; the photo must overhang to hide the blurred edge */
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.2;
+  filter: grayscale(1) contrast(1.05) blur(1px);
+  -webkit-mask-image: linear-gradient(180deg, var(--si-black) 0%, var(--si-black) 45%, transparent 100%);
+  mask-image: linear-gradient(180deg, var(--si-black) 0%, var(--si-black) 45%, transparent 100%);
 }
 
 .si-reg-page {
