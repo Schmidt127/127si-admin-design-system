@@ -1,7 +1,7 @@
 # The 127 SI brand kit
 
 The official 127 Sports Intensity brand kit (four pages, 2023) is the **highest authority** for everything in
-`brand/`. It outranks Brand System v4, the public shell standard and every other document.
+`brand/`. It outranks [Brand System v4](../BRAND-SYSTEM-V4.md), the public shell standard and every other document.
 
 ## What the kit fixes
 
@@ -29,7 +29,7 @@ Everything else in `brand/` extends the kit. `brand/tokens.css` labels every gro
 
 | Source | What it adds |
 | --- | --- |
-| Brand System v4 | Hover and light shades of blue and orange, `blue.deep #001F6B`, teal, gold, success, warning, danger, muted, Source Sans 3 for admin and data |
+| [Brand System v4](../BRAND-SYSTEM-V4.md) | Hover and light shades of blue and orange, `blue.deep #001F6B`, teal, gold, success, warning, danger, muted, Source Sans 3 for admin and data |
 | Public shell standard | Saira as the on-screen display face, the container, gutter and section spacing |
 | This design system | Text-safe variants needed for contrast (`--si-orange-text`, `--si-warning-text`, `--si-danger-text`, `--si-slate`), soft status surfaces, the hairline `--si-line`, the Team Shot Tracker theme |
 

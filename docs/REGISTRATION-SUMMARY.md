@@ -1,6 +1,6 @@
 # Registration summary: ecosystem template
 
-Status: owner-approved November 13, 2026. Mike requested a summary section for **each registration** across the 127 Sports Intensity ecosystem, following the JR Ref Clinic improvement. This extends the Full-page forms standard in Brand System v4.
+Status: owner-approved November 13, 2026. Mike requested a summary section for **each registration** across the 127 Sports Intensity ecosystem, following the JR Ref Clinic improvement. This extends the Full-page forms standard in [Brand System v4](../brand/BRAND-SYSTEM-V4.md).
 
 ## Placement and purpose
 
