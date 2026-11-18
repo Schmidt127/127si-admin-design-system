@@ -10,6 +10,14 @@ they are, the "Commit" column is the SHA to pin.
 
 PR links point to `Schmidt127/127si-admin-design-system`.
 
+## v1.10.0 (unreleased)
+
+- **RegistrationShell**: new `formBackgroundSrc` prop, the "background" slot promised by
+  [`docs/FORM-IMAGES.md`](docs/FORM-IMAGES.md). The app's program photo is shown behind the deep-blue page in
+  grey at 20% strength, fading to solid blue behind the lower form (Brand System v4, Full-page forms). It is
+  decorative (`alt=""` inside the `aria-hidden` backdrop). A test checks masthead text contrast over the
+  brightest possible photo. Omitting the prop leaves the page as before.
+
 ## v1.9.1 (2026-11-16)
 
 Commit `a7e6b6bc5da52ea2641844155b66c23226f81629`

@@ -16,6 +16,12 @@ export type RegistrationShellProps = {
     formHeroSrc?: string;
     /** Empty string or omitted means the picture is decorative. */
     formHeroAlt?: string;
+    /**
+     * Program photo behind the deep-blue page (FORM-IMAGES.md "background" slot), e.g.
+     * "/forms/default/background.png". Always decorative: shown in grey at low strength, hidden from
+     * assistive technology, never carries information. Omit for the plain deep-blue page.
+     */
+    formBackgroundSrc?: string;
     /** Optional logo shown above the title, e.g. the app's link to its home page. */
     logo?: ReactNode;
     /** Id of the title, so a form can name itself with it (aria-labelledby). */
@@ -27,7 +33,8 @@ export type RegistrationShellProps = {
     className?: string;
 };
 /**
- * The full-page registration layout: deep brand-blue page, a faint program photo behind
- * the masthead, a fact strip, and a white form sheet that holds the steps.
+ * The full-page registration layout: deep brand-blue page, an optional faint program photo
+ * behind it (formBackgroundSrc), the masthead with an optional program picture (formHeroSrc),
+ * a fact strip, and a white form sheet that holds the steps.
  */
-export declare function RegistrationShell({ titleAccent, titlePlace, subtitle, facts, factsLabel, formHeroSrc, formHeroAlt, logo, titleId, ImageComponent, children, className, }: RegistrationShellProps): import("react").JSX.Element;
+export declare function RegistrationShell({ titleAccent, titlePlace, subtitle, facts, factsLabel, formHeroSrc, formHeroAlt, formBackgroundSrc, logo, titleId, ImageComponent, children, className, }: RegistrationShellProps): import("react").JSX.Element;

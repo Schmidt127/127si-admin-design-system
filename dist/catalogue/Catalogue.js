@@ -88,7 +88,7 @@ function RegistrationDemo() {
             { label: "Location", value: "Sample City" },
             { label: "Grades", value: "Grades 6-12" },
             { label: "Tuition", value: "Sample price" },
-        ], factsLabel: "Clinic details", children: [_jsx(RegistrationSummary, { preparation: { body: _jsx("p", { children: "A headshot of the participant and a payment method." }) }, nextSteps: { body: _jsx("p", { children: "Submit the form. If a seat is available you will continue to payment." }) }, disclosures: [
+        ], factsLabel: "Clinic details", formBackgroundSrc: "assets/patterns/pattern-3.png", children: [_jsx(RegistrationSummary, { preparation: { body: _jsx("p", { children: "A headshot of the participant and a payment method." }) }, nextSteps: { body: _jsx("p", { children: "Submit the form. If a seat is available you will continue to payment." }) }, disclosures: [
                     { id: "refund", label: "Refund policy", content: _jsx("p", { children: "Policy text comes from the app." }) },
                     { id: "questions", label: "Questions", content: _jsx("p", { children: "Contact details come from the app." }) },
                 ] }), _jsx(RegistrationStep, { headingId: "cat-step-1", title: "Participant Information", subtitle: "Tell us about the participant.", children: _jsx("p", { children: "Form fields go here." }) }), _jsx(RegistrationStep, { headingId: "cat-step-2", title: "Parent Information", subtitle: "We will send clinic updates to this contact.", children: _jsx("p", { children: "Form fields go here." }) })] }));

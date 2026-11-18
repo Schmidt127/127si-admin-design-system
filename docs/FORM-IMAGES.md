@@ -58,5 +58,14 @@ that is saved but not on that list is not shown.
 | Referee | Still on `public/registration/intensity-v2/`; moves to `public/forms/` in its own PR |
 | Others | No full-page forms on the shared look yet; they get `public/forms/` when their forms move to it |
 
-When the shared form shell ships in this package it takes these two pictures as props, so the paths above
-do not change.
+The shared form shell, `RegistrationShell` (v1.10.0 and later), takes these two pictures as props, so the
+paths above do not change:
+
+```tsx
+<RegistrationShell
+  formBackgroundSrc="/forms/jr-ref/background.webp"  // decorative, shown grey and faint
+  formHeroSrc="/forms/jr-ref/header.webp"
+  formHeroAlt=""                                    // or a description if the picture carries meaning
+  ...
+/>
+```
