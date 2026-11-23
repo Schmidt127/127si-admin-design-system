@@ -5,8 +5,8 @@ change to a token name, class name or prop that an app could be using is a major
 component or option is a minor version; a fix that changes no API is a patch.
 
 Consumers pin a release by the full commit SHA of its tag (see [`docs/RELEASING.md`](docs/RELEASING.md)).
-Tags `v1.0.0` to `v1.3.4` exist. Tags for `v1.4.0` to `v1.9.1` are proposed below and not yet pushed; until
-they are, the "Commit" column is the SHA to pin.
+Annotated tags `v1.0.0` through `v1.9.1` are on `origin`; the "Commit" lines below are the SHAs those tags
+point at (or pin directly).
 
 PR links point to `Schmidt127/127si-admin-design-system`.
 
@@ -34,15 +34,17 @@ Commit `6307af65cc1d66cff6d1c776197044ebd4a4ddc4`
 
 ## v1.8.0 (2026-11-16)
 
-Commit `a14c50bd755df5e8d55e4cb96b33b0a242f6036a`
+Commit `3d97dd9c273b80f70b896a8a04a80caa0183fb02` (tag `v1.8.0`)
 
-Two PRs both set the version to 1.8.0. The tag goes on the later one, which contains both.
+`package.json` became `1.8.0` on this commit ([#32](https://github.com/Schmidt127/127si-admin-design-system/pull/32)).
+PR ([#33](https://github.com/Schmidt127/127si-admin-design-system/pull/33), merge `a14c50b`) landed on top without
+another version bump; the tag’s history includes both changes.
 
 - **AdminTable**: navy header (`--si-color-shell-deep` with on-shell text), body one step smaller
   (`--si-text-xs`), compact rows, tabular numerals, matching the Challenge enrollments table. Visible change
-  for every AdminTable. ([#32](https://github.com/Schmidt127/127si-admin-design-system/pull/32), merge `3d97dd9`)
+  for every AdminTable.
 - **DataTable**: new `searchPlaceholder` and `loadingMessage` props. Defaults keep the Referee participant
-  wording. `exportFileName` is now documented. ([#33](https://github.com/Schmidt127/127si-admin-design-system/pull/33))
+  wording. `exportFileName` is now documented.
 
 ## v1.7.2 (2026-11-16)
 
