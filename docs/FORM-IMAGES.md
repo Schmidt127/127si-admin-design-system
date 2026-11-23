@@ -47,7 +47,7 @@ that is saved but not on that list is not shown.
   under the blue, so detail and colour do not matter; shape and contrast do.
 - Header: about 4:3, at least 560 px wide. A transparent background works well on the blue header.
 - Keep each file under about 500 KB; WebP is best for photos.
-- Per Brand System v4, only the photo changes per program. The page colour, wash and texture are the same
+- Per [Brand System v4](../brand/BRAND-SYSTEM-V4.md) (Full-page forms), only the photo changes per program. The page colour, wash and texture are the same
   everywhere, and Team Shot Tracker keeps its Scoreboard palette.
 
 ## Status, 2026-11-11

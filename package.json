@@ -4,7 +4,7 @@
   "private": true,
   "description": "The 127 Sports Intensity design system: brand tokens, themes, fonts and shared React components.",
   "type": "module",
-  "files": ["dist", "brand/RULES.md", "brand/kit", "components/*/RULES.md", "docs"],
+  "files": ["dist", "brand/RULES.md", "brand/BRAND-SYSTEM-V4.md", "brand/kit", "components/*/RULES.md", "docs"],
   "types": "./dist/index.d.ts",
   "sideEffects": ["*.css"],
   "exports": {

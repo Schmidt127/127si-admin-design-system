@@ -1,0 +1,183 @@
+# Opens an upgrade PR in each consumer when a release tag is pushed (ADR 0001, decision 16).
+#
+# DRY-RUN BY DEFAULT. It changes nothing in any other repository until the owner:
+#   1. creates a fine-grained personal access token for the agent account with, on the consumer
+#      repositories below only: Contents read and write, Pull requests read and write;
+#   2. saves it here as the Actions secret CONSUMER_UPGRADE_TOKEN;
+#   3. sets the Actions variable CONSUMER_UPGRADE_LIVE to "true".
+# Without the secret it only prints the plan. With the secret but without the variable it also clones each
+# consumer, makes the change locally and prints the diff, but pushes nothing. See docs/RELEASING.md.
+#
+# Only consumers that already depend on "@127si/design-system" get an automatic PR. Consumers still on the
+# pre-v1 name "@127si/admin-design-system" or pinned to a branch need the README's manual upgrade steps;
+# the run lists them and skips them.
+
+name: Upgrade consumers
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to roll out, e.g. v1.10.0"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: upgrade-consumers-${{ github.event.inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-24.04
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+      UPGRADE_TOKEN: ${{ secrets.CONSUMER_UPGRADE_TOKEN }}
+      LIVE: ${{ vars.CONSUMER_UPGRADE_LIVE == 'true' && secrets.CONSUMER_UPGRADE_TOKEN != '' }}
+      SOURCE_REPO: ${{ github.repository }}
+      # owner/name and default branch of every consumer. Keep in step with the README and BUILD-STATUS.
+      CONSUMERS: |
+        Schmidt127/127si-referee-platform main
+        Schmidt127/127si-bracket-platform main
+        Schmidt127/127si-challenge-platform main
+        Schmidt127/127si-fairfield-basketball-club main
+        Schmidt127/127si-communication-platform main
+        Schmidt127/127si-curriculum-platform main
+        Schmidt127/127si-content-platform master
+        Schmidt127/127si-shared-data main
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve the release commit
+        id: release
+        run: |
+          set -euo pipefail
+          if ! [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::'$TAG' is not a release tag (vX.Y.Z)"; exit 1
+          fi
+          git fetch --tags --force origin
+          sha="$(git rev-parse "refs/tags/$TAG^{commit}")"
+          version="$(git show "$sha:package.json" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).version))')"
+          if [ "v$version" != "$TAG" ]; then
+            echo "::error::$TAG points at $sha, whose package.json says $version"; exit 1
+          fi
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "Release $TAG = $sha"
+          if [ "$LIVE" = "true" ]; then echo "Mode: LIVE (pushes branches and opens PRs)";
+          elif [ -n "$UPGRADE_TOKEN" ]; then echo "Mode: dry-run with token (clones and diffs, pushes nothing)";
+          else echo "Mode: dry-run without token (prints the plan only)"; fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Upgrade each consumer
+        env:
+          SHA: ${{ steps.release.outputs.sha }}
+          GH_TOKEN: ${{ secrets.CONSUMER_UPGRADE_TOKEN }}
+          GIT_NAME: ${{ vars.CONSUMER_UPGRADE_GIT_NAME || 'github-actions[bot]' }}
+          GIT_EMAIL: ${{ vars.CONSUMER_UPGRADE_GIT_EMAIL || '41898282+github-actions[bot]@users.noreply.github.com' }}
+          COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+        run: |
+          set -euo pipefail
+          corepack enable
+          branch="design-system/$TAG"
+          changelog="https://github.com/$SOURCE_REPO/blob/$TAG/CHANGELOG.md"
+          summary=""
+          failed=0
+
+          # Reads package.json in the current directory; rewrites the pin only for an exact full-SHA v1 pin.
+          cat > "$RUNNER_TEMP/pin.js" <<'NODE'
+          const fs = require("fs");
+          const sha = process.argv[2];
+          const text = fs.readFileSync("package.json", "utf8");
+          const deps = Object.assign({}, ...["dependencies", "devDependencies"].map((k) => JSON.parse(text)[k] || {}));
+          if (deps["@127si/admin-design-system"]) { console.log("manual: still on @127si/admin-design-system"); process.exit(0); }
+          const spec = deps["@127si/design-system"];
+          if (!spec) { console.log("skip: not a dependency"); process.exit(0); }
+          const m = spec.match(/^github:Schmidt127\/127si-admin-design-system#([0-9a-f]{40})$/);
+          if (!m) { console.log(`manual: pin is "${spec}", not a full SHA`); process.exit(0); }
+          if (m[1] === sha) { console.log("current"); process.exit(0); }
+          const next = text.replace(`#${m[1]}"`, `#${sha}"`);
+          fs.writeFileSync("package.json", next);
+          console.log(`upgrade: ${m[1].slice(0, 7)} -> ${sha.slice(0, 7)}`);
+          NODE
+
+          while read -r repo base; do
+            [ -z "$repo" ] && continue
+            echo "::group::$repo"
+            if [ -z "$UPGRADE_TOKEN" ]; then
+              echo "Would set @127si/design-system to #$SHA in $repo ($base), regenerate its lockfile and open '$branch'."
+              summary+="| $repo | planned (no token) |"$'\n'
+              echo "::endgroup::"; continue
+            fi
+
+            dir="$RUNNER_TEMP/$(basename "$repo")"
+            rm -rf "$dir"
+            if ! git clone --quiet --depth 1 --branch "$base" "https://x-access-token:${UPGRADE_TOKEN}@github.com/$repo.git" "$dir"; then
+              echo "::warning::$repo: clone failed (token scope?)"; summary+="| $repo | clone failed |"$'\n'; failed=1
+              echo "::endgroup::"; continue
+            fi
+            cd "$dir"
+
+            # Only an exact full-SHA pin under the v1 name is upgraded automatically.
+            result="$(node "$RUNNER_TEMP/pin.js" "$SHA")"
+            echo "$result"
+            case "$result" in
+              upgrade:*) ;;
+              *) summary+="| $repo | $result |"$'\n'; cd "$GITHUB_WORKSPACE"; echo "::endgroup::"; continue ;;
+            esac
+
+            if [ -f pnpm-lock.yaml ] && { grep -q '"packageManager": *"pnpm' package.json || [ ! -f package-lock.json ]; }; then
+              lock_cmd="pnpm install --lockfile-only --ignore-scripts"
+            else
+              lock_cmd="npm install --package-lock-only --ignore-scripts --no-audit --no-fund"
+            fi
+            if ! $lock_cmd; then
+              echo "::warning::$repo: '$lock_cmd' failed"; summary+="| $repo | lockfile update failed |"$'\n'; failed=1
+              cd "$GITHUB_WORKSPACE"; echo "::endgroup::"; continue
+            fi
+            git --no-pager diff --stat
+            git --no-pager diff -- package.json
+
+            if [ "$LIVE" != "true" ]; then
+              summary+="| $repo | dry-run: ${result#upgrade: } |"$'\n'
+              cd "$GITHUB_WORKSPACE"; echo "::endgroup::"; continue
+            fi
+
+            if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+              summary+="| $repo | branch $branch already exists |"$'\n'
+              cd "$GITHUB_WORKSPACE"; echo "::endgroup::"; continue
+            fi
+            git checkout -q -b "$branch"
+            git -c user.name="$GIT_NAME" -c user.email="$GIT_EMAIL" commit -q -am "Upgrade @127si/design-system to $TAG" \
+              -m "Pins $SOURCE_REPO#$SHA and regenerates the lockfile. Release notes: $changelog"
+            git push -q origin "$branch"
+            body="Upgrades \`@127si/design-system\` to **$TAG** (\`$SHA\`) and regenerates the lockfile in the same PR.
+
+          Before merging: read the [CHANGELOG]($changelog) sections since the old pin, check any screens it marks as visibly changed, and let this repository's CI (including the design-system guard test) pass.
+
+          Opened by the \`Upgrade consumers\` workflow in $SOURCE_REPO."
+            if url="$(gh pr create --repo "$repo" --base "$base" --head "$branch" --title "Upgrade @127si/design-system to $TAG" --body "$body")"; then
+              summary+="| $repo | opened $url |"$'\n'
+            else
+              summary+="| $repo | push ok, PR failed |"$'\n'; failed=1
+            fi
+            cd "$GITHUB_WORKSPACE"
+            echo "::endgroup::"
+          done <<< "$CONSUMERS"
+
+          {
+            echo "## Upgrade consumers to $TAG"
+            echo
+            echo "| Consumer | Result |"
+            echo "| --- | --- |"
+            printf "%s" "$summary"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$failed"

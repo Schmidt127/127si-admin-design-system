@@ -11,7 +11,7 @@ platform, and the home of the logo, stamp and pattern files.
 
 1. The official 127 SI brand kit ([`kit/README.md`](kit/README.md)): five colours, Maven Pro, the logo, stamp
    and pattern artwork. Nothing below may change a kit value.
-2. Brand System v4: the extended colours, status colours and component rules.
+2. [Brand System v4](BRAND-SYSTEM-V4.md): the extended colours, status colours and component rules.
 3. This design system: values added where a role needed one (mostly for text contrast).
 
 `tokens.css` labels each group with its source. Typography: [ADR 0002](../docs/decisions/0002-typography.md)

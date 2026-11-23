@@ -16,7 +16,7 @@ colours that are not the brand, and was mostly consumed for its token file. The 
 1. **One package, in this repository.** `@127si/admin-design-system` becomes `@127si/design-system` at
    v1.0.0. It has two surfaces: public (default) and admin (`data-si-surface="admin"`, visually quieter).
    The GitHub repository keeps its name so existing SHA pins keep resolving.
-2. **The brand kit is the highest authority; Brand System v4 extends it.** (Owner direction 2026-11-11.) The
+2. **The brand kit is the highest authority; [Brand System v4](../../brand/BRAND-SYSTEM-V4.md) extends it.** (Owner direction 2026-11-11.) The
    official 127 SI brand kit fixes the five base colours, Maven Pro and the logo, stamp and pattern artwork;
    `brand/kit/` and `brand/assets/` in this repository are their home. Brand System v4 and this design system
    add to the kit and never change a kit value; `brand/tokens.css` labels each group with its source. Blue `#0034B7` is primary (buttons, active nav), orange `#FF8B00`
@@ -66,6 +66,8 @@ colours that are not the brand, and was mostly consumed for its token file. The 
     on a locally defined nav, footer, button or table where a package one exists.
 15. **Canonical brand doc.** The Brand System v4 document and asset manifest move into `brand/` here; each
     platform's copy becomes a pointer. Until that move is merged, Challenge's copy stays authoritative.
+    Done 2026-11-18: [`brand/BRAND-SYSTEM-V4.md`](../../brand/BRAND-SYSTEM-V4.md) (from Challenge `5b0e1a7`);
+    the asset manifest is `brand/assets/manifest.json`.
 16. **Upgrade PRs.** On a tagged release, a workflow opens an upgrade PR in each consumer. It needs a
     repository secret holding the agent account's token; creating that secret is an owner action. Until it
     exists, the releasing agent opens the upgrade PRs by hand.

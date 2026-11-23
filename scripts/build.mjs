@@ -26,7 +26,9 @@ rmSync(dist, { recursive: true, force: true });
 const require = createRequire(import.meta.url);
 execFileSync(process.execPath, [require.resolve("typescript/bin/tsc"), "-p", "tsconfig.build.json"], { cwd: root, stdio: "inherit" });
 // Tailwind v4 compiles only the utility classes the components use, into dist/utilities.css.
-execFileSync(path.join(root, "node_modules", ".bin", "tailwindcss"), ["-i", "brand/tailwind.css", "-o", "dist/utilities.css"], { cwd: root, stdio: "inherit" });
+// Run the CLI through node, not node_modules/.bin, so the build also works on Windows (no .cmd shim needed).
+const tailwindCli = path.join(path.dirname(require.resolve("@tailwindcss/cli/package.json")), "dist", "index.mjs");
+execFileSync(process.execPath, [tailwindCli, "-i", "brand/tailwind.css", "-o", "dist/utilities.css"], { cwd: root, stdio: "inherit" });
 
 const componentDirs = readdirSync(path.join(root, "components"), { withFileTypes: true })
   .filter((entry) => entry.isDirectory() && !entry.name.startsWith("_"))

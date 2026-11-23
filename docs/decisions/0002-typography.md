@@ -51,10 +51,10 @@ Georgia and Segoe UI.
 
 ## Consequences
 
-- Brand System v4's Typography System table (which lists "Magistral when licensed", "Maven Pro or Montserrat"
-  headings, Barlow Condensed accents and Source Sans 3 body) is amended to this ruling when the brand doc
-  moves into `brand/` (ADR 0001, decision 15). Until then this ADR governs typography for anything built on
-  the package.
+- Brand System v4's Typography System table (which listed "Magistral when licensed", "Maven Pro or Montserrat"
+  headings, Barlow Condensed accents and Source Sans 3 body) was amended to this ruling on 2026-11-18, when
+  the brand doc moved into [`brand/BRAND-SYSTEM-V4.md`](../../brand/BRAND-SYSTEM-V4.md) (ADR 0001, decision
+  15). The superseded rows are kept there for the record.
 - Visible changes on adoption: Referee's condensed accents (Barlow Condensed) become Saira and its body
   becomes Maven Pro; Content's Arial becomes Maven Pro (public) and Source Sans 3 (admin); Curriculum drops
   Geist and Inter.
