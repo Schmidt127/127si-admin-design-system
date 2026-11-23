@@ -6,12 +6,13 @@ This repository has no separate roadmap file. The plan is
 [`REGISTRATION-SUMMARY.md`](REGISTRATION-SUMMARY.md) and [`DATA-TABLE.md`](DATA-TABLE.md). This file records
 how far the code has got against that plan. Code is the source of truth; the ADRs are the plan.
 
-## Code audit (2026-11-17)
+## Code audit (2026-11-23)
 
-Audited at `origin/master` `a7e6b6b` (`package.json` version 1.9.1). Static reading only; nothing was built,
-installed or run.
+Audited at `origin/master` `96aa00c` (`package.json` version **1.9.1**). Static reading only; nothing was
+built, installed or run. Supersedes the 2026-11-17 pass on this file (same method, fresher `master` and
+consumer pins).
 
-**Code-complete: 85%** (19 done, 3 partial, 2 not started, of 24 planned in-repo items).
+**Code-complete: 90%** (20 done, 3 partial, 1 not started, of 24 planned in-repo items).
 
 ### Method
 
@@ -22,7 +23,7 @@ installed or run.
   consumer repositories. They are tracked under Adoption below, not in the percentage.
 - Each item was checked against `components/`, `brand/`, `index.ts` exports, `catalogue/Catalogue.tsx`,
   `test/`, `scripts/`, `.github/workflows/` and git history.
-- Score = (DONE + 0.5 x PARTIAL) / planned = (19 + 1.5) / 24 = 85.4%.
+- Score = (DONE + 0.5 x PARTIAL) / planned = (20 + 1.5) / 24 = 89.6% (rounded 90%).
 
 ### Inventory
 
@@ -56,70 +57,66 @@ installed or run.
 | 18 | Semver with a git tag per release (d10) | PARTIAL | Tags stop at `v1.3.4`. v1.4.0 to v1.9.1 are untagged; `1.8.0` was used by two merges (`3d97dd9`, `a14c50b`). |
 | 19 | `--127si-*` and `.si-admin-*` kept as aliases (d11) | DONE | `brand/legacy.css` (14 `--127si-` vars); `.si-admin-*` classes in the admin component CSS |
 | 20 | Typography: Saira, Maven Pro, Source Sans 3, self-hosted with OFL (ADR 0002) | DONE | `brand/fonts/`, `brand/fonts.css` |
-| 21 | Brand System v4 document moves into `brand/` (d15) | PARTIAL | Kit transcription and asset manifest moved (`brand/kit/`). The Brand System v4 document itself is not in the repo, so ADR 0002's amendment to its typography table has not happened. |
-| 22 | Release workflow opens upgrade PRs in consumers (d16) | NOT STARTED | `.github/workflows/` holds only `ci.yml`. Blocked on an owner-created repository secret. |
+| 21 | Brand System v4 document moves into `brand/` (d15) | DONE | `brand/BRAND-SYSTEM-V4.md` ([#41](https://github.com/Schmidt127/127si-admin-design-system/pull/41)); README and ADR 0002 link here. |
+| 22 | Release workflow opens upgrade PRs in consumers (d16) | PARTIAL | `.github/workflows/upgrade-consumers.yml` ([#40](https://github.com/Schmidt127/127si-admin-design-system/pull/40)): dry-run until `CONSUMER_UPGRADE_TOKEN` and `CONSUMER_UPGRADE_LIVE=true`. |
 | 23 | Hosted catalogue page (ADR 0001 open item) | NOT STARTED | Catalogue builds to `dist/catalogue/index.html`; no Pages or Vercel config. Needs repo admin. |
 | 24 | Baseline UI inventory and script (Phase 0) | DONE | `baseline/INVENTORY.md`, `inventory.json`, `scripts/inventory.mjs` |
 
 ### Adoption
 
-Pins as reported for each app's `package.json` on 2026-11-17 (not re-read here). Versions and distances
-verified in this repository with `git log`, `git describe` and `git rev-list --count <sha>..origin/master`.
+Consumer pins re-read from each platform's `package.json` on **2026-11-23** (full 40-character SHAs).
+Library version at each pin from `git show <sha>:package.json`. Distance to **v1.9.1** code pin
+`a7e6b6bc5da52ea2641844155b66c23226f81629` via `git rev-list --count <sha>..a7e6b6b`.
 
-| Consumer | Package name used | Pin | Version at pin | Behind 1.9.1 |
+Plain-language upgrade guidance: [`CONSUMER-UPGRADE-NOTE.md`](CONSUMER-UPGRADE-NOTE.md).
+
+| Consumer | Package name | Pin (prefix) | Version at pin | Behind 1.9.1 |
 | --- | --- | --- | --- | --- |
 | referee | `@127si/design-system` | `a7e6b6b` | 1.9.1 | current |
-| bracket | `@127si/design-system` | `b0fe48f` | 1.3.4 (tag `v1.3.4`) | 11 releases, 21 commits |
-| challenge | `@127si/design-system` | `b0fe48f` | 1.3.4 | 11 releases, 21 commits |
-| fairfield-basketball-club | `@127si/design-system` | `b0fe48f` | 1.3.4 | 11 releases, 21 commits |
-| communication | `@127si/admin-design-system` | `ae9357d` | 0.1.0 (pre-rename, untagged) | major: pre-v1, 37 commits |
-| curriculum | `@127si/admin-design-system` | `ae9357d` | 0.1.0 | major: pre-v1, 37 commits |
-| content | `@127si/admin-design-system` | `#master` | floats (resolves to 1.9.1 today) | unpinned |
-| shared-data | `@127si/admin-design-system` | `#master` | floats | unpinned |
-| tst | not a dependency | - | - | not adopted |
+| bracket | `@127si/design-system` | `b0fe48f` | 1.3.4 (`v1.3.4`) | 21 commits |
+| challenge | `@127si/design-system` | `b0fe48f` | 1.3.4 | 21 commits |
+| fairfield-basketball-club (`web/`) | `@127si/design-system` | `b0fe48f` | 1.3.4 | 21 commits |
+| communication | `@127si/design-system` | `b0fe48f` | 1.3.4 | 21 commits |
+| content | `@127si/design-system` | `2bf00ce` | 1.0.1 (`v1.0.1`) | 32 commits |
+| shared-data | `@127si/design-system` | `cf48b9d` | 1.3.3 | 22 commits |
+| curriculum | `@127si/design-system` | `6307af6` | 1.8.1 | 3 commits |
+| tst | *(not listed)* | — | — | not adopted |
 
 Risks:
 
-- **Name mismatch.** Four consumers still declare `@127si/admin-design-system`. For communication and
-  curriculum that matches the 0.1.0 commit they pin. For content and shared-data, `#master` now serves a
-  package named `@127si/design-system`, so the declared name no longer matches the installed package and
-  imports from the old name can break on the next lockfile refresh. Follow the README "Upgrading from
-  `@127si/admin-design-system`" steps.
-- **Unpinned `#master`.** Content and shared-data violate ADR 0001 d10 and the README ("Never pin a branch").
-  Any merge here reaches them unreviewed. `baseline/README.md` recorded both as pinned by full SHA on
-  2026-11-11, so this is a regression.
-- **Short SHAs.** The pins above are 7-character as reported; the README requires the full 40-character SHA.
-  Confirm in each consumer.
-- **TST** has not adopted the package or the `tst` theme; its live palette differs from the documented one.
-- **Enforcement (d14)** guard tests in each platform are not verified by this audit.
+- **Most platforms still on 1.3.4 or older library code**, while Referee runs 1.9.1. Admin table chrome
+  and any future `DataTable` extraction will diverge until draft upgrade PRs merge.
+- **Content at 1.0.1** is a larger jump than the 1.3.4 cluster; budget extra visual QA on admin chrome.
+- **Tags lag `CHANGELOG`.** Git has tags through `v1.3.4` only; v1.4.0–v1.9.1 SHAs are in
+  [`CHANGELOG.md`](../CHANGELOG.md). Mike must push tags before tag-driven automation is trustworthy.
+- **TST** has no dependency and no `tst` theme in production; palette sign-off is still open (ADR 0001).
+- **Enforcement (d14)** per-platform guard tests were not re-audited here.
 
 ### Major builds remaining (prioritized)
 
-1. **Consumer migration**: rename and pin content and shared-data (unpinned, wrong name), then
-   communication and curriculum (0.1.0 to 1.9.1 with the visible colour change), then bracket, challenge and
-   fairfield-basketball-club (1.3.4 to 1.9.1). Bracket and fairfield need agent Write access (ADR open item).
-2. **Release hygiene**: tag v1.4.0 to v1.9.1 on their merge commits, add a CHANGELOG, then build the
-   upgrade-PR release workflow (d16, needs owner secret).
-3. **Form shell background picture**: add the background slot `FORM-IMAGES.md` promises, so Challenge and
-   Referee forms can drop local shells.
+1. **Consumer pin upgrades to 1.9.1** (draft PRs): bracket, challenge, fairfield, communication, content,
+   shared-data; then curriculum (small delta). See [`CONSUMER-UPGRADE-NOTE.md`](CONSUMER-UPGRADE-NOTE.md).
+2. **Release hygiene (Mike):** push git tags `v1.4.0`–`v1.9.1` per [`CHANGELOG.md`](../CHANGELOG.md); keep
+   `CONSUMER_UPGRADE_LIVE` false until tags and token scope are ready.
+3. **Form shell background picture**: `FORM-IMAGES.md` still describes an app-supplied background image;
+   `RegistrationShell` only exposes `formHeroSrc` (header); atmosphere is a fixed deep-blue layer in CSS.
 4. **Platform guard tests (d14)** in each consumer: hex ratchet, SHA-pin check, no local nav/footer/table.
-5. **Brand System v4 doc into `brand/`** (d15) with ADR 0002's typography amendment.
-6. **TST adoption** once the owner rules on its palette.
-7. **Hosted catalogue** (needs repository admin for Pages or Vercel).
+5. **TST adoption** once the owner rules on its palette.
+6. **Hosted catalogue** (needs repository admin for Pages or Vercel).
 
 ### Discrepancies (docs versus code)
 
-- `README.md` Layout lists six components; there are 17 (`admin-notice`, `admin-toolbar`, `admin-field`,
-  `admin-pager`, `top-nav`, `footer`, `hero-carousel`, `registration-*`, `data-table` are missing).
-- `README.md` says components are "plain React and plain CSS"; ADR 0001 d5 was amended on 2026-11-13 to allow
-  Tailwind v4 and shadcn/ui, and the build runs Tailwind (`scripts/build.mjs:29`).
-- `README.md` release step 5 says tag every merge; no tag exists after `v1.3.4`.
-- `FORM-IMAGES.md` promises a background picture prop on the shared form shell; `RegistrationShell` has none.
-  Its "Status, 2026-11-11" table predates the shell (v1.4.0).
-- `baseline/README.md` says only Referee pins `#master`; today Referee is SHA-pinned and content and
-  shared-data are on `#master`.
+- `README.md` Layout lists six admin components as examples; the repo ships **17** component folders (see
+  Inventory). A fuller list in README is still optional housekeeping.
+- `README.md` says components are "plain React and plain CSS"; ADR 0001 d5 allows Tailwind v4 in the
+  **build** (`scripts/build.mjs` writes `dist/utilities.css`); runtime components remain framework-agnostic.
+- **Tags versus `CHANGELOG`:** release step 5 expects a tag per version; git tags stop at `v1.3.4` while
+  `CHANGELOG.md` documents through **v1.9.1**.
+- `FORM-IMAGES.md` describes separate `background` and `header` assets per form; `RegistrationShell` only
+  accepts `formHeroSrc` for the header image.
+- `baseline/README.md` adoption table may be stale versus the pins in the table above (re-sync when baseline
+  is next updated).
 - ADR 0001 open item: TST live colours versus documented Scoreboard palette is still unresolved.
-- No CHANGELOG; release notes exist only in commit subjects.
 
 ### Branches not merged into `origin/master`
 
