@@ -1,0 +1,8 @@
+---
+alwaysApply: true
+---
+Before doing work Mike might route through a skill, read the **Skills** section in [`AGENTS.md`](../../AGENTS.md) at the repository root.
+
+Skills live under [`.agents/skills/`](../../.agents/skills/). Each skill is a folder with a `SKILL.md` file. Open the matching skill before you change code or run release steps.
+
+If a skill and a repository runbook (for example `docs/RELEASING.md` or a component `RULES.md`) disagree, the runbook wins.
